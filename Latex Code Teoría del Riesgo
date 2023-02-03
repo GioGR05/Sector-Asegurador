@@ -1,0 +1,1527 @@
+z
+En donde $b_{i} = \displaystyle \sum_{j=1}^{k} c_{j}$ en donde $c_{j}$ es la suma de otros reclamos. La $b_{i}$ es el monto total que pagamos en caso de siniestro.
+
+\textbf{Pero ¿Por qué se habla de $X_{i}$ y de $q_{i}$ y no solamente tomar al $i-esimo$? }
+
+\begin{itemize}
+\item [$\checkmark$] Porque el Modelo Individual nos dice que son variables aleatorias independientes y ya, no nos dice que se necesitan variables aleatorias independientes idénticamente distribuidas. Como no tenemos ese supuesto de que todas tienen la misma distribución, no podemos tomar una sola $x$ para todaos, tenemos que cargar todas las $x_{i}$ porque pueden tener un $q_{i}$ o un $b_{i}$ porque ninguna o no necesariamente todas, tienen la misma distribución. Es un modelo más general.
+\end{itemize}
+
+\vspace{0.5cm}
+
+\textbf{Algunas propiedades}
+
+
+\begin{align*}
+    \mathds{E}[S] &= \mathds{E}\left[\sum_{i=1}^{n}X_{i} \right]\\
+    &= \sum_{i=1}^{n}\mathds{E}[X_{i}]  \hspace{0.5cm} \text{Por linealidad de la esperanza} \\
+    &= \sum_{i=1}^{n}\mathds{E}[X_{i} \sim Bernoulli(q_{i})] \hspace{0.5cm} \text{ Parece a una distribución Bernoulli. Que vale 1 con proba } q_{i} \\
+    &= \sum_{i=1}^{n} b_{i}\cdot q_{i} \hspace{0.5cm} \text{Ponderación de los valores por los valores que toma } X_{i}
+\end{align*}
+
+\begin{align*}
+    \mathds{V}ar[S] &= \mathds{V}ar\left[\sum_{i=1}^{n}X_{i} \right]\\
+    &= \sum_{i=1}^{n}\mathds{V}ar[X_{i}]  \hspace{0.5cm} \text{Por el supuesto de independencia} \\
+    &= \sum_{i=1}^{n}\mathds{V}ar[X_{i} \sim Bernoulli(q_{i})] \hspace{0.5cm} \text{ Parece a una distribución Bernoulli. Que vale 1 con proba } q_{i} \\
+\end{align*}
+Nos damos cuenta que $X_{i} = b_{i}\cdot I_{i}$ donde $I_{i} \sim Bernoulli(q_{i})$ es una función indicadora. De donde:
+\begin{align*}
+    \sum_{i=1}^{n}\mathds{V}ar[X_{i}  &= \sum_{i=1}^{n} \mathds{V}ar[b_{i}\cdot I_{i}] \hspace{0.5cm} \text{Por el hint de arriba} \\
+    &= \sum_{i=1}^{n} b_{i}^{2} \mathds{V}ar[I_{i}] \hspace{0.5cm} \text{Por propiedad de varianza} \\
+    &=  \sum_{i=1}^{n} b_{i}^{2} \cdot q_{i} \cdot (1-q_{i}) \hspace{0.5cm} \text{Por la varianza de una Bernoulli}
+\end{align*}
+
+Por tanto:
+\begin{itemize}
+    \item $\mathds{E}[S] = \displaystyle \sum_{i=1}^{n} b_{i}\cdot q_{i}$ \hspace{1cm} y \hspace{1cm} $\mathds{V}ar[S] = \displaystyle \sum_{i=1}^{n} b_{i}^{2} \cdot q_{i} \cdot (1-q_{i})$
+\end{itemize}
+
+El tema con $b_{i}$ es que asume que la póliza solo puede tener un costo de siniestro, es decir que solo se paga un monto (constante o escalar). Peeeeeero ¿Qué pasa cuando hay coberturas adicionales?
+
+La pregunta es \textbf{¿Qué pasa si $X_{i}$ puede tener varias reclamaciones?} 
+
+\textbf{$b_{i}$ } ya no es constante, entonces vamos a generalizar el planteamiento anterior.
+
+\vspace{0.5cm}
+
+\textbf{Generalización}
+
+Sea $X_{i} = I_{i}\cdot B_{i}$ con B mayúscula con $I_{1},...I_{n}$ y $B_{1},..., B_{n}$ variables aleatorias independientes.
+
+Por un lado $I_{i}=\left\lbrace\begin{array}{c} 1 \hspace{1cm} \text{ con probabilidad } q_{i} \\0 \hspace{1cm} \text{ con proba } 1-q_{i}  \end{array}\right.$
+
+Y con $B_{i}$ que tiene cualquier distribución no negativa.
+
+Pensemos en seguro de pérdidas orgánicas que paga según la gravedad de la pérdida orgánica. Pulgar paga $10\%$ de la SA, ojo $50\%$ de la SA, mano y pie $100\%$ de la SA.
+
+Considerando que $\mu_{i} = \mathds{E}[B_{i}]$ y $\sigma_{i}^{2} = \mathds{V}ar[B_{i}]$ para toda $i=1,...,n$, entonces se cumple que:
+\begin{itemize}
+    \item  $\mathds{E}[S] = \displaystyle \sum_{i=1}^{n}  q_{i} \cdot \mu_{i}$
+    \item $\mathds{V}ar[S] = \displaystyle \sum_{i=1}^{n} q_{i} \cdot \sigma_{i}^{2} + \mu_{i}^{2} \cdot q_{i} \cdot (1-q_{i})$
+\end{itemize}
+
+\vspace{0.5cm}
+
+\textcolor{blue}{Ejercicio}
+
+Se considera un grupo de pólizas de un seguro de vida con beneficio en accidente por muerte. Suponga que la probabilidad de muerte es igual a $1\%$ y que el $30\%$ de los muertes son accidentales.  Para 50 empleados el beneficio por muerte ordinaria es de $50,000$ y por muerte accidental es $100,000$. Para los 25 empleados que quedan los beneficios son de $75,000$ y $150,000$ respectivamente. Utilizando el modelo individual del riesgo calcule la esperanza y la varianza.
+
+\vspace{1cm}
+
+\textcolor{blue}{Solución}
+
+Metodología para resolver el problema:
+
+\begin{itemize}
+    \item \textbf{¿Qué nos pide el problema}
+    
+    Nos pide calcular $\mathds{E}[S]$ y $\mathds{V}ar[S]$
+    
+    \item \textbf{Analizar la información y traducirla a términos matemáticos}
+    
+    Sabemos que $\mathds{E}[S] = \displaystyle \sum_{i=1}^{n}  q_{i} \cdot \mu_{i}$ y que  $\mathds{V}ar[S] = \displaystyle \sum_{i=1}^{n} q_{i} \cdot \sigma_{i}^{2} + \mu_{i}^{2} \cdot q_{i} \cdot (1-q_{i})$
+    
+    \item \textbf{Sustituir los datos}
+    
+    Necesitamos encontrar $q_{i}$, que en este caso es $q_{i}=0.1$
+    
+    Ahora para encontrar $\mu_{i}$ hay que identificar que hay 2 distribuciones diferentes. 
+    \begin{itemize}
+        \item $B^{50} \left\lbrace\begin{array}{c} 50,000 \hspace{0.5cm} \text{Con proba } p=0.7 \\ 100,000 \hspace{0.5cm} \text{Con proba } p=0.3 \end{array}\right.$
+        \item $B^{25} \left\lbrace\begin{array}{c} 75,000 \hspace{0.5cm} \text{Con proba } p=0.7 \\ 150,000 \hspace{0.5cm} \text{Con proba } p=0.3 \end{array}\right.$
+    \end{itemize}
+    
+    De lo anterior obtenemos que 
+    \begin{itemize}
+        \item $\mu_{B_{50}} = 65,000$ 
+        \item $\mu_{B_{75}} = 97,500$
+    \end{itemize}
+    
+    Y finalmente 
+    \begin{itemize}
+        \item $\sigma^{2}_{B_{50}} = 525,000,000$ 
+        \item $\sigma^{2}_{B_{75}} = 1,181,250,000$
+    \end{itemize}
+    
+    Sustituyendo en nuestras fórmulas obtenemos que
+    $\mathds{E}[S] = 56,875$ y que $\mathds{V}ar[S] = 5,001,984,375$
+\end{itemize}
+
+\newpage
+
+\section{Lunes 14 de Marzo }
+
+\textbf{Elementos relevantes de la Teoría del Riesgo:}
+
+\begin{enumerate}
+    \item [$\checkmark$] 1693 - Edmund Halley, desarrolla el modelo Tabla de Mortalidad. Se hacen teorías en torno a la mortalidad y supervivencia de las personas, debido a que en Europa sucedieron varios eventos como la Revolución Industrial, también comenzaron a haber incendios, entonces se buscaba conocer los riesgos a los que estaban expuestos y poder mitigarlos de la mejor manera.
+    \item [$\checkmark$] 1738 -   Daniel Bernoulli presenta en \textit{Specimen Theoriae Novae de Mensura Sortis}, una hipótesis sobre la toma de decisiones en condiciones de incertidumbre y su aplicación a seguros.
+    \item [$\checkmark$] 1834 -  Barrois con base en la \underline{Teoría Clásica del Riesgo}, construye una teoría muy completa y moderna sobre el seguro de incendio en su texto \textit{Essai sur l'application du calcul des probabilites aux assurances contre l'incendie.} Sin embargo su teoría fue ignorada por muchas generaciones de actuarios hasta la segunda mitad del siglo XX. Para este momento ya se había dado la Revolución Industrial y había fábricas operando, lo que va de la mano con accidentes dentro de ellas.
+    \item [$\checkmark$] 1903 - Filip Lundberg presenta los elementos de su modelo de la \underline{Teoría Colectiva de Riesgo} en la Universidad de Uppsala, en Suecia. En dicha Teoría se emplean procesos estocásticos. De hecho, Lundberg fue el precursor de la \textit{Teoría de Ruina}, la cual busca determinar el máximo tope de riesgo que puedes asumir, ya que si se excede, se puede caer en probabilidad de insolvencia al no poder afrontar las obligaciones de la compañía. Busca encontrar un nivel óptimo para la compañía, de tal forma que se retenga una cantidad de riesgo y que se ceda o se transfiera otra parte, para que el negocio funcione adecuadamente (también busca que no se ceda en exceso el riesgo).
+    \item [$\checkmark$] 1909 -  Lundberg finalmente presenta el planteamiento completo de su \underline{Teoría Colectiva de Riesgo} en el Congreso Internacional de Actuarios, realizado en Viena. Posteriormente un grupo selecto de actuarios en su mayoría escandinavos, le dio seguimiento.
+    \item [$\checkmark$] 1909 -  Georg Bohlmann realiza una recopilación de los resultados más importantes de la Teoría de Riesgo, con el objetivo de determinar las desviaciones producidas por las fluctuaciones aleatorias de las pólizas individuales. Modelo para compensar tarifas diferentes de acuerdo a diferentes comportamientos que implican diversos grados de riesgo. Comienza con Estadística Bayesiana.
+    \item [$\checkmark$] 1930 - Harald Cramér declara que la finalidad de la Teoría del Riesgo es \textit{proporcionar un análisis matemático de las fluctuaciones aleatorias en los seguros y discutir los medios de protección contra sus efectos desfavorables}.
+    \item [$\checkmark$] 1930’s -  En la literatura actuarial se comienza a popularizar la obtención de probabilidades de ruina sobre el Modelo Colectivo de Riesgo, sin embargo también fue un tema cuestionado en cuanto a su aplicabilidad y significado.
+    \item [$\checkmark$] 1957 - Se señala que la \underline{Teoría Moderna de Riesgo} inicia con un artículo de De Finetti presentado en el Congreso Internacional de Actuarios, donde se evalúa la validez de los supuestos del Modelo Colectivo de Riesgo y se establecen las bases para una Teoría de Riesgo que efectivamente logre modelar a la empresa aseguradora. Algunos problemas prácticos que enfrentaban las aseguradoras:
+    \begin{itemize}
+        \item La determinación de tarifas. 
+        \item El cálculo de reservas. 
+        \item La evaluación de la \textit{solidez} financiera del asegurador.
+        \item La caracterización del contrato de reaseguro más adecuado.
+    \end{itemize}
+    \item [$\checkmark$] 1967 -  Lajos Takács publicó su libro \textit{Combinatorial Methods in the Theory of Stochastic Processes}, un escrito que se convertiría en una herramienta asombrosa para exponer el \underline{Problema de Ruina}.
+    \item [$\checkmark$] 1979 - Hans-Ulrich Gerber  define a la \underline{Teoría de Riesgo} como la rama de la Ciencia Actuarial que modela al negocio asegurador utilizando variables aleatorias para el número y monto de los siniestros durante los periodos contractuales.
+    \item [$\checkmark$] 1986 - A raíz del Primer Congreso Internacional sobre Solvencia Aseguradora en 1986, se ha puesto de manifiesto que la brecha entre los enfoques financieros y actuariales del seguro se está cerrando.
+\end{enumerate}
+
+\vspace{1cm}
+
+\textbf{Datos adicionales}
+\begin{itemize}
+
+\item[$\checkmark$] Las desviaciones y fluctuaciones de pólizas individuales incluyen:
+\begin{itemize}
+    \item No poder seguir pagando la póliza.
+    \item La edad de la persona y su condición médica implican nuevas valuaciones.
+    \item Distintos siniestros.
+\end{itemize}
+
+\item[$\checkmark$] Bohlmann se considera el precursor de la Teoría de la Credibilidad.
+
+\item[$\checkmark$] El desarrollo de las teorías de probabilidad, estadística y procesos fue ajeno a los modelos de riesgo, posteriormente dichos modelos incorporaron elementos probabilísticos para generar más robustez.
+
+\item[$\checkmark$] Los supuestos colectivos incluyen grupos grandes, la valuación cambia en dichos grupos más numerosos, porque anteriormente había carteras más reducidas que permitían cuantificar de mejor manera el riesgo. Sin embargo con millones de pólizas no se puede hacer un análisis personalizado para evaluar el riesgo. 
+
+
+\end{itemize}
+
+\vspace{1cm}
+
+\textbf{Ejemplo de las 200 pólizas de asegurados}
+
+ Se tienen sumas aseguradas que van desde $\$1$ millón hasta los $\$1,000$ millones.
+\begin{itemize}
+    \item Se puede hacer un promedio, con el objetivo de  ordenarlas. Es decir ponderarlas:
+    \begin{itemize}
+        \item $80\%$ de pólizas promedio
+        \item $20\%$ de colas extemas
+    \end{itemize}
+    \item Clasificar pólizas por frecuencia o severidad.
+    \item Análisis descriptivo, considerando:
+    \begin{itemize}
+        \item [$\checkmark$] Ramo
+        \item [$\checkmark$] Póliza individual o colectiva
+        \item [$\checkmark$] Factores de riesgo (o de selección) tales como pre-existencias, profesión u oficio del asegurado, entre otros
+        \item [$\checkmark$] Regiones y su condición socioeconómica
+    \end{itemize}
+    \item Estimación de frecuencia y severidad a partir de la segmentación de la cartera, con base en el análisis descriptivo.
+\end{itemize}
+
+\newpage
+
+\section{Jueves 17 de Marzo }
+
+\textbf{Anuncios}
+
+Plática especial Act. Luis Carlos sobre su experiencia titulándose por tésis y de Machine Learning, acompañada de ejemplos prácticos y su reciente experiencia como consultor en Towers Willis en Negocios Internacionales.
+
+\vspace{1cm}
+
+\textbf{Continuación de Modelos de Riesgo}
+
+Estábamos en la parte de cómo hacer la estimación de frecuencia y severidad a partir de una cartera de pólizas de asegurados.
+
+Lo principal es realizar un análisis de frecuencias, en dónde se encuentra la media, entre otras características. 
+
+Todos los modelos de riesgo se basan en hacer estimaciones de frecuencia (número de siniestros) y severidad (monto).
+
+\begin{itemize}
+    \item Para la frecuencia, se construye a partir de una función aleatoria; si hay carteras donde se tenga información histórica o se conozcan los datos, se puede hacer un ajuste con una función de probabilidad.
+    \item Para la severidad ocurre algo similar, si se tiene información detallada se puede ajustar una función de probabilidad.
+\end{itemize}
+
+Pero en la vida cotidiana los datos son muy volátiles, entonces tratar de ajustar una función es casi imposible en este tipo de carteras. Por eso lo que se procede a realizar \underline{sobre todo en la parte de Solvencia II} es generar escenarios y a partir de ahí hacer simulaciones y poder determinar de mejor manera cuál sería el valor esperado de toda la información, además de ver cuál es el peor de los casos y contemplar una media. La importancia es que las compañías dependen de la estimación de siniestralidad para poder determinar tarifas, calcular reservas, hacer balances económicos, realizar inversiones. Si se hace una mala estimación de valores esperados en la cartera, el modelo estará equivocado porque puede haber errores en tarifa, o se tengan que realizar más ajustes que impliquen más gastos.
+
+Para hacer estimaciones se necesita saber si hay congruencia en los datos, adecuaciones a las bases de datos, una segmentación adecuada de información y sensibilizar esa parte.
+
+\newpage
+\large
+\textbf{Modelo Individual de Riesgo}
+
+\vspace{0.3cm}
+
+\normalsize
+La \textbf{Teoría del Riesgo} considera el riesgo total (enfrentarse a siniestralidad y que esos siniestros deriven en gastos que se deban afrontar) de una compañía como el resultado que acontece a todas las pólizas individuales que componen una cartera.
+
+En particular el \textbf{Modelo Individual de Riesgo} la variable aleatoria $S$ representa el costo total de la cartera, es decir, la siniestralidad total en un periodo determinado de tiempo.
+
+La suma total de las variables aleatorias corresponde a la siniestralidad de cada una de las pólizas. En este caso las variables aleatorias corresponden al número de la póliza $X1, X2,..., Xn$
+
+Su representación matemática es la siguiente: La suma de las variables aleatorias de siniestralidad
+\begin{equation*}
+    S = X_{1}+X_{2}+X_{3}+...+X_{n}
+\end{equation*}
+
+\textbf{Hipótesis del Modelo Individual}
+
+\begin{itemize}
+    \item [$\checkmark$] $X_{i}$ reprsenta la variable aleatoria de la cuantía de un siniestro de la $i-esima$ póliza o riesgo
+    \item [$\checkmark$] $n$ es el número de riesgos o pólizas individuales
+    \item [$\checkmark$] El modelo se aplica a una cartera cerrada, es decir finita, en otras palabras se sabe cuántas pólizas o riesgos tiene mi cartera
+    \item [$\checkmark$] Es a corto plazo (1 año) 
+    \item [$\checkmark$] Las distintas cuantías de los siniestros, denotadas por las variables aleatorias $X_{i}'s$ son independientes entre sí, por tanto el siniestro de una póliza no depende del de otra, por lo que:
+    \begin{equation*}
+        \mathds{E}[S] = \displaystyle \sum_{i=1}^{n} \mathds{E}[X_{i}] \hspace{1cm} \text{Media de los escenarios}
+    \end{equation*}
+    \begin{equation*}
+        Var[S] = \displaystyle \sum_{i}^{n} Var[X_{i}]
+    \end{equation*}
+    
+    Nos interesa conocer estos valores porque todos los cálculos que se hacen dependen del valor esperado, se busca que haya una gran similitud al valor real
+    
+    \item [$\checkmark$] La cuantía total de cada póliza o riesgo debe ser la suma del importe de cada uno de los siniestros que presente (1 año). Es decir, puede pasar que cada póliza en el mismo periodo, tenga más de un siniestro, en este caso se toma el agregado (todos los siniestros).
+\end{itemize}
+
+$\longrightarrow$ Como son carteras cerradas  no se estima en este tipo de modelos el número de pólizas o de siniestros al cuál se esperan exponer, se basa todo en la severidad, es decir el monto.
+
+\newpage
+
+\textbf{Comparativo}
+
+\begin{itemize}
+    \item Solvencia I aplicó desde 1990 cuando surgió la Comisión Nacional de Seguros y Fianzas hasta el 2014, se calculaba el Capital Mínimo de Garantía basado en porcentajes.  No contemplaba otros riesgos y eventualidades; generaba reservas que se estimaban suficientes con métodos determinísticos, en lugar de generar escenarios y simular solo se calculaba  un solo escenario y a partir del resultado se constituía la reserva. Empezó a haber problemas de solvencia, cambios en el mercado y resultados catastróficos que orillaron a las compañías a adaptarse a Solvencia II (Modelo Europeo).
+    \item Co la llegada de Solvencia II a México, llegó un esquema regulatorio que era muy parecido al esquema francés por cuestiones históricas del país, en lugar del Capital Mínimo de Garantía, se implementó un Requerimiento de Capital de Solvencia. La compañía debe tener dinero suficiente para  afrontar los riesgos que no sean de siniestralidad (de mercado, financieros, técnicos cuando hay desviaciones de siniestralidad, operativos, de contraparte). Es un modelo complejo con muchos análisis por detrás. 
+    
+    También se les pide un margen de riesgo, que es un porcentaje que se asume y otro que se cede.
+    
+    El BEL (Best Estimate of Liabilities) o Mejor Estimador es la reserva por el puro riesgo.
+\end{itemize}
+
+\newpage
+
+\section{Sábado 19 de Marzo }
+
+\newpage
+
+\section{Miércoles 23 de Marzo }
+
+\textcolor{blue}{Ejercicio TIR}
+
+Considere una cartera de 21 pólizas individuales de seguros de vida a corto plazo (es decir, 1 año) como se indica en la siguiente tabla:
+
+\begin{table}[h]
+    \begin{tabular}{|c|c|c|c|c|}
+         \hline
+         \backslashbox{Tasa de Mortalidad}{Suma Asegurada} & \$2 & \$3 & \$4 & \$5 \\
+         \hline
+         \hline
+         0.04 & 1 & 1 & 2 & 1\\
+         \hline
+         0.05 & 0 & 2 & 3 & 3 \\
+         \hline
+         0.06 & 1 & 1 & 2 & 4 \\
+         \hline
+    \end{tabular}
+\end{table}
+
+Los números debajo de la suma asegurada indican cómo se distribuyen las pólizas.
+
+Usando el Modelo Individual, calcular la esperanza $\mathds{E}[S]$ y la varianza $\mathds{V}ar[S]$ de la siniestralidad total.
+
+
+\vspace{0.05cm}
+
+\textcolor{blue}{Solución}
+
+En general en este tipo de modelos se utiliza una distribución binomial porque ocurre (con una probabilidad) o no ocurre (con cierta probabilidad). Justo eso necesitamos para calcular dicha esperanza y varianza.
+
+De acuerdo a lo que vimos la Sesión pasada, las pólizas son independientes porque el siniestro de una no depende del de otra. Por tanto: 
+\begin{align*}
+\mathds{E}[S] &= \displaystyle \sum_{j=1}^{n} q_{j}\mathds{E}[c_{j}] \hspace{1cm} \text{Donde el monto de suma asegurada está dado por } c_{j}
+\end{align*}
+
+En un problema cómo este el monto es conocido, y la esperanza se puede calcular de manera constante. Pero en caso de que las sumas aseguradas fueran variables, o que estuvieran clasificadas por rangos, habría que hacer simulaciones o ver si se distribuyen de alguna manera esos montos para hacer el cálculo.
+
+\vspace{0.2cm}
+
+Por eso el Monto de Suma Asegurada o Siniestralidad \textbf{puede ser fijo (constante) o variable (que se distribuya como una variable aleatoria).}
+
+
+La siniestralidad de una cartera depende de las probabilidades de ocurrencia y de distintos grados de severidad, por eso hay que construir una distribución en algunos casos. Esa es la parte complicada del \textbf{Modelo Individual del Riesgo}, hacer esa simulación.
+
+Retomando las propiedades vistas en Sesión, tenemos que 
+\begin{align*}
+    \mathds{V}ar[S] &= \displaystyle \sum_{j=1}^{n} \left[q_{j} \mathds{V}ar[c_{j}] + q_{j} p_{j} \mathds{E}^{2}[c_{j}]\right] \hspace{1cm} \text{Donde el complemento de las tasas es } p_{j} \text{ pues es binomial}
+\end{align*}
+
+Los resultados se encuentran en el Excel Modelo individual vs Modelo colectivo.
+
+Se tiene que calcular con todas las pólizas de la cartera porque precisamente es Modelo Individual.
+
+Posteriormente, la varianza la calculamos porque muchas veces tenemos carteras en dónde hay mucha volatilidad, es decir con respecto al monto promedio de la cartera, puede ser que exista una desviación muy fuerte. Puede que el modelo no sea tan óptimo y tenga que generar escenarios para la disminuir la volatilidad.
+
+Al final como cada una de las pólizas es independiente entre sí, puedo tomar la suma de las pólizas agregadas en total.
+
+\begin{figure}[h]
+\includegraphics[width=13cm]{result.jpg}
+\centering
+\end{figure}
+
+En promedio esperariamos pagar 4.3500 tomando la cartera de 21 pólizas, las probabilidades de muerte y dichas sumas aseguradas a un año.
+
+La desviación es algo elevada por arriba o por debajo de la media de 4.190. En realidad, lo que nos indica es que se puede ajustar otro modelo o hacer simulaciones para disminuir esa desviación respecto al valor promedio.
+
+	
+\begin{flushright}
+\textbf{\#}
+\end{flushright}
+	
+
+Si el monto fuera variable, y tuviera que modelarlo, se puede hacer un modelo muy complejo, si se quiere hacer el proceso póliza por póliza porque normalmente son carteras extensas. 
+
+A partir de este dato que yo obtuve, es un escenario; es el BEL, mientras más estable sea el escenario, quiere decir que es un valor ya estándar al cual se le puede dar cierto grado de confiabilidad. Luego voy a evaluar mi desviación, el punto es que mientras haya más simulaciones, más bajo sea el valor de la volatilidad. 
+
+Solvencia II tiene un Requerimiento de Capital de Solvencia para las compañías, por ello se busca que exista un balance dentro de los valores y haya estabilidad en los valores, sobretodo en la desviación.
+
+En pocas palabras:
+\begin{itemize}
+    \item El BEL lo constituye la esperanza.
+    \item El RCS lo constituye la desviación estándar.
+\end{itemize}
+
+\textit{Dato Interesante:}
+
+Normativamente hablando las compañías estuvieron sobradas tres veces por encima del capital requerido por ley. Gracias a eso, las compañías pudieron hacerle frente a la pandemia.
+
+\vspace{0.5cm}
+
+En su momento el Modelo Individual funcionó muy bien porque antes las carteras de asegurados no eran muy grandes, y era víable hacer estas estimaciones; conforme pasó el tiempo esto dejó de ser tan víable y con el crecimiento de las carteras el proceso se volvió más complicado (aunque si se puede encontrar aplicaciones).
+
+Con Solvencia II se tendría que construir una \textbf{ Convolución}, para sumar las variables aleatorias. Primero ajustar una distribución a los datos, y posteriormente ver cómo se modelan en conjunto.
+
+Hay que generar escenarios, pero hacer esto para pólizas de una cartera muy grande es muy complejo. Porque hay que considerar que son distintos escenarios por póliza, y por cada póliza, además hay que considerar factores como edad, sexo, ocupación y otros que afectan al riesgo, por tanto la simulación se vuelve muy complicada.
+
+Hacer Convoluciones a nivel macro se vuelve invíable.
+\newpage
+
+\section{ 24 y 28 de Marzo }
+
+\textbf{Complemento de la Teoría Individual del Riesgo}
+
+Una vez que calculamos esperanza, varianza y elegimos el mejor modelo se tiene que evaluar la probabilidad de ruina, es decir qué tan probable es que se tenga ruina dado un valor promedio de siniestralidad, comportamiento en flujo, ingresos, entre otras cosas. Se busca que dicha probabilidad sea mínima.
+
+Lo que suele hacerse es una aproximación a partir del Teorema del Límite Central, suponiendo que cómo la información es de gran volumen se distribuye de manera normal, a partir de ahí se puede hacer una aproximación de probabilidad de ruina con la Normal Estándar (estableciendo algunos supuestos).
+
+\vspace{0.3cm}
+
+\textcolor{blue}{Ejercicio}
+
+\textcolor{blue}{Una aseguradora para afrontar las reclamaciones S cobrará en un principio $\E[S]$, pero adicionalmente cobrará un recargo o porcentaje extra denominado $\Theta$ (este porcentaje se cobra previniendo una desviación en siniestralidad, se hace el ajuste en esa prima de riesgo según distintos factores cómo la exposición al riesgo, el sexo, entre otros), entonces se va a buscar un recargo recargo $\Theta$ tal que la probabilidad del valor agregado de la siniestralidad sea menor a 1 menos el recargo extra del valor esperado de la siniestralidad, es decir:}
+\begin{align*}
+    \textcolor{blue}{\mathds{P}\left[S \leq (1+ \Theta) \E[S] \right] \leq 1-\alpha \hspace{1cm} \text{Donde } 0\leq \alpha \leq 1}
+\end{align*}
+\textcolor{blue}{El $\alpha$ es un porcentaje  de riesgo que asume la compañía.}
+\textcolor{blue}{Por lo general puede oscilar en valores pequeños hasta $5\%$. Es decir un nivel de confianza al $95\%$, se pide para que la compañía no caiga en ruina.}
+
+\vspace{0.3cm}
+
+\fbox{Solución.}
+
+\textbf{Considerando las propiedades del Modelo Individual donde los distintos riesgos son independientes y por tanto se puede considerar la propiedad de que el valor esperado de la siniestralidad es la suma de los valores esperados de cada uno de los riesgos, entonces:}
+La distribución de la variable $S$ se puede determinar a través del Teorema del Límite Central para una $n$ suficientemente grande. (Algunos dicen que aplica para $n > 30$, aunque no siempre se sigue esa tendencia). De tal manera que se cumple lo siguiente:
+\begin{align*}
+    \mathds{P}\left[S\leq (1+\Theta) \E[S]\right] &= 
+    \mathds{P}\left[S - \E[S] \leq \Theta \E[S]\right] \hspace{1cm} \text{Por el TLC} \\ 
+    &=  \mathds{P}\left[\frac{S - \E[S]}{\sqrt{Var(S)}} \leq \frac{\Theta \E[S]}{\sqrt{Var(S)}}\right] 
+\end{align*}
+De donde:
+\begin{align*}
+    \mathds{P}\left[\frac{S - \E[S]}{\sqrt{Var(S)}} \leq \frac{\Theta \E[S]}{\sqrt{Var(S)}}\right] &= 1-\alpha \hspace{1cm} \text{Con un } \alpha = 5\% \\ 
+    \frac{S - \E[S]}{\sqrt{Var(S)}} &\sim N(0,1)
+\end{align*} 
+donde $\E[S]$ son los ingresos y $S$ los egresos 
+
+Si consideramos $\alpha = 5\%$ debemos buscar el cuantil de $1-\alpha = 95\%$ debemos usar la Tabla de la Normal(0,1) para encontrar el valor que buscamos. Así tenemos que:
+\begin{align*}
+    \upphi(1.645) &= 0.95
+\end{align*}
+De esta manera, tenemos:
+\begin{align*}
+    \frac{S - \E[S]}{\sqrt{Var(S)}} &= 1.645
+\end{align*}
+
+Este valor va a ir cambiando según el cuantil buscado en la tabla de la normal. Si obtenemos los momentos en Teoría Individual podemos conocer el recargo para dicha probabilidad.
+
+Si no hay un dato exacto en la tabla de la normal, se hace un promedio entre los dos valores para obtener una mejor aproximación.
+
+Si se calculan los momentos, podemos hallar el recargo tal que se tenga la mínima probabilidad de riesgo. Según el apetito de riesgo de la compañía se puede estimar el mejor recargo, pero hay que tener cuidado de que dicho recargo no sea tan alto, para que la prima todavía sea competitiva y se encuentre en una cartera financieramente sana.
+
+
+\vspace{0.5cm}
+
+\Large
+
+\textbf{Datos adicionales:}
+
+\normalsize
+
+\textbf{Hay diferencia entre ruina y quiebra. La ruina quiere decir que una línea de negocio no sea financieramente víable y que genere pérdidas. Quiebra quiere decir que la compañía  no tiene recursos suficientes y no tiene solvencia para enfrentar sus obligaciones. Lo que queremos es que la compañía no caiga en ruina en alguna de sus líneas de negocio.}
+
+El Modelo Individual nos va a servir para calcular la esperanza de la siniestralidad y posteriormente hacer la evaluación de la probabilidad de ruina.
+
+A veces se compensan las líneas de negocio, por ejemplo en productos de daños, hay ramos en donde hay riesgos más elevados que en otros. Por eso la siniestralidad se puede \textit{compensar}.
+
+En los problemas encontramos el valor esperado, pero cuando calculamos el percentil, encontramos el valor para el cual hay una probabilidad baja de ruina.
+
+\newpage
+
+\Large
+\textbf{Límite Máximo de Retención}
+
+\normalsize
+
+\textcolor{blue}{Ejercicio aplicado de TIR para calcular el Límite Máximo de Retención}
+
+Consideremos un seguro temporal  a 1 año, el portafolio se comporta como sigue:
+
+\begin{table}[h]
+    \begin{tabular}{|c|c|}
+         \hline
+         Suma Asegurada & Contratos (Pólizas)\\
+         \hline
+         \hline 
+         10000 & 8000 \\
+         20000 & 3500 \\
+         30000 & 2500 \\ 
+         50000 & 1500 \\ 
+         100000 & 500 \\
+         \hline
+               & 16000 \\
+         \hline
+    \end{tabular}
+\end{table}
+Todos los contratos tienen la misma probabilidad de reclamación  $q= 0.02$. La compañía tiene un límite de retención por cada contrato de $\$20000$. Es decir todo lo que sea menor o igual a esa cantidad la compañía se lo va a quedar y lo que exceda lo va a transferir a otra compañía. De acuerdo a los datos, hay 4500 contratos que exceden ese límite. La compañía solo asume los $\$20000$ y el resto de suma asegurada lo cede. El costo por reaseguro es de 0.025 por unidad de cobertura (por cada contrato que se cubre, ese es el reaseguro). La compañía desea minimizar la probabilidad de que las reclamaciones retenidas más el costo de reaseguro excedan los $8250000$. ¿Cuál sería el límite óptimo de retención?
+
+\vspace{0.3cm}
+
+\fbox{\textcolor{blue}{Solución.}}
+
+Para simplificar los datos, vamos a definir $b_{k}$ como la suma asegurada de $10000\cdot k$ y $n_{k}$ el número de contratos o pólizas con beneficio $b_{k}$.
+
+Entonces, considerando solo las sumas aseguradas que la compañía va a retener, tenemos que las sumas aseguradas para la aseguradora quedan de la siguiente manera:
+
+\begin{table}[h]
+    \begin{tabular}{|c|c|}
+         \hline
+         $b_{k}$ & $n_{k}$\\
+         \hline
+         \hline 
+         1 & 8000 \\
+         2 & 8000 \\
+         \hline
+    \end{tabular}
+\end{table}
+
+Esto debido a que son 16000 pólizas en total, 8000 se cubren en la primera parte, pero el resto solo cumplen el tope hasta 20000. Es decir, la información se agrupa de la siguiente manera para conocer las obligaciones de la compañía utilizando el Límite Máximo de Retención de 20000.
+
+De aquí que empleando las fórmulas del Modelo Individual del Riesgo, se tiene que:
+\begin{align*}
+    \E[S] &= 8000 (1) (0.02)  + 8000 (2) (0.02)\\ 
+    &= 480\\
+    \mathds{V}ar[S] &= 8000(1)^{2}(0.02)(1-0.02) + 8000(2)^{2}(0.02)(1-0.02) \\
+    &= 784
+\end{align*}
+Las sumas aseguradas del portafolio son
+\begin{align*}
+    8000(1) + 3500(2) + 2500(3) + 1500(5) + 500(10) &= 35000
+\end{align*}
+
+Y de aquí el monto retenido está dado por
+\begin{align*}
+    8000(1) + 8000(2) &= 24000
+\end{align*}
+Así la aseguradora asume 24000, de 35000 posibles.
+
+Por lo tanto el monto cedido sería 35000-24000 = 11000. Y finalmente, como tenemos el dato del costo de reaseguro, tenemos que el costo por reaseguro es 11000(0.025) = 275.
+
+Para determinar la probabilidad de ruina de este portafolio, suponiendo que sigue el comportamiento de una función de distribución $Normal (0,1)$ y aplicando el Teorema del Límite Central, tenemos que:
+\begin{align*}
+    \mathds{P}[S+275 > 825] &= \mathds{P}[S > 550] \\
+    &=  \mathds{P}\left[\frac{S-\E[S]}{\sqrt{Var(S)}} > \frac{550 -480}{\sqrt{784}}\right] \\ 
+    &\approx 0.0062 \\
+    &\approx 0.62\%
+\end{align*}
+Recordemos que el nivel de siniestralidad era 8250000, pero trabajajamos con unidades de millar
+
+Esta es la probabilidad de ruina si nos quedamos con un Límite Máximo de Retención de 20000, pero para obtener el valor óptimo hay que modificar dicho límite, y ver si la probabilidad disminuye o aumenta. Si disminuye, todavía no hay óptimo, si aumenta eso quiere decir que está en un valor ya conocido. Es un proceso iterativo.
+
+\vspace{0.3cm}
+
+Después de ir probando con distintos límites qué pasa con la probabilidad de ruina, se puede generalizar de la siguiente manera:
+
+\newpage
+
+\begin{table}[h]
+    \begin{tabular}{|c|c|}
+         \hline
+         $b_{k}$ & $n_{k}$\\
+         \hline
+         \hline 
+         1 & 8000 \\
+         2 & 3500 \\
+         3 & 2500 \\
+         a & 2000 \\
+         \hline
+    \end{tabular}
+\end{table}
+Los resultados serían:
+\begin{itemize}
+    \item $\E[S] = 450 + 40a$
+    \item $\mathds{V}ar(S) = 872.2 + 39.2a^{2}$
+    \item La suma asegurada retenida sería 22500 + 2000a
+    \item El costo de reaseguro sería 312.5 -50a
+\end{itemize}
+
+\vspace{0.5cm}
+
+\Large 
+\textbf{Introducción a Teoría Colectiva del Riesgo}
+
+\normalsize
+
+No podemos tratar una cartera heterogénea con Modelo Colectivo porque al sacar el promedio general de la cartera, habría mucha desviación y volatilidad en el monto. No es una cartera necesariamente cerrada, es finita, pero se le pueden agregar riesgos.
+
+En Teoría Individual hay análisis póliza por póliza entonces hay menos riesgos de que pase la desviación. Porque el valor agregado de la siniestralidad contempla las características de cada cartera.
+
+En los \textbf{Contratos Automáticos de Reaseguro} se reasegura una cartera completa de riesgos homogéneos. Se puede evaluar con TCR porque son homogéneos. En los \textbf{Contratos Facultativos} se evalúan las probabilidades individuales y conviene usar TIR.
+
+\vspace{0.5cm}
+\Large
+\textbf{¿Cómo elegir el mejor modelo?}
+
+\normalsize
+
+Va a depender de qué información tenga y cómo pueda tratarla. Al final, ambos estiman la siniestralidad, que es la variable crucial en una compañía de seguros.
+
+
+\newpage
+
+\section{Lunes 18 de Abril}
+
+\large
+
+\textbf{Revista actualidad en seguros y fianzas} 
+
+\normalsize
+
+Es una página importante que tiene información relevante para el sector actuarial. Está enfocado en seguros, pero también se incluyen noticias del sector financiero, económico, estadístico y en general temas que se mantienen en constante actualización.
+
+Se incluye:
+
+\begin{itemize}
+    \item El panorama analítico del sector por trimestre, incluyendo primas.
+    
+    \item El Sistema de Información Oportuna es un desglose de información financiera. Se puede encontrar el Balance General y el Estado de Resultados.
+    
+    Lo importante es que si se quiere analizar una compañía en particular, se puede ver el comportamiento particular de su cartera de asegurados en cuanto a primas, en cuanto a su siniestralidad.
+    
+    También los costos son importantes, para la gestión de la cartera de asegurados. Hay aseguradoras que tienen costos muy altos, tanto que tienen una pérdida técnica, lo que hace que tengan cierta ganancia es el rendimiento financiero de las inversiones que hacen.
+    
+    Incluso se puede ver la utilidad, que a decir verdad, se debe en gran medida a las inversiones.
+    
+    \item  El Desempeño Oportuno del Sector es un reporte que hacen en el área de desarrollo de la CNSF.
+    
+    \item  La Coyuntura Económica y de Seguros incluye un análisis a nivel sectorial.
+    
+    \item Datos abiertos son bases de datos que se pueden consultar.
+    
+    \item Información estadística del sector.
+    
+    \item Lista de instituciones autorizadas.
+\end{itemize}
+
+
+\large
+
+\textbf{Reservas}
+
+\normalsize
+
+En cuanto al tema de reservas, es una parte importante en el Balance General, principalmente en pasivo. En el mercado, se indica que la parte de reservas técnicas abarca aproximádamente el $80\%$ de los pasivos. Los activos deben estar respaldos por pasivos y capital. La mayoría del activo que son inversiones, corresponden a reservas técnicas. Se invierten las reservas, pero a su vez es un dinero que está comprometido en las reservas técnicas de los seguros.
+
+Se debe tener una estrategia bien elaborada para tratar las reservas.
+
+\textbf{El título 5 de la CNSF incluye la parte de reservas técnicas.}
+
+Para calcular un buen estimador, se tiene que considerar el plazo del producto.
+
+\vspace{0.5cm}
+
+\textbf{Información importante para reservas}
+
+\begin{itemize}
+    \item Prima emitida, para ver cuál es el ingreso total que tuvo la compañía
+    \item Prima de tarifa devengada, porque para la Reserva de Riesgos en Curso hay una diferencia en la valuación. Hay un cambio de devengaciones en el tiempo.
+    \item El número de siniestros.
+    \item Cuántas primas retiene y cuantas cede, para obtener después el factor de retención en distintos años.
+\end{itemize}
+
+\textbf{Triángulos de las reservas técnicas}
+
+La información que se le entrega a la CNSF es por medio de triángulos. 
+
+Se le llama año o periodo de desarrollo los números que se incluyen.
+
+Se espera que el comportamiento de la siniestralidad vaya disminuyendo, porque se espera que se reporte la mayor cantidad de siniestros en el año de origen. Además en los seguros de corto plazo como se van renovando, va cambiando el año de origen.
+
+El \textbf{método estatutario} para \textbf{RRC} no requiere tener información acumulada, pues trabaja mediante se va presentando la siniestralidad.
+
+Para \textbf{SONOR} no hay siniestros en el año 0, registrados posterior a cuando fueron reportados. De igual manera en el \textbf{método estatutario} la información no se acumula.
+
+\vspace{0.5cm}
+
+\textbf{Método Estatutario}
+\begin{itemize}
+    \item Triángulo de factores: Cuánto representa la siniestralidad respecto a la prima emitida, por cada periodo de desarrollo. Si representan un porcentaje elevado, hay que adoptar estrategias.
+    \item Parte gris del triángulo de factores: Para estimar los otros años de desarrollo, se puede realizar un aleatorio y que en la parte restante, nos devuelva uno de los factores ya conocidos. 
+    
+    En ambos factores, se debe de tener en claro que el factor de SONOR es menor a RRC. Es decir se espera una siniestralidad menor.
+    \item Aplicando los factores a la prima emitida, se puede generar una siniestralidad esperada en el triángulo inicial.
+    \item La variable $r_{i}$ representa el total de siniestralidad por año de origen. Y es la suma de la siniestralidad por año.
+    \item La variable $FS_{i}$ representa el factor de siniestralidad, que es la valuación de siniestros entre la prima emitida, según el año de origen. 
+    \item Los flujos de siniestralidad última esperada, son tomados de la diagonal, que es la siniestralidad presentada en el ultimo periodo conocido de información.
+    \item La tasa libre de riesgo depende de cómo se proporcione.
+    \item La variable $F_{RRC}(t)$ es un factor de devengamiento de los flujos totales.
+    \item La variable $F_{RRC}(t)*V^{t-1}$ son los flujos anteriores, traídos a valor presente con la tasa libre de riesgo.
+    \item La  $DU_{RRC}$ es la duración es importante para calcular el componente de margen de riesgo que implican las reservas. Cuánto espero que persistan mis obligaciones en el tiempo.
+\end{itemize}
+
+Este mismo proceso se sigue para SONOR, esta parte es determinística, porque si se hace una vez, estos son los factores a considerar para calcular el mejor estimador.
+
+Pero con Solvencia II, la idea es que sea estocástico y generar escenarios a través de simulaciones y tener distintos factores y posteriormente hacer un promedio.
+
+\vspace{0.5cm}
+
+\textbf{Simulaciones}
+
+Lo que se hace es generar las simulaciones de la variable $FS_{i}$ que es el factor de siniestralidad última. 
+
+Se hace mediante: El promedio de estas simulaciones o bien el percentil al $99.5\%$
+
+$\alpha$ son costos de la compañía.
+
+Con el dato de la \textit{Prima de Tarifa no Devengada} y el \textit{Factor  de Siniestralidad Última} se obtiene el \textbf{BEL de Riesgo} que es el estimador, únicamente para riesgos.
+
+Con el \textbf{Método Estatutario} se asegura tener cálculo homogéneo y que no se vean sesgados los resultados. Con más información se pueden hacer más ajustes a este método.
+
+\vspace{0.5cm}
+
+\textbf{Margen de Riesgo}
+
+Es un colchón a las reservas, que tiene que ver con tasas del mercado. Representa ese porcentaje de ganancia o beneficio que tendría al obtener una cartera de asegurados.
+
+\newpage
+\textbf{BEL}
+
+Con ese estimador podemos hacer un cálculo más preciso y tener la reserva suficiente con siniestralidades que aún no tenemos, pero podemos estimar.
+
+\vspace{0.5cm}
+
+\textbf{Chain Ladder}
+
+Se tiene un triángulo de desarrollo, donde se acumulan las siniestralidades en cada periodo de desarrollo.
+
+\newpage
+
+\section{Martes 19 de Abril}
+
+Con los factores de crecimiento y decremento conforme pasa el tiempo y se busca hacer una estimación lo más precisa posible de qué siniestralidad habrá los siguientes años respecto al año de origen de las pólizas o los riesgos y posteriormente obtener el cálculo final de cuánto hay que reservar para hacer frente a sus obligaciones.
+
+\large
+
+\textbf{Método de Bornhuetter Ferguson }
+
+\normalsize
+\begin{itemize}
+    \item Hay que acumular la siniestralidad. 
+    
+    Es una diferencia respecto al \textbf{Método Estatutario}, en el cual se compara el porcentaje que representan los siniestros por año de desarrollo respecto a la prima emitida total de cada año de origen. Si ahí acumulamos no nos dará el dato requerido.
+    
+    \item Posteriormente se obtienen factores de crecimiento. Como son acumulados, siempre habrá incrementos. Así se hace con todos los años.
+    
+    \item Se obtiene un promedio de los factores de crecimiento.
+    
+    Se pueden obtener varios factores, por ejemplo proporciones, por año de desarrollo. Pero lo más común es usar el promedio.
+    
+    \item Se obtiene una proporción acumulada, se parte de 1 y se va multiplicando por la proporción por la que se incrementan los siniestros por año de deasarrollo. Ya sea por promedio o por proporción. 
+    
+    \item Como la siniestralidad se acumula, entonces la diagonal representa la última siniestralidad de cada uno de los años de origen. Por eso se toman esos valores, representan el último pago de pérdidas de los siniestros. 
+    
+    Para completar el triángulo, se realiza con los factores de crecimiento. 
+    
+    Con los factores acumulados que significan la proporción de aumento por año de origen de los siniestros, se multiplica la última siniestralidad conocida para estimar de los siniestros que faltarían por cubrir o los últimos siniestros por año de origen.
+    
+    \item Al sacar la diferencia, estaría sacando lo que tendría que reservar para cubrir esos periodos faltantes de desarrollo.
+    
+    \item Posteriormente, se requiere hacer un procedimiento con un ratio. En nuestro caso el ratio de pérdida ya está dado. Por lo general las compañías se hacen estimaciones o mediciones, por ejemplo respecto con la prima emitida, que siniestralidad espero que exista (proporción).
+    
+
+    \item Partimos de la última siniestralidad. Además se tiene un apartado de siniestros pagados a la fecha que es la diagonal del triángulo, a partir de esos datos, se saca un factor que se llama factor de última siniestralidad. Ese factor último es el acumulado que tenemos arriba (que es lógico pues es a partir de donde estimamos la siniestralidad).
+    
+    \item Aquí entra la diferencia con otros métodos. \textbf{Aquí en este método se usa la prima emitida.}
+    
+    En general lo correcto sería aplicarlo sobre la parte retenida, porque la cedida se manda a reaseguro.
+    
+    A partir de esa prima emitida, y con el loss ratio, se va multiplicando por ese factor.
+    
+    Al final con esos datos, se puede calcular la reserva. Es la parte que me faltaría pagar de la siniestralidad. Al final se suma y ese es el dato a considerar.
+    
+    Se puede comparar los métodos, más que la forma de aplicarlos, es el impacto que puede causar cada escenario. 
+    
+    Puede ser que el ratio genere desviaciones en caso de que no se calcule de la manera correcta.
+
+\end{itemize}
+
+\large 
+
+\textbf{Método de la Razón}
+
+\normalsize
+
+\begin{itemize}
+	\item Se parte de un triángulo acumulado de siniestros.
+	
+	\item Se sacan factores entre un año y otro.
+	
+	\item Se saca un promedio de dichos factores
+	
+	En este método se requiere un factor de siniestros que aún quedan por pagar. En este caso ya está definido.
+	
+	\item A partir de esos factores acumulados y de los valores de la diagonal se puede hacer una estimación de la siniestralidad por año de origen.
+	
+	\item La estimación de esos valores, respecto de los valores conocidos es el IBNR.
+\end{itemize}
+
+\vspace{0.5cm}
+
+En el \textbf{Método de Bootstrap por factores} se juega con el acomodo de los factores para que al hacer la estimación de los facrtores acumulados, se vaya cambiando para generar distintos escenarios y al final la estimación de la siniestralidad esperada final se mueva, lo que implica que la reserva también se vaya modificando. En el mismo método pero por \textbf{montos} se saca diferenciales para hacer el remuestreo.
+
+\newpage
+
+\section{Jueves 21 de Abril}
+
+\large
+
+\textbf{Método de Bootstrap}
+
+\normalsize
+
+\textbf{Para las conclusiones:}
+
+Los valores de la diagonal son los valores que tienen un efecto en el cálculo de la reserva. Esto sucede debido a que independientemente del método, buscamos la última siniestralidad conocida para poder proyectar o estimar los posibles siniestros que se puedan presentar a futuro.
+
+\vspace{0.5cm}
+
+El objetivo de este método es hacer un remuestreo de los datos, este remuestreo se usa para aproximar el sesgo o la varianza de un elemento estadístico que queramos.
+
+El elemento aleatorio y estocástico ayuda a que las reservas no sean tan conservadoras.
+
+\newpage
+
+
+\section{Miércoles 27 de Abril}
+
+Vamos a utilizar información estadística del mercado del sector asegurador, obtenida de las SESAS de información que tiene la CNSF.
+
+Las SESAS son información estadística que tienen que reportar las compañías aseguradoras a la CNSF de manera anual. En esa información se reportan las pólizas vigentes, la prima emitida por esas pólizas, los siniestros, las cancelaciones, bajas, y en general viene la información necesaria de cada póliza. Son bases de datos grandes.
+
+Al final lo que se genera con esa información son extracciones, con efectos de esta práctica, por tanto no hay que hacer cruces entre bases.
+
+La idea es descargar información más actual para trabajar con ella. 
+\begin{itemize}
+    \item Se coloca en el buscador SESAS de la CNSF. 
+    \item Se elige el primer link.
+    \item Omitir el 2021, porque cambiaron varias cosas.
+    \item Se busca la parte de seguros, en el ramo de autos.
+    \item El manual para póliza individual es importante, para ver cómo se integra la base de información.
+\end{itemize}
+
+Si se elige el segundo link:
+\begin{itemize}
+    \item En el segundo link viene la información estadística del mercado.
+    \item Elegimos el sector asegurador.
+    \item La información estadística detallada es la que necesitamos, porque el objetivo de la práctica es que saquemos la prima de credibilidad por modelo, segmento y cobertura.
+    \item Responsabilidad civil (incluye daños a terceros), daños materiales (coalición o choques), robo total o parcial son las tres principales coberturas en autos. También hay defensa jurídica.
+    \item A veces existe la responsabilidad civil ambiental, por ejemplo cuando hay choques con árboles o cuando existen afectaciones a nivel ambiental. 
+    \item Los servicios adicionales comúnmente se conocen como servicios conexos.
+    \item En los seguros de flotilla a veces se encuentra el mismo modelo de auto asegurado, pero una flotilla interesante sería grupo Cruz Azul, desde los autos que usa la cementera hasta los que usan los jugadores.
+    \item Nos vamos a autos individual bases
+\end{itemize}
+
+\newpage
+
+\section{Jueves 28 de Abril}
+
+\large
+\textbf{Introducción}
+
+\normalsize
+
+Credibilidad no solamente se aplica a los seguros, también puede ser un tema dentro de las finanzas y la estadística.
+
+Dentro de la Teoría de la Credibilidad, partimos que la información tiene una distribución libre, y a partir del Teorema de Bayes de la Estadística Bayesiana, podemos hacer modelos, de tal manera que si no tenemos experiencia individual, podemos tomar experiencia del mercado. El punto es hallar un factor de credibilidad que sea útil.
+
+Se busca hacer el cálculo óptimo de una prima.
+
+Los seguros se rigen bajo un principio de solidaridad, unos pagan para que se beneficien otros. 
+
+\vspace{0.5cm}
+
+\large 
+\textbf{Modelos de Credibilidad}
+
+\normalsize
+
+\vspace{0.1cm}
+
+\textbf{Desarrollo en el tiempo}
+\begin{enumerate}
+    \item Modelo Inicial de Whitney (1918)
+    \item Modelos Clásicos de Teoría de la Credibilidad
+    \begin{itemize}
+        \item Credibilidad Parcial
+        \item Credibilidad Total 
+    \end{itemize}
+    \item Modelos Bayesianos (1945) Bailey y Mayerson
+    
+    Mezcla entre modelos clásicos y aplicando condicionales con Teorema de Bayes.
+    \item Modelo de Bh\"ulmann de Distribución Libre (1967)
+    \item Modelo de Bh\"ulmann - Straub (1972)
+    
+    Es una aplicación con más elementos que el de Bh\"ulmann.
+    
+    \item Modelos de Credibilidad Múltiples (2008)
+    
+    Evolucionan con el mercado y las necesidades que se van presentando.
+\end{enumerate}
+
+\newpage
+
+Luego se sacan tarifas experimentales que en ocasiones se estiman con modelos de credibilidad. Posteriormente se analiza en el mercado si dichos precios son rentables según el mercado.
+
+\vspace{0.2cm}
+
+De una forma simple, en los modelos de credibilidad se propone que la prima que debe pagar un asegurado, incluya tanto la experiencia individual, como la del colectivo. De este modo quedaría expresada de la siguiente manera: 
+\begin{align*}
+    P = Z(X) + (1-Z)(C)
+\end{align*}
+Donde:
+\begin{itemize}
+    \item $P = $ Prima
+    \item $Z = $ Factor de credibilidad
+    \item $X = $ Experiencia modelo individual
+    \item $C = $ Experiencia modelo colectivo
+\end{itemize}
+
+De esta manera es una expresión de una combinación lineal, se pueden hacer muchos tipos de combinaciones, según el factor de credibilidad. 
+\begin{itemize}
+    \item [$\checkmark$] Mientras más bajo sea ese factor, se le dará mas peso al valor de mercado que al valor individual.
+    \item [$\checkmark$] Si es al revés se le da más peso a la parte individual que a la del mercado
+\end{itemize}
+Esto depende de los datos que haya y de los análisis que se haga en torno a ellos.
+
+Si hay mucha volatilidad no se puede dar mucho peso a esa información porque no es confiable y no se nota una tendencia clara. Caso contrario a cuando si se tiene información confiable y homogénea.
+
+Gráficamente si se parte de la información de experiencia individual y colectiva, el factor de credibilidad es el que entra en juego.
+
+\begin{figure}[h]
+\includegraphics[width=10cm]{cred.jpg}
+\centering
+\end{figure}
+
+
+
+El factor tiene que estar entre 0 y 1, pues al final es una ponderación, para ver a qué experiencia nos acercamos más.
+
+\vspace{0.3cm}
+
+\textbf{El factor de credibilidad debe satisfacer lo siguiente:}
+\begin{itemize}
+    \item [$\checkmark$] Ser una función en el tiempo de vigencia de la póliza.
+    
+    \textit{En su mayoría estos modelos se usan para seguros de corto plazo, porque por ejemplo en los seguros de vida hay muchos factores como diversos decrementos, temporalidad muy grande y también tasas que entran en juego, lo que hace más difícil su implementación en seguros de largo plazo.}
+    
+    \item [$\checkmark$] Ser una función creciente, de modo que se aproxime a 1 cuando $n$ que es la cantidad de pólizas, tiende a infinito. Mientras más grandes es el volumen de la cartera, el factor de credibilidad tiende más hacia 1, porque por Ley de los Grandes Números la cartera es más estable y por tanto más confíable (más creíble).
+    
+    \textit{Infinito realmente es un comportamiento.}
+    
+    \textit{Por el contrario, si el tamaño de la cartera es más pequeño, el factor de credibilidad, se puede aproximar a 0. Si se tiene una sola póliza no le puedo dar tanta confianza a ese comportamiento.}
+    
+    \item [$\checkmark$] También debe ser una función creciente de la varianza de las primas teóricas. Las primas teóricas son el tradicional promedio.
+    
+    \textit{En un seguro de automóviles, si tenemos el número de siniestros y el monto de siniestros, podemos sacar la prima teórico, sin gastos ni utilidad, solo cuánto de costó el riesgo en promedio. Si tenemos una marca con muchos modelos de autos, podemos determinar cuál es la varianza de esa prima promedio entre los modelos. Mientras más varianza, menor credibilidad de la información debido a la volatilidad de los datos. }
+\end{itemize}
+
+\newpage
+
+\textbf{\textcolor{blue}{Ejemplo.}}
+
+\textcolor{blue}{Supongamos que se tiene una cartera compuesta por 2 pólizas. Las cantidades reclamadas de 2007 y 2008 son las siguientes:}
+
+\begin{table}[h]
+\begin{tabular}{|c|c|c|}
+    \hline 
+     Año  & Póliza 1 & Póliza 2 \\
+    \hline
+    2007 & 20 & 30\\
+    \hline
+    2007 & 10 & 20 \\
+    \hline
+\end{tabular}
+\end{table}
+
+\textcolor{blue}{Estimar la prima de credibilidad para cada póliza.}
+
+\fbox{\textbf{Solución.}}
+
+Para esto, se parte de un principio de la cantidad media reclamada, por ello se requiere conocer el promedio de la reclamación de la póliza 1 y de la póliza 2, de donde:
+\begin{itemize}
+    \item $\Bar{X}_{1} = \frac{20+10}{2} = 15$ 
+    \item $\Bar{X}_{2} = \frac{30+20}{2} = 25$ 
+\end{itemize}
+Si lo tomamos de esta manera, los dos montos serían la experiencia individual por póliza.
+
+Necesitamos la experiencia del colectivo, lo cual es el promedio de las reclamaciones de la cartera. De donde:
+\begin{itemize}
+    \item $\Bar{X} = \frac{30+50}{2} = 40$
+\end{itemize}
+Con estos datos y la expresión de la prima de credibilidad tradicional se puede hacer el cálculo de una prima. Nos va a faltar el factor de credibilidad que veremos más adelante.
+
+Por tanto, las primas de credibilidad por póliza, serían:
+\begin{itemize}
+    \item [$\checkmark$] Póliza 1
+    
+    $P = Z(15) + (1-Z)(40)$
+    
+    \item [$\checkmark$] Póliza 2
+    
+    $P = Z(25) + (1-Z)(40)$
+\end{itemize}
+
+Probando con distintos factores de credibilidad, tenemos 
+\begin{itemize}
+    \item Si $Z=1$ la parte de colectivo se vuelve 0 y todo el peso de lo lleva el factor individual, por tanto las primas quedarían en términos de la experiencia individual. Es decir, se le da todo el peso a la experiencia individual.
+    \item Si $Z=0.5$ se le asigna la mitad de peso a la experiencia del individual y al colectivo.
+    \item Si $Z=0$ se le da peso a la experiencia colectiva.
+\end{itemize}
+
+En este modelo tradicional, el punto consistía en darle un peso según el comportamiento de la siniestralidad y de la volatilidad.
+
+\vspace{0.3cm}
+
+\textit{Por ejemplo si el comportamiento es similar a nivel mercado y a nivel individual, se le puede hacer una ponderación 50/50. Se debe hacer un buen estimador del mercado.}
+
+\textbf{El factor contempla elementos de variación en el tiempo, la cantidad de años disponibles, la cantidad de pólizas que se tienen en la cartera y qué tan homogénea es la información.}
+
+Tras lo anterior entra el Teorema de Bayes, para condicionar ciertos elementos.
+
+
+
+
+\newpage
+\section{Sábado 30 de Abril}
+\textbf{\large Teoría de la credibilidad total} \e 
+La teoría de la credibilidad surge en el sector asegurador en el contexto de que los clientes de seguros de vida grupales (colectivos) buscaban que la prima que les cobrara la aseguradora se basara únicamente en las características y \textbf{experiencia del propio grupo} y no en la experiencia de la aseguradora basada en el sector.\e
+Existen dos formas de enfocar esta teoría, en cuanto al volumen de unidades expuestas o en cuanto a unidades de tiempo para las que se tiene experiencia, ambas expresadas a través de una n que denota el número mínimo que se debe de tener de experiencia propia para poder obtener la credibilidad total.\e
+Desde el punto de vista de la aseguradora, para poder otorgar credibilidad total a una experiencia propia del asegurado, su experiencia debe ser lo suficientemente amplia para cumplir lo siguiente:
+\begin{equation*}
+    P\left(\abs{\Bar{X} - \varepsilon} \leq c\,\varepsilon \right) = P\left((1-c)\varepsilon \leq \Bar{X} \leq (1+c)\varepsilon\right)\geq p
+\end{equation*}
+Donde:
+\begin{itemize}
+    \item $\Bar{X}:$ es la media (promedio) de la distribución de la experiencia del asegurado.
+    \item $\varepsilon:$ es un valor que representa a la media teórica.
+    \item $c:$ es un factor porcentual de recargo para definir la tolerancia de la desviación hacia arriba (debe ser positivo).
+    \item $p:$ es el nivel de confianza que queremos establecer para dar credibilidad total.
+\end{itemize}
+\textit{Demostración:}
+\begin{equation*}
+    P\left(\abs{\dfrac{\Bar{X} - \varepsilon}{\sigma / \sqrt{n}}} \leq \dfrac{c\,\varepsilon\, \sqrt{n}}{\sigma}\right) \geq p
+\end{equation*}
+Donde $n$ es en número de asegurados expuestos que se tienen para definir su propia experiencia y definimos a $x_{p}$ como:
+\begin{equation*}
+    x_{p} = \inf_{x}\left\{{P\left(\abs{\dfrac{\Bar{X} - \varepsilon}{\sigma / \sqrt{n}}} \leq x \right) \geq p)}\right\}
+\end{equation*}
+Suponiendo que $\Bar{X}$ sigue una distribución continua tenemos que:
+\begin{equation*}
+    P\left(\abs{\dfrac{\Bar{X} - \varepsilon}{\sigma / \sqrt{n}}} \leq x_{p} \right) = p
+\end{equation*}
+Por lo tanto, para cumplir la condición de credibilidad basta que:
+\begin{equation*}
+    \dfrac{c\, \varepsilon\, \sqrt{n}}{\sigma} \geq x_{p}
+\end{equation*}
+De forma equivalente:
+\begin{equation*}
+    \dfrac{\sigma}{\varepsilon} \leq \dfrac{c}{x_{p}}\, \sqrt{n} = \sqrt{\dfrac{n}{\lambda_{0}}}
+\end{equation*}
+Siendo $\lambda_{0} = (x_{p}/c)^{2}$
+\begin{equation*}
+    \mbox{Var} (\Bar{X}) = \dfrac{\sigma^2}{n} \leq \dfrac{\varepsilon^2}{\lambda_{0}}
+\end{equation*}
+De donde podemos deducir la \textbf{fórmula de credibilidad total} y definir la $n$ mínima que debe tener el asegurado para que podamos creer en su información completamente:
+\begin{equation*}
+    n \geq \lambda_{0}\, \left(\dfrac{\sigma}{\varepsilon}\right)^2
+\end{equation*}
+ Usualmente, en la práctica, se considera $p=0.9$, $c=0.05$ y $p=0.95$.\\[1ex]
+ Ahora, si consideramos una $n$ suficientemente grande, podemos aplicar el Teorema del Límite Central sobre la v.a. $\Bar{X}$ al ser transformada de la siguiente forma:
+ \begin{equation*}
+     (\Bar{X} - x)/(\sigma\, \sqrt{n})
+ \end{equation*}
+ la cual, sigue aproximadamente una distribución normal estándar $(0,1)$.\\[1ex] De aquí podemos aproximar a la $p$ como: 
+ \begin{equation*}
+     p = 2\Phi(x_{p})-1
+ \end{equation*}
+ Donde:
+ \begin{itemize}
+     \item $\Phi(x):$ es la función de Distribución Normal Estándar
+ \end{itemize}
+Con esto podemos deducir que $\mathbf{x_{p}}$ \textbf{es el cuantil} $\mathbf{\dfrac{1+p}{2}}$ \textbf{de una Distribución Normal Estándar}.\e 
+\textcolor{blue}{\textbf{Ejemplo:}}\e 
+\textcolor{blue}{Supongamos que cuenta con la experiencia $X_{j}$, $j=1,\dots, n$ de un contrato de seguro perteneciente a una cartera de seguros y que $X_{1},\dots,X_{n}$ son variables aleatorias independientes e idénticamente distribuidas tipo Poisson de parámetro $\theta = 200$. Vamos a obtener el valor más pequeño de $n$ para suponer credibilidad total a la experiencia observada, suponiendo $c=0.04$, $p=0.95$ y que la aseguradora tarifica atendiendo sólo al número de reclamaciones.}
+\newpage
+\fbox{\textbf{Solución: }} \e 
+Recordemos que el criterio de credibilidad total se cumple si:
+\begin{equation*}
+    n \geq \lambda_{0}\, \left(\dfrac{\sigma}{\varepsilon}\right)^2
+\end{equation*}
+En este caso $\sigma^2 = \varepsilon = 200$, dado que $p=0.95$ entonces $x_{p}$ es el cuantil $\dfrac{1+0.95}{2} = 0.975$ de una distribución $N(0,1)$ por lo que $x_{p} = 1.96$.\\[1ex]
+Por lo tanto:
+\begin{equation*}
+    \lambda_{0} = \left(\dfrac{x_{p}}{c}\right)^2 = \left(\dfrac{1.96}{0.04}\right)^2 = 2,401
+\end{equation*}
+Para cumplir el criterio de Credibilidad Total debería tener como mínimo el siguiente número de asegurados:
+\begin{equation*}
+    n \geq \lambda_{0}\, \left(\dfrac{\sigma}{\varepsilon}\right)^2 = 2,401\left(\dfrac{200}{200^2}\right) = 12.005 \hspace{3mm} \mbox{redondeando enteros} \hspace{3mm} n\geq 13
+\end{equation*}
+
+% -------------------
+\vspace{3mm}
+\textbf{\large Teoría de la credibilidad parcial}\e 
+La teoría de la Credibilidad Parcial busca establecer un criterio que permita creerle en cierta medida a la información del asegurado cuando ésta no cumple con el criterio de la Credibilidad Total, es decir, para evitar un enfoque binario de “te creo o no te creo”, se busca establecer un criterio que si considere la información del asegurado conforme a la credibilidad que tenga.\\[1ex] 
+Considerando a $M$ como la prima del sector que tiene el asegurado y que cobraría basada únicamente en su experiencia y a $\Bar{X}$ como la prima que cobraría basada únicamente en la experiencia del asegurado, podemos definir a la prima de credibilidad parcial $P$ como:
+\begin{equation*}
+    P = Z(n)\, \Bar{X} + [1-Z(n)]\,M
+\end{equation*}
+Donde:
+\begin{itemize}
+    \item $Z(n):$ es el factor de credibilidad para el asegurado, está entre 0 y 1.
+\end{itemize}
+Recordando parte de la prueba de Credibilidad Total al calcular la varianza de $P$ podemos obtener que:
+\begin{equation*}
+    \operatorname{Var} [P] = \operatorname{Var}\left[Z(n)\, \Bar{X}+ [1-Z(n)]\, M\right] = Z(n)^2\, \operatorname{Var}(\Bar{X}) = Z(n)^2 \left(\dfrac{\sigma^2}{n}\right)
+\end{equation*}
+Por la prueba anterior, el lado derecho se puede igual a $\varepsilon^2 / \lambda_{0}$
+\begin{equation*}
+    Z(n) = \left(\dfrac{\varepsilon}{\sigma}\right) \sqrt{\dfrac{n}{\lambda_{0}}}
+\end{equation*}
+Dependiendo de la distribución, ésta distribución puede ser mayor a 1, por lo que definimos:
+\begin{equation*}
+    Z(n) = \min\left\{\dfrac{\varepsilon}{n} \sqrt{\dfrac{n}{\lambda_{0}}}, 1\right\}
+\end{equation*}
+
+\textcolor{blue}{\textbf{Ejemplo: }}\e 
+\textcolor{blue}{Con los datos del ejemplo anterior, vamos a calcular el valor del factor de credibilidad para una experiencia de reclamaciones correspondiente a 10 años.}
+\s 
+\begin{equation*}
+    Z(10) = \min\left\{\sqrt{\dfrac{10(200)}{2401}},1\right\} = 0.9126
+\end{equation*}
+
+\textcolor{blue}{\textbf{Ejemplo: }}\e
+\textcolor{blue}{Nuestra compañía un Hedge Fund (fondo de cobertura, fondo de inversión libre) tiene un cliente institucional A con un volumen de operaciones promedio de una operación por segundo, enfocado de la compra/venta de divisas GBP, CHF, JPY, USD, AUD.\e
+Por la naturaleza de nuestro cliente compra y vende divisas con la misma probabilidad y realiza ventas en corto para lo cual nosotros otorgamos (prestamos) de la divisa y corremos el riesgo de contraparte por operación independientemente de la divisa cobramos una prima de 2\% de la divisa prestada, sin embargo, nuestro cliente A nos solicita una reducción en la prima bajo el argumento de que su incumplimiento ha sido muy bajo y su tarifa no es justa. Analiza la solicitud del cliente para poder realizar una propuesta cuanto antes.\e
+Se dispone de la siguiente información histórica:\e
+De todas sus ventas en corto ha incumplido en 3,240 ocasiones y el monto por operación realizada es en promedio de 1,000 MXN considerando el tipo de cambio fijo al momento de la operación para todas las divisas.}
+\s \e 
+El cliente hace una operación por segundo en promedio, lo que implica 3,600 operaciones por hora, lo que implica 32,400 operaciones al día (asumiendo que nuestro mercado opera de 8am a 5pm de lunes a viernes)y considerando que el promedio mensual de días hábiles es de 20, entonces el cliente en el último mes ha hecho 648,000 operaciones.De este total estimamos que ha hecho 324,000 operaciones.\e
+Entonces, haciendo el cálculo de la prima con los supuestos actuales, se le ha cobrado:
+\begin{equation*}
+    P_{\mbox{cobrada}} = 324,000\,(1,000)\,(2\%) = 6,480,000
+\end{equation*}
+Sin embargo, considerando que el cliente ha incumplido 3,240 ocasiones, estimamos que su probabilidad de incumplimiento es de $(3,240/324,000) = 1\%$, por lo que se observa que con la información proporcionada le hemos cobrado 1\% por encima del riesgo que representa.
+
+\newpage
+\textbf{¿Es esto evidencia suficiente para ajustar la prima del cliente al 1\%}\e
+No, por que no hemos involucrado ningún supuesto estadístico o probabilístico para dar más sustento a nuestros argumentos, hasta el momento hemos hecho cálculos y estimaciones empíricas con la información del último mes.\e
+Vamos a utilizar Teoría de la Credibilidad con la información de A, para validar si podemos ajustar la prima al 1\% que tiene de experiencia propia.\e
+Entonces, comencemos con nuestros cálculos:
+\begin{itemize}
+    \item Vamos a asumir $p=0.9$, $c=0.05$
+    \item $x_{p}$ es el cuantil $\frac{(1+p)}{2}$ de una distribución Normal Estándar, por lo que $x_{p}$ es el cuantil 0.95 de una $N(0,1)$, por lo que $x_{p} = 1.645$
+\end{itemize}
+
+Por lo tanto: 
+\begin{equation*}
+    \lambda_{0} = \left(\dfrac{x_{p}}{c}\right)^2 = \left(\dfrac{1.645}{0.05}\right)^2 = 1,082.41
+\end{equation*}
+Se obtiene credibilidad total si:
+\begin{equation*}
+    n \geq \lambda_{0}\, \left(\dfrac{\sigma}{\varepsilon}\right)^2  
+\end{equation*}
+Pero, no tenemos una distribución teórica para la transaccionalidad y el incumplimiento de A, pero podemos estimar a la media y la varianza teóricas con los mejores estimadores muestrales para cada uno:
+\begin{align*}
+    \varepsilon &= \dfrac{3,240\,(1,000) + (320,760)(0)}{324,000} = 10\e
+    \sigma^2 &= \dfrac{1}{323999}\, \left[3,240(1,000-10)^2 + 320,760\, (10-0)^2\right] = 9,900.03
+\end{align*}
+Por lo tanto:
+\begin{equation*}
+    n \geq 107,158.9 \hspace{3mm} \mbox{redondeando a} \hspace{3mm} 107,159
+\end{equation*}
+Dado que el cliente tiene 324,000 ventas y es mucho mayor que la mínima $n$ para establecer la credibilidad, concluimos que A tiene experiencia suficiente y podemos creerle totalmente a su información, con lo que sustentamos que la prima del 1\% basada en su experiencia calculada anteriormente si es adecuada y podemos mejorarle el precio del cliente.
+
+\newpage
+
+
+
+
+
+
+
+
+
+\section{Lunes 2 de Mayo}
+
+\large
+\textbf{Modelos de distribución libre}
+
+\normalsize
+Toman:
+\begin{itemize}
+    \item Conocimientos  \textit{a priori}.
+    
+    Toman conocimientos que ya se tienen de información o cosas que ya ocurrieron, como por ejemplo reclamaciones ya hechas, siniestros ocurridos, entre otras cosas.
+    
+    \textit{Con la situación de la pandemia, el ejemplo sería las primeras cepas de las que se tenía información.}
+    
+    \item Conocimientos actuales o hacia el futuro.
+    
+    Es decir observaciones recientes.
+    
+    \textit{Por ejemplo en la pandemia, el conocimiento sobre las nuevas cepas de COVID. }
+\end{itemize}
+
+La BD que ocupamos en la práctica son conocimientos a priori porque son siniestros que ya han ocurrido en un determinado plazo de tiempo, lo actual sería cuando metamos nuevos automóviles, en donde se tomen los valores a priori y las estimaciones que realicemos.
+ 
+A partir de los dos componentes a priori y actuales se busca obtener la prima de credibilidad, basada en los principios de la clase pasada, donde vamos a buscar una prima del colectivo a nivel mercado y una prima del individual, por póliza o por riesgo. Después se va a obtener la prima de credibilidad que se le va a dar a los datos que ya tenemos.
+
+\vspace{0.3cm}
+
+\textbf{La diferencia con otros modelos es que a pesar que toma datos existentes no usa una función de distribución o no trata de hacer ajustes de ciertas distribuciones probabilísticas. Si se usan esos conocimientos y mientras más experiencia exista es mejor, pero no busca el ajuste de un modelo ya existente.}
+
+\vspace{0.3cm}
+
+\textbf{Modelos tradicionales de distribución libre}
+\begin{itemize}
+    \item Modelo de Bh\"ulmann 
+    \item Modelo de Bh\"ulmann - Straub
+\end{itemize}
+
+\newpage
+
+Tenemos la siguiente matriz:
+\begin{table}[h]
+    \begin{tabular}{|c|c|c|c|c|}
+         \hline
+         \backslashbox{Años}{Pólizas} & 1 & 2 & ... & k\\
+         \hline
+         \hline
+         1 & $X_{11}$ & $X_{21}$ & ... & $X_{k1}$\\
+         2 & $X_{12}$ & $X_{22}$ & ... & $X_{k2}$\\
+         . &  &  &  &\\
+         . &  &  &  &\\
+         . &  &  &  &\\
+         n & $X_{1n}$ & $X_{2n}$ & ... & $X_{kn}$\\
+         \hline 
+    \end{tabular}
+\end{table}
+
+Depende de la información con la que trabajemos, por ejemplo frecuencia, severidad, ambos datos. Por ejemplo el Modelo de Bh\"ulmann generalmente trabaja con frecuencias y en general el Modelo de Modelo de Bh\"ulmann - Straub trabaja con frecuencia y severidad.
+
+\vspace{0.3cm}
+
+\textbf{Respecto a las Variables Aleatorias}
+\begin{itemize}
+\item La función de distribución de la variable aleatoria $X_{ij}$ depende de un parámetro desconocido $\Theta_{ij}$ o parámetro de riesgo, por eso es de distribución libre.
+\item También se cumple la independencia entre riesgos y entre pólizas, para que los modelos sean aplicables.
+\end{itemize}
+
+\vspace{0.3cm}
+
+\textbf{Objetivo del Modelo de Bh\"ulmann }
+
+El objetivo consiste en calcular la mejor prima lineal:
+\begin{align*}
+    H\left[\mu(\Theta_{j}) | X_{j1}, X_{j2},...,X_{jn}\right]
+\end{align*}
+La media está condicionada a diversos montos y V.A. $X_{ij}$
+
+Esto es dependiente de los datos observados mediante el método de mínimos cuadrados. Para ello se establece lo siguiente:
+\begin{itemize}
+\item Para comenzar con el modelo, necesitamos la prima de riesgo a nivel individual, así:
+\begin{align*}
+    \mu(\Theta) &= \E[X|\Theta) \longrightarrow \text{ Prima de riesgo individual}
+\end{align*}
+
+\item 
+Y para la prima de credibilidad también necesitamos la media de toda la cartera, de donde:
+\begin{align*}
+    m &= \E_{Total}[X] \\
+    &= \E[\mu(\Theta)]  \longrightarrow \text{ Prima de riesgo colectiva}
+\end{align*}
+
+\item Para obtener el factor de credibilidad es necesario tener este parámetro llamado el grado de heterogeneidad.
+\begin{align*}
+    a &= Var[\E[X|\Theta]] \\ 
+    &= Var(\mu(\Theta)) \longrightarrow \text{ Varianza de las primas promedio}
+\end{align*}
+
+\textit{Si conozco los autos asegurados, sus siniestros y sus montos, puedo calcular las primas teóricas con su frecuencia y su severidad, con ello podría generar promedios de primas teóricas. Sin embargo puede haber colas dentro de la información, por ello es necesario ver qué tan volátiles son los datos conocidos.}
+
+\item Para estimar el promedio de varianzas, tenemos:
+\begin{align*}
+    S^{2} &= \E[Var[X|\Theta]] \longrightarrow \text{ Medida global de dispersión de siniestralidad individual}
+\end{align*}
+Es decir, en promedio cómo se comportó la varianza de los distintos años, esto es un indicador si hay mucha dispersión en las primas o no. Mientras más baja sea la dispersión, más confianza se le da.
+\end{itemize}
+
+Con los factores anteriores, hay que jugar con dichos parámetros y ver a qué tipo de experiencia conviene darle más peso.
+
+\newpage
+
+\section{Martes 3 de Mayo}
+
+Para usar los modelos de credibilidad requerimos saber cierta experiencia individual de cada póliza o cada riesgo del portafolio, también cierta experiencia del colectivo. Si no se tiene la experiencia individual nos basamos en la información de mercado (como en la práctica de automóviles).
+
+\vspace{0.2cm}
+
+\textbf{Las aseguradoras y otras compañías cuando quieren sacar a la venta un producto, usan información de mercado tomando en cuenta productos similares al que van a sacar, toman en cuenta sus precios, cuáles son las marcas más vendidas, en qué temporadas se vende más y otros análisis puntuales para que cuando el producto se saque a la venta, sea competitivo, no solo en el precio.}
+
+\vspace{0.2cm}
+
+Particularmente en los seguros, cuando se saca un producto se tiene que que conocer qué hay en el mercado, qué tarifas hay y cómo ajustar los precios para que sea competitivo, claro además del público al que está dirigido el producto y el valor agregado que se le pueda dar con las coberturas que ofrece.
+
+En el análisis de autos no se puede analizar en conjunto un compacto y un deportivo, porque si se mezclan tipos de riesgos en carteras heterogéneas existirá mucha desviación en la información.
+
+La función $H$ y los distintos parámetros se pueden ver como una combinación lineal:
+\begin{align*}
+    H\left[\mu(\Theta_{j}) | X_{j1}, X_{j2},...,X_{jn}\right]
+\end{align*}
+
+\vspace{0.3cm}
+
+\large
+
+\textbf{Continuación Modelo de Bh\"ulmann }
+
+\vspace{0.2cm}
+
+\normalsize
+
+La mejor aproximación de $   H\left[\hat{\mu}(\Theta_{j}) | X_{j1}, X_{j2},...,X_{jn}\right] $ es: $a + b\Bar{X} = a + b \displaystyle \sum_{i=1}^{n} X_{i}$ donde:
+\begin{itemize}
+    \item $a = (1-b)m$
+    \item $b = \displaystyle \frac{n}{n-k}$
+    \item $k = \displaystyle \frac{\E[\sigma^{2}(\Theta)]}{Var[\mu(\Theta)]}$
+\end{itemize}
+
+Donde:
+\begin{itemize}
+    \item $m$ es el promedio del mercado
+    \item $b$ sería la pendiente de la recta 
+\end{itemize}
+
+Para encontrar la mejor estimación de la prima neta de riesgo que dependa linealmente de los datos observados, aplicando el Método de Mínimos Cuadrados:
+\begin{align*}
+    H\left[\mu(\Theta) | X_{1}, X_{2},...,X_{n}\right] &= c_{0} + \displaystyle \sum_{s=1}^{n} c_{s} X_{s}
+\end{align*}
+Para ello se hace mínima la esperanza del cuadrado de la desviación de la prima de riesgo individual respecto a la función $H$.
+
+Entonces, se tiene lo siguiente:
+\begin{align*}
+     min_{c_{i}} \E\left[\left(\mu(\Theta)-\left[[c_{0}- \sum_{s=1}^{n} c_{s} X_{s}\right]\right)^{2}\right]
+\end{align*}
+
+Al desarrollar el Método de Mínimos Cuadrados, se llega a lo siguiente:
+\begin{align*}
+    H\left[\mu(\Theta) | X_{1}, X_{2},...,X_{n}\right] &= c_{0} + \displaystyle \sum_{s=1}^{n} c_{s} X_{s} \\
+    &= m \left[ \frac{s^{2}}{s^{2}+an}\right] + cn \Bar{X}\\
+    &= m \left[ \frac{s^{2}}{s^{2}+an}\right] +  \left[ \frac{an}{s^{2}+an}\right]\Bar{X} \\
+    &= \left[1-Z(n)\right]m + Z(n)\Bar{X} \\
+    & \text{ Con } Z(n) = \displaystyle \frac{an}{an+s^{2}}
+\end{align*}
+
+Nótese que el resultado no depende de la distribución de probabilidad de $X$, ni de la distribución de probabilidad del parámetro de riesgo $\Theta$, de ahí el término de distribución libre.
+
+Además, el factor de credibilidad toma en cuenta el grado de heterogeneidad de la cartera $a$, la cantidad de años de experiencia $n$ y el grado de dispersión de la cartera $s^{2}$. 
+
+Cada parámetro denota lo siguiente:
+\begin{itemize}
+    \item $m$ es el promedio de la cartera
+    \item $s^{2} = \E[\sigma^{2}(\Theta)]$ es el grado de dispersión que tenemos en los datos
+    \item $a = Var[\mu(\Theta)]$ es el grado de heterogeneidad
+    \item $n$ es la cantidad de años de experiencia de la cartera
+    \item $m = \Bar{X}$ es el promedio de la cartera completa o del colectivo
+\end{itemize}
+
+Las cantidades denotadas por $a$, $s^{2}$ y $m$ suelen llamarse parámetros estructurales del modelo y pueden estimarse a partir de lo siguiente:
+
+\begin{itemize}
+    \item $\hat{m} = \displaystyle \frac{1}{k} \sum_{j=1}^{k}\Bar{X}_{j}$
+    
+    \item $\hat{s^{2}} = \displaystyle \frac{1}{k} \sum_{j=1}^{k} \hat{s^{2}_{j}} $ \hspace{0.3cm} con \hspace{0.3cm} $\hat{s^{2}_{j}} = \displaystyle \frac{1}{n-1} \sum_{s=1}^{n} (X_{js} - \Bar{X_{j}})^{2}$
+    
+    \item $\hat{a} = \displaystyle \frac{1}{k-1} \sum_{j=1}^{k}(\Bar{X_{j}}-\Bar{X})^{2} - \displaystyle \frac{1}{n}  \hat{s^{2}}$
+    
+\end{itemize}
+
+Donde:
+\begin{itemize}
+    \item $k$ es la cantidad de riesgos o pólizas que tengamos en la cartera
+    \item $\Bar{X}_{j}$ son los montos o cantidades de los distintos riesgos que tengamos, ya sean frecuencias o reclamaciones, dependiendo del caso
+    \item $n$ son los años de experiencia 
+    \item $X_{js}$ es la información de cada uno de los riesgos
+    \item $\Bar{X}$ denota la media de la cartera completa
+\end{itemize}
+
+\textit{Por ejemplo, hablando de Modelos de la Marca Ford, tenemos todos los modelos de esa marca con los $X_{js}$ y el estimador de la marca Ford completa sería $\Bar{X_{j}}$. }
+
+\textit{Si se hablara de marca, entonces los estimadores por marca serían los $X_{j}$ y $\Bar{X}$ es la media de toda la cartera.}
+
+
+Aplicando esto, y la fórmula del factor de credibilidad que contempla el grado de heterogeneidad por los años de experiencia y los grados de dispersión, podemos ver ejemplos de la teoría de la credibilidad.
+
+\hspace{0.3cm}
+
+Para aplicar el Modelo de Credibilidad se necesita el factor de credibilidad y para ello se necesita el grado de heterogeneidad, grado de dispersión y años de experiencia. Pero al tener un valor negativo, el modelo no sería consistente y no tendría ningún sentido.
+
+Mientras más alto sea el grado de heterogeneidad, más bajo será el factor de credibilidad.
+\newpage
+
+\section{Jueves 12 de Mayo}
+
+\large
+\textbf{Continuación Modelo de Bh\"ulmann }
+
+\normalsize
+
+\vspace{0.2cm}
+
+\textbf{¿Qué significan los parámetros del modelo de credibilidad de Bh\"ulmann si analizamos la base de datos de siniestralidad del mercado?}
+
+Para este y otros tantos modelos, necesitamos conocer el número de vehículos expuestos, cuántos siniestros han tenido los vehículos  expuestos y el monto de dichos siniestros para hacer cálculos por ejemplo de la frecuencia o la severidad, y ya que se tienen esos datos, se puede hacer el cálculo de primas promedio (prima tradicional con frecuencia y severidad) de las que se parten para hacer el cálculo de los distintos parámetros.
+
+\begin{itemize}
+    \item La frecuencia se calcula a partir de vehículos expuestos y de siniestros, por cada año.
+    \item La severidad será el monto de los siniestros en cada uno de los años.
+\end{itemize}
+
+Vamos a tener los distintos modelos de cada marca, \textit{por ejemplo la Chevrolet tiene muchos modelos y también muchos segmentos.}
+
+\textcolor{blue}{Supongamos que tenemos las primas promedio de 1996 a 2020 por año de las Suburban, y supongamos que la prima promedio durante todos los años de experiencia es de $\$20,000$ anuales (prima de riesgo, sin considerar costos), y, que las primas promedio de otros distintos modelos de la marca oscilan entre $\$2,000$ (por ejemplo el Chevy) y $\$40,000$ (por ejemplo el Camaro)}
+
+\newpage
+
+
+% --------------------
+\section{Jueves 19 de Mayo}
+
+\textbf{\large Introducción Teoría de Ruina} \vspace{0.3cm}
+
+\textbf{Importancia de la teoría de ruina}
+
+Hasta el momento ya sabemos hacer una estimación de la probabilidad de ruina a partir de la función de distribución normal estandarizada podemos aproximarnos a esta probabilidad, tomando en cuenta la siniestralidad esperada y los recargos.
+
+Sin embargo ahora se busca que tengamos más herramientas para hacer calculos son más precisos.
+
+\vspace{0.1cm}
+
+\textbf{Diferencia entre ruina y quiebra}
+
+Quiebra es cuando la compañía se queda sin recursos para solventar sus obligacione y tiene que cerrar. La ruina es que si se tienen distintas líneas de negocios, ver cuáles son más rentables y tienen menor probabilidad de agotar sus recursos. 
+
+Como compañía compenso esas probabilidades entre diferentes líneas de negocio. 
+
+Los modelos de probabilidad de ruina nos ayudan a ver qué tan elevada sería cada línea de negocio y a  partir de eso determinar estrategias. De entrada si conviene asumir el riesgo como compañía, si no conviene y si sí qué estrategias de diversificación adoptaria, entre ellas el reaseguro.
+
+\vspace{0.1cm}
+
+\textbf{Ejemplo Excel}
+
+Con los montos promedio y el presupuesto del gobierno se puede hacer un cálculo para ver si el presupuesto es suficiente para afrontar las obligaciones que lleguemos a tener. 
+
+Un \textit{Modelo Generalizado de Ruina} requiere tener los montos, el capital inicial o presupuesto y con base en eso un recargo de seguridad que se debe proponer para posteriormente calcular la probabilidad de ruina.
+
+\vspace{0.3cm}
+
+\textbf{\large Modelos de ruina en tiempo continuo} 
+
+\vspace{0.1cm}
+
+\textbf{Supuestos:}
+\begin{enumerate}[label = \arabic* )]
+    \item Toman en cuenta que las reclamaciones (número) se distribuyen de forma Poisson compuesta. 
+    
+    \begin{align*}
+        E(S_{t}) &= E(N_{t})\, E(X_{j}) \hspace{1cm} \text{Por el modelo colectivo de riesgo} \\
+                &= (\lambda t )\,\mu \hspace{1cm} \text{Por la distribución}
+    \end{align*}
+    \vspace{-10mm}
+    
+    No necesariamente debe tener una distribución, si es libre se puede hacer una ponderación.
+    
+    \newpage
+    
+    Donde:
+    \begin{itemize}
+        \item $S_{t} = $ Siniestralidad agregada
+        \item $N_{t} =$ Número de reclamaciones en el tiempo
+        \item $X_{j} =$ Monto de esas reclamaciones
+        \item $\lambda t=$ Cantidad de reclamos esperada
+        \item $\mu = $ Monto esperado por cada reclamación
+    \end{itemize}
+    
+    En la siniestralidad, se constituyen los egresos de la compañía, pero también tenemos la variable de los ingresos y por ello nos interesa ver cómo se comportan esos dos flujos.
+    
+    Los modelos de credibilidad nos ayudan a hacer estimaciones de siniestralidad que contemplen factores adicionales que en ocasiones no se toman en cuenta cuando se hacen las estimaciones de montos y de reclamaciones por separado, ahí radica la importancia del tema de credibilidad.
+    
+    \item En este caso vamos a pensar que son seguros a corto plazo, en seguros de vida a largo plazo se ocuparían más variables. Asumen que el pago de primas es constante.  Es un flujo que nunca se detiene, de ahí el nombre. De aquí que las primas netas totales en el intervalo $(0,t)$ sea $c\,t$, donde $c=$ monto de las primas y $t=$ tiempo en el que nos encontremos. Entonces tendriamos que:
+    \begin{equation*}
+        c\,t>E(S_{t}) \hspace{1cm} \text{Si es menor hay un problema}
+    \end{equation*}
+    Lo que implica que:
+    \begin{equation*}
+        c>\lambda\,\mu
+    \end{equation*}
+    Sea:
+    \begin{equation*}
+        c = (1+\theta) \lambda\, \mu \hspace{3mm} \mbox{ con} \hspace{3mm} \theta > 0 
+    \end{equation*}
+    \vspace{-10mm}
+    
+    Donde:
+    \begin{itemize}
+        \item $\theta:$ recargo de seguridad sobre la prima (edad o sexo de la persona que contrata), es decir, el riesgo que se está asumiendo y \textbf{un margen adicional} que ayude a solventar alguna desviación que se presente en el mercado.
+    \end{itemize} 
+    
+    Para nuestro modelo de flujos de una aseguradora, las pérdidas o egresos y los ingresos se representan de la siguiente manera:
+    \begin{equation*}
+        U_{t} = u + c\,t - S_{t} \hspace{3mm} \mbox{ con} \hspace{3mm} t \geq 0
+    \end{equation*}
+    Donde:
+    \begin{itemize}
+        \item $U_{t}:$ utilidad del ejercicio o pérdida (resultado en cierto tiempo)
+        \item $u:$ capital inicial
+        \item $ct:$ primas que se cobren
+        \item $S_{t}:$ siniestralidad que reporte la compañía
+    \end{itemize}
+    
+    La probabilidad de sobrevivencia (ruina) de dicho modelo se puede ver de la siguiente manera:
+    \begin{equation*}
+        \phi\, (u) = P\left(U_{t} \geq 0, \forall t \geq 0 \mid U_{0}=u\right)
+    \end{equation*}
+    
+    y la ruina en tiempo finito quedaría acotada de la siguiente manera:
+    \begin{equation*}
+        \phi\,(u) = 1- \phi(u)
+    \end{equation*}
+\end{enumerate}
+
+\textbf{\large Coeficiente de ajuste y la desigualdad de Lundberg}\e 
+
+Para el coeficiente de ajuste, para una determinada $X$ (reclamación arbitraria), sea $ t = k$, donde $k$ representa la mínima solución posible para la siguiente ecuación:
+
+\begin{equation*}
+   1+ (1+\theta)\,\mu\,t = M_{x}(t)
+\end{equation*}
+
+Donde:
+    \begin{itemize}
+        \item $M_{x}(t) = E(e^{t\,x}):$ que representa la función generadora de momentos de la reclamación $X$
+    \end{itemize}
+Por ejemplo, si $X$ tiene una distribución exponencial con media $\mu$ para determinar el coeficiente de ajuste se tiene lo siguiente:
+\begin{equation*}
+    F(x) = 1-e^{-\tfrac{x}{\mu}} \hspace{3mm} \mbox{ con} \hspace{3mm} x\geq 0
+\end{equation*}
+
+La función generadora de momentos sería:
+\begin{equation*}
+    M_{x}(t) = (1-\mu\,t)^{-1} \hspace{3mm} \mbox{ con} \hspace{3mm} t < \mu^{-1}
+\end{equation*}
+entonces $k$ satisface lo siguiente:
+\begin{equation*}
+    1+(1+\theta)\,\mu\,k = (1-\mu\,k)^{-1}
+\end{equation*}
+Así, $k=0$ es una posible solución y habría otras soluciones factibles al despejar $k = \dfrac{\theta}{\mu\,(1+\theta)}$ 
+
+
+
+\end{document}
