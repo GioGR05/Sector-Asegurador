@@ -1,0 +1,1656 @@
+% Plantilla para clases
+% Creado por Giovanni GR
+% Email:giovanni.grod@gmail.com
+%=======================================================
+%=======================================================
+
+\documentclass[12pt,a4paper,oneside,openany]{article} 
+%=======================================================
+%=======================================================
+\usepackage[top=2cm,left=1cm,right=1.5cm,bottom=2cm]{geometry}
+\usepackage[T1]{fontenc} % Codificar caracteres
+\usepackage{ae} % Para pdf
+\usepackage[utf8]{inputenc}
+\usepackage{lipsum}
+\usepackage[spanish]{babel} % Traducir a español
+\usepackage{indentfirst} % Identar párrafos
+\usepackage{graphicx} % Permite incluir figuras
+\usepackage{subfig} % Crear sub figuras
+\usepackage{float}
+\usepackage{tabularx}
+\usepackage{ragged2e}
+\usepackage{multirow}
+\usepackage[dvipsnames]{xcolor} % Uso de colores 
+\usepackage{amsmath,amssymb,amsthm} % Incluye expresiones matemáticas
+\usepackage{lastpage} 
+\usepackage{epigraph}
+\usepackage{enumerate}
+\usepackage{enumitem}
+\usepackage{titlesec}
+\usepackage{mathtools}  % for paired delimiters 
+\usepackage{mathrsfs}   % for script capitals
+\DeclarePairedDelimiter{\parens}()
+\usepackage{ dsfont }
+
+\usepackage{fancybox}
+%\usetikzlibrary{decorations}
+\spanishdecimal{.}
+
+
+\setlength\parindent{0pt}
+
+\newlist{questions}{enumerate}{3}
+\setlist[questions]{label=\arabic*.}
+\newcommand{\question}{\item}
+\setlist[enumerate,1]{% (
+leftmargin=*, itemsep=12pt, label={\textbf{\arabic*.)}}}
+%---
+\newlist{partes}{enumerate}{3}
+\setlist[partes]{label=(\alph*)}
+\newcommand{\parte}{\item}
+%---
+\newlist{subpartes}{enumerate}{3}
+\setlist[subpartes]{label=\roman*)}
+\newcommand{\subparte}{\item}
+%---
+\usepackage{array}
+\usepackage{tikz}
+\newcommand*\circled[1]{\tikz[baseline=(char.base)]{\node[shape=circle,draw,inner sep=2pt] (char) {#1};}}
+\usepackage[sort&compress,round,comma,authoryear]{natbib}
+\usepackage{makeidx}
+\usepackage[colorlinks=true,urlcolor=magenta,citecolor=red,linkcolor=violet,bookmarks=true]{hyperref}
+\usepackage{lscape}
+\usepackage{pdflscape}
+\usepackage{epstopdf}
+\usepackage{booktabs}
+\usepackage{pdfpages}
+\usepackage{textcomp}
+\usepackage[many]{tcolorbox}
+\usepackage{empheq}
+\usepackage{tasks}
+\usepackage{fancyhdr}
+\pagestyle{plain}
+%=======================================================
+
+\newcommand{\alumno}{Angel Giovanni Gómez Rodríguez}
+\newcommand{\facultad}{Facultad de Ciencias}
+\newcommand{\curso}{Teoría del Riesgo}
+\newcommand{\profesora}{Mtra.Karen Lanzguerrero Obeid}
+\newcommand{\payudante}{Act. Donovan Eduardo Calva Caggiano}
+\newcommand{\sayudante}{Act. Fernando Martínez del Campo Rodríguez}
+\newcommand{\titulo}{1ª Lista de Exercícios: A. Combinatória}
+\newcommand{\data}{\today}
+\newcommand{\email}{{\bf mile}nascimentolima@gmail.com}
+\newcommand{\turma}{kkkkkkkkkkkkkkkkkkkkkkkkkk}
+%===========================================================
+\newcommand{\X}{\mathbf{X}}
+\newcommand{\x}{\mathbf{x}}
+\newcommand{\Z}{\mathbf{Z}}
+\newcommand{\z}{\mathbf{z}}
+\newcommand{\y}{\boldsymbol{y}}
+\newcommand{\balpha}{\mbox{${ \bm \alpha}$}}
+\newcommand{\bmu}{\mbox{${\bm \mu}$}}
+\newcommand{\bbeta}{\mbox{${\bm \beta}$}}
+\newcommand{\bteta}{\mbox{${\bm \theta}$}}
+\newcommand{\bgama}{\mbox{${\bm \gamma}$}}
+\newcommand{\bxi}{\mbox{${\bm \xl}$}}
+\newcommand{\bvarphi}{\mbox{${ \bm \varphi}$}}
+\newcommand{\SZ}{\mbox{ $Z$}}
+\newcommand{\muz}{\mu_{z,l}}
+\newcommand{\muo}{\mu_{0,l}}
+\newcommand{\etao}{\eta_{0,l}}
+\newcommand{\etaz}{\eta_{z,l}}
+\newcommand{\xbeta}{x_{l}\bgama}
+\newcommand{\mui}{\mu_{l}}
+\newcommand{\zetaind}{\zeta \mathtt{I}_{\{s_{l} \in Z \}}} 
+\newcommand{\spz}{ s_{l} \in z}
+\newcommand{\snpz}{ s_{l} \notin z}
+\newcommand{\sps}{ s_{l} \in S}
+\newcommand{\gphi}{ \Gamma(\phi)}
+\newcommand{\scan}{ \Lambda_{z}}
+\newcommand{\gmuop}{ \Gamma(\muo\phi)}
+\newcommand{\gmuzp}{ \Gamma(\muz \phi)}
+\newcommand{\gumuop}{ \Gamma((1-\muo)\phi)}
+\newcommand{\gumuzp}{ \Gamma((1-\muz)\phi)}
+\newcommand{\dlobeta}{ \frac{\parteial l_{0}(\bgama, \phi, 0) }{\parteial \bgama}}
+\newcommand{\lz}{  l_{z}(\bgama, \phi, \tau)}
+\newcommand{\lo}{  l_{0}(\beta, \phi, 0)}
+\newcommand{\E}{\mathbb{E}}
+\newcommand{\dis}{\displaystyle}
+\linespread{1.5}%espaço entre linhas
+
+\newcommand{\changefont}{%
+    \fontsize{13}{11}\selectfont}
+
+
+\titleformat{\section}{\normalfont\Large\bfseries}{}{0pt}{\titlerule\\Clase \thesection. }[{ \titlerule[0.8pt]}]
+
+\pagestyle{fancy}
+\fancyhf{}
+\rhead{\changefont Administración Actuarial del Riesgo}
+\lhead{\changefont Angel Giovanni Gómez Rodríguez}
+\cfoot{\thepage}
+ 
+
+\begin{document}
+
+\section{Miércoles 16 de Febrero }
+
+\textbf{Quiz diagnóstico:} 
+
+\begin{enumerate}
+    \item \textbf{El regulador de instituciones de seguros y fianzas en México es:}
+    
+    \textbf{\textcolor{red}{La Comisión Nacional de Seguros y Fianzas.}}
+    
+    \item \textbf{¿La principal operación de seguros en México es la de automóviles?}
+    
+    \textbf{\textcolor{red}{Falso, porque no hay operación de autos en México. Solo hay tres operaciones: accidentes y enfermedades, daños y vida. El seguro de autos es un ramo.}}
+    
+    \item \textbf{Esta reserva sirve para hacer frente a la obligaciones de los contratos en vigor:}
+    
+    \textbf{\textcolor{red}{La reserva de riesgos en curso.}}
+    
+    \item \textbf{¿El seguro de gastos médicos mayores resarce la salud del beneficiario?}
+    
+    \textbf{\textcolor{red}{Falso, pues el seguro no te regresa la salud, sino que te da el dinero en función de lo que se gasta. Hay seguros que te ofrecen ayuda ante pre-existencias, pero son más caros.}}
+    
+    \item \textbf{¿El beneficiario de un seguro de vida puede cobrar un seguro aunque no haya fallecido en algunos casos?}
+    
+    \textbf{\textcolor{red}{Verdadero, pues hay seguros como: dotal puro, dotal mixto, o seguros de ahorro para el retiro.}}
+    
+    \item \textbf{¿Cuál de las siguientes metodologías NO se ocupa para el cálculo de las reservas?}
+    
+    \textbf{\textcolor{red}{El de Máxima Verosimilitud, pues es un tema estadístico, no como tal una metodología.}}
+    
+    \item \textbf{¿La reserva de siniestros ocurridos y no reportados solo sirve para siniestros que no hayan sido reportados?}
+    
+    \textbf{\textcolor{red}{Falso, también se usa para cuando hay un ajuste de monto para pagar el siniestro, es decir, cuando se modifica la cantidad a pagar.}}
+    
+    \item \textbf{¿El Estado de Resultados incluye el aumento de las reservas?}
+    
+    \textbf{\textcolor{red}{Si lo incluye.}}
+    
+    \newpage
+    
+    \item \textbf{¿El Balance General incluye las primas dentro de los activos?}
+    
+    \textbf{\textcolor{red}{No, porque cuando se habla de primas, se habla de ingresos (en otras compañías se podría ver como ventas las cuales se irían al Estado de Resultados). Estas primas posteriormente si se verán en el Balance pero como capital.}}
+    
+    \item \textbf{¿El monto de prima de riesgo siempre es mayor o igual a la siniestralidad esperada?}
+    
+    \textbf{\textcolor{red}{Verdadero, ya que se busca que la prima de riesgo sea mayor a la siniestralidad esperada, en otro caso habría pérdidas.}}
+\end{enumerate}
+
+\newpage
+
+\section{Jueves 17 de Febrero }
+
+\Large
+\textbf{Repaso de seguros}
+
+\vspace{0.5cm}
+
+\normalsize
+
+Hay tres operaciones de seguros en México según la regulación mexicana:
+\begin{itemize}
+    \item [$\checkmark$] Accidentes y enfermedades
+    \item [$\checkmark$] Daños
+    \item [$\checkmark$] Vida
+\end{itemize}
+
+Toda la parte de seguros está sustentada en la Circular Única de seguros y Fianzas y la Ley de Instituciones de Seguros y Fianzas.
+
+\vspace{1cm}
+
+\large
+\textbf{Seguro de Daños}
+\vspace{0.5cm}
+
+\normalsize
+Los seguros de \underline{daños} protegen el patrimonio o negocio de los asegurados contra daños sufridos por los riesgos a los que están expuestos los bienes materiales, así como las pérdidas consecuenciales ocurridas a raíz de los daños amparados. Se cubren también en este tipo de seguros hechos como:
+
+\begin{itemize}
+    \item Las pérdidas económicas derivadas en virtud de que el asegurado deba a un tercero a consecuencia de un hecho que cause un daño.
+    \item El resarcimiento de inversiones, por los daños o prejuicios que sufran por la pérdida parcial o total de los provechos esperados de la tierra o por muerte, pérdida o daños ocurridos a sus animales.
+    \item La insolvencia total o parcial de sus clientes deudores por créditos comerciales.
+\end{itemize}
+
+\textit{Por excelencia, el ejemplo de la operación de daños es el seguro de automóviles. Pero en los daños no solo se contempla eso, también bienes económicos, inversiones e insolvencia de créditos.}
+
+\vspace{1cm}
+
+\textbf{Ramos del seguro de Daños}
+
+Estos ramos se definen en el Artículo 25 de la LISF, y son los siguientes:
+
+\newpage
+
+\begin{itemize}
+    \item \textbf{Responsabilidad Civil}
+    
+    Cubre el pago de la indemnización que el asegurado deba a un tercero a consecuencia de un hecho que cause un daño previsto en el contrato de seguro.
+    
+    \textit{A menudo se puede ver como una cobertura para el seguro de autos, en caso de que se tenga un choque, se puede pagar el daño ocasionado a un tercero.}
+    
+    \item \textbf{Marítimo y Transportes}
+    
+    Cubre el pago de la indemnización por los daños y perjuicios que sufran los muebles y semovientes que son objeto del traslado. Pueden igualmente asegurarse los cascos de las embarcaciones y los aeroplanos.
+    
+    \textit{Cubre productos que se trasladan en cualquier tipo de transporte, aéreo, naval o terrestre. Es un ramo altamente frecuente (ocurre de manera frecuente) y que tiene una severidad media.
+    Llegan a generar una mayor pérdida si no se tarifica bien la prima.}
+    
+    \item \textbf{Incendio}
+    
+    Los que tengan por base la indemnización de todos los daños y pérdidas causados por incendio, explosión, fulminación accidentes de naturaleza semejante.
+    
+    \textit{Es muy poco frecuente, pero tienen una severidad alta; la pérdida que se tiene en este ramo es alta. Regularmente llega a su tope de suma asegurada.}
+
+    \item \textbf{Agrícola y animales}
+    
+    El pago de indemnizaciones o resarcimiento de inversiones, por los daños o perjuicios que sufran los asegurados por pérdida parcial o total de los provechos esperados de la tierra o por muerte, pérdida o daños ocurridos a sus animales.
+    
+    \textit{Estos son muy comunes y se pueden generar cuando hay granizo, lluvias, sequias, cuando se pierde el cultivo por plagas, hongos o por pesticidas mal aplicados; también aplica para el ganado. Es difícil de medir este ramo.}
+    
+    \item \textbf{Automóviles}
+    
+    Cubre el pago de la indemnización que corresponda a los daños o pérdida del automóvil, y a los daños o perjuicios causados a la propiedad ajena o a terceras personas con motivo del uso del automóvil. 
+    
+    \textit{Normalmente se separa por coberturas para una mejor medición. Una cobertura básica es de daños materiales. Las coberturas adicionales pueden incluir responsabilidad civil, muerte accidental, pérdidas orgánicas, entre otras.}
+    
+    \item \textbf{Crédito}
+    
+    El pago de la indemnización de una parte proporcional de las pérdidas que sufra el asegurado como consecuencia de la insolvencia total o parcial de sus clientes deudores por créditos comerciales.
+    
+    \textit{No es tan común; un ejemplo sencillo es en un banco, al prestar dinero, corre el riesgo de que las personas no le paguen, para evitar insolvencia, el banco se asegura.
+    No tiene una naturaleza catastrófica, pero si puede tener una pérdida muy grande.}
+    
+    \item \textbf{Caución}
+    
+    El pago de una indemnización al asegurado a título  resarcimiento o penalidad por los daños patrimoniales sufridos, dentro de los límites previstos en el contrato de seguro, al producirse las circunstancias acordadas en relación con el incumplimiento por el contratante del seguro de sus obligaciones legales o contractuales, excluyendo las obligaciones relacionadas con contratos de naturaleza financiera. 
+    
+    \textit{Es el ramo más nuevo en México, tiene apenas unos tres años de haber ingresado en el país; antes su equivalente por así decirlo eran las fianzas. Pero las fianzas solamente existen en México y otro país (en otros países es caución).
+    Actualmente hay pocas aseguradoras con este ramo.}
+    
+    \textit{En realidad es una relación de tres personas, un asegurado, la aseguradora y un benefactor. El beneficiario obliga al asegurado a asegurarse con una aseguradora en caso de incumplimiento del contrato.}
+
+    \textit{Puede tener un daño severo.}
+
+    \item \textbf{Crédito a la vivienda}
+    
+    El pago por incumplimiento de los deudores de créditos a la vivienda otorgados por intermediarios financieros o por entidades dedicadas al financiamiento a la vivienda.
+    
+    
+    \item \textbf{Garantía financiera}
+    
+    El pago por incumplimiento de los emisores de valores, títulos de crédito o documentos que sean objeto de oferta pública o de intermediación en mercados de valores, en términos de lo previsto por la Ley del Mercado de Valores
+    
+    \textit{En México solo hay una aseguradora con este ramo, y curiosamente esta aseguradora se encuentra en Run-Off, es decir que ya no emiten pólizas. La compañía quebró con la crisis de 2008, pero como tenían pólizas vigentes, siguen cubriendo el daño.}
+    
+    \item \textbf{Riesgos catastróficos}
+    
+    Los contratos de seguro que amparen daños y perjuicios ocasionados a personas o cosas como consecuencia de eventos de periodicidad y severidad no predecibles que, al ocurrir, generalmente producen una acumulación de responsabilidades para las Instituciones de Seguros por su cobertura, dentro de los que se incluyen los riesgos de terremoto, erupción volcánica, huracán y otros de naturaleza hidrometeorológica.
+    
+    \textit{Se catalogan como poco frecuentes, pero muy severos. Cubre el valor del inmueble, su contenido y los consecuenciales del daño, es decir lo que genera.}
+    
+    \textit{Para calcular la reserva catastrófica la CNSF ofrece un sistema: Se basa con las ubicaciones, para calcular la reserva catastrófica en caso de terremotos, se hace mediante un sistema que genera una prima teórica basándose en la zona y número de pisos del edificio;en el caso de hidro se mide qué tan cerca están los inmuebles del nivel del mar, de qué año es la construcción.}
+    
+    \item \textbf{Diversos}
+    
+    El pago de la indemnización debida por daños y perjuicios ocasionados a personas o cosas por cualquiera otra eventualidad.
+    
+    \textit{Todo lo que no se puede clasificar en los ramos ya mencionados, se clasifica en este ramo.}
+    
+    \vspace{1cm}
+    
+    \textbf{Microseguros o seguros básicos estandarizados}
+    
+    Son principalmente de vida, pero también puede haber de gastos médicos, tratan de llegar a la mayor parte de la población y cubren lo básico, las primas son bajas, pero no se comercializan porque los agentes buscan tener una buena comisión y también ofrecer una cobertura más amplia.
+\end{itemize}
+
+\large
+\textbf{Seguro de Accidentes y Enfermedades}
+\vspace{0.5cm}
+\normalsize
+
+En este caso se cubre a la persona viva, no se puede ver en daños porque no cubre objetos. 
+
+De acuerdo con el capítulo 25 de la LISF, tenemos los siguientes ramos:
+
+\begin{itemize}
+    \item \textbf{Accidentes personales}
+    
+    Brinda protección financiera en caso de accidente por 
+    \begin{itemize}
+        \item Muerte accidental
+        \item Pérdidas Orgánicas
+        \item Reembolso de Gastos Médicos
+        \item Incapacidad total o parcial
+    \end{itemize}
+    
+    Además, sus subramos son \underline{individual} y \underline{colectivo}.
+
+    \textit{Un ejemplo es que cubren a la persona durante cierto evento, como los viajes o excursiones escolares.}
+    
+    \textit{Se ha vuelto famoso en ciertas personas que aseguran partes de su cuerpo.}
+    
+    \textit{La duración es comúnmente a corto plazo.}
+    
+    \item \textbf{Gastos Médicos}
+    
+    Mecanismo de protección para hacer frente a los gastos médicos originados por un accidente o enfermedad. 
+    
+    \textit{Este ramo es el emblema de la operación de accidentes y enfermedades porque es de los que más se comericializa. Hay mucha siniestralidad por la pandemia que se ha tenido que pagar.}
+    
+    \item \textbf{Salud}
+    
+    Ayuda a prevenir enfermedades, conservar y restablecer la salud, dando protección financiera.
+    
+    \textit{Sofía Salud es de las pocas aseguradoras que tienen este ramo de los seguros.}
+\end{itemize}
+
+\newpage
+
+\section{Viernes 18 de Febrero  }
+
+Hay que cuestionar la metodología y no solamente seguirla, para ver qué es lo que estamos realizando.
+
+La siguiente liga la vamos a estar ocupando:
+
+\textbf{https://informacionfinanciera.cnsf.gob.mx/}
+
+\vspace{1cm}
+
+\textbf{Estándares de la CNSF}
+
+Ya hay un estandar de cómo presentar el Estado de Resultados, y ese estandar lo queremos usar a nuestro beneficio.
+
+Las compañías de seguros no solamente están para cubrir las necesidades de los asegurados, también buscar dar dinero a los accionistas, el cual es el principal objetivo.
+
+Si nosotros siguiéramos un manual de reglas, todas las compañías tendrían los mismos resultados, las mismas ventas, la misma forma de trabajar, las mismas ventas, por eso no solo se trata de buscar una metodología estándar. De la misma manera qué los productos, atención, ventas son diferentes, también los actuarios son diferentes, y la forma de calcular las reservas, requerimiento de capital es diferente, por los distintos enfoques.
+
+Los estándares de la CNSF son interpretables y eso es lo que hay que hacer.
+
+No hay que estandarizar a todas las compañías.
+
+\vspace{1cm}
+
+\textbf{Tipos de operaciones}
+
+\begin{itemize}
+    \item [$\checkmark$] Se entiende por una \textbf{operación directa} cuando las compañías aseguradoras emiten sus pólizas y son las responsables del riesgo directamente.
+
+    \item [$\checkmark$] Se entiende por una \textbf{operación tomada} que trata temas de reaseguro. Dentro de las compañías de seguros en México, se permite que funcionen como reaseguradoras también, pueden ser tomadoras de riesgo. Pueden ser compañías nacionales o extranjeras, la misma normativa lo permite.
+
+\end{itemize}
+
+\textbf{Tipos de primas}
+
+\begin{itemize}
+    \item [$\checkmark$] Se entiende por una \textbf{prima cedida} a las primas que se van a pasar al reasegurador.
+
+    \item [$\checkmark$] Se entiende por una \textbf{prima cedida directo} de lo que yo emití en directo, yo voy a ceder.
+    
+    \item [$\checkmark$] Se entiende por una \textbf{prima cedida tomada} de la parte que se toma también puedo ceder.
+    
+    \item [$\checkmark$] Se entiende por una \textbf{prima emitida} a las primas de tarifa ya conocidas. Esta prima incluye la parte del riesgo y todos los recargos a la tarifa: Costo de adquisición, gasto de administración y la utilidad. El nombre es por un tema contable.
+    
+    \item [$\checkmark$] Se entiende por una \textbf{prima de retención} a la resta de primas emitidas menos primas cedidas.
+     
+    \item [$\checkmark$] Se entiende por una \textbf{prima de retención devengada} a la resta de primas de retención menos el incremento de la reserva. Es la base de toda nuestra operación, porque es lo que en otras compañías se traduciría como ventas. Es decir cuánto me quedé y con lo que tengo que operar.
+    
+    Muchas veces solo se muestra la prima de retención devengada en otros países, pero en México si se muestra el resto de primas.
+\end{itemize}
+
+
+Los conceptos del Estado de Resultados pueden aparecer como en directo o en tomado, pero la clasificación no siempre se hace así.
+
+Por ejemplo, el \textit{Incremento Neto de la Reserva de Riesgos en Curso y Fianzas en Vigor} y las \textit{Primas de Retención Devengadas} si aparecen como operación directa o tomada. Sin embargo no todos los conceptos van a ser directos y tomados, como los \textit{Costos de Adquisición}, que tienen \textit{Comisiones a Agentes}.
+
+\vspace{1cm}
+
+\textbf{Tipos de contrato de reaseguro}
+
+\begin{itemize}
+    \item [$\checkmark$]  Contrato proporcional
+    \item [$\checkmark$]  Contrato NO proporcional
+\end{itemize}
+
+En el Estado de Resultados solo se incluye el proporcional
+
+\vspace{1cm}
+
+\textbf{Incremento Neto de la Reserva de Riesgos en Curso y de Fianzas en Vigor}
+
+No es el saldo de la reserva, porque el saldo va en el Balance General en la parte de los pasivos. Solamente es el incremento de dicha reserva, es decir lo que cambió de un periodo a otro.
+
+\vspace{1cm}
+
+\textbf{Costos Netos de Adquisición}
+\begin{itemize}
+    \item [$\checkmark$] \textbf{Comisiones a Agentes:} Es lo que se le paga a los agentes porque vendan las pólizas.
+    \item [$\checkmark$] \textbf{Compensaciones Adicionales a Agentes:} Adicional a lo que se paga a los agentes, puede ser en efectivo o pueden ser premios. 
+    \item [$\checkmark$] \textbf{Comisiones por Reaseguro y Reafianzamiento Cedido:} ¿Por qué va negativo si es un costo? Lo que pasa es que si es un costo y se convierte en un ingreso, porque yo le paso un riesgo al reasegurador y de ese monto que le paso al reasegurador, el reasegurador va a pagarme una comisión como si yo fuera el agente, porque yo le estoy pasando parte del riesgo, es decir, le estoy dando un negocio.
+    \item [$\checkmark$] \textbf{Cobertura de Exceso de Pérdida:} Tiene que ver con reaseguro. Como existe el proporcional y no proporcional, y además solo se contempla el proporcional, entonces en este costo se contempla la parte no proporcional. Cuesta porque se tiene que pagar un monto para que la reaseguradora me cubra.
+    \item [$\checkmark$] \textbf{Otros:} Todo lo que no se puede clasificar en los conceptos anteriores.
+\end{itemize}
+
+\vspace{1cm}
+
+\textbf{Costo Neto de Siniestralidad, Reclamaciones y Otras Obligaciones Pendientes de Cumplir}
+
+No solo va la siniestralidad que ocurrió en el año del ejercicio, sino también el incremento que hay en la Reserva de Siniestros Ocurridos y No Reportados. Se contempla la parte bruta o directa y la cedida.
+
+\vspace{1cm}
+
+\textbf{Utilidad (Pérdida) Técnica}
+
+Es la resta de la prima de retención devengada menos los costos netos de adquisición y de siniestralidad.
+
+\vspace{1cm}
+
+\textbf{Gastos de Operación Netos}
+
+Es lo que ya conocemos como gastos de administración, pero para contabilidad se usa este nuevo nombre. Se divide en:
+\begin{itemize}
+    \item [$\checkmark$] Gastos Administrativos Operativos
+    \item [$\checkmark$] Remuneraciones y Prestaciones al Personal
+    \item [$\checkmark$] Depreciaciones y Amortizaciones
+\end{itemize}
+No podemos hacer algo con ellos, lo más que podemos es dar alertas sobre si van bien o mal.
+
+
+\vspace{1cm}
+
+\textbf{Utilidad (Pérdida) de la Operación}
+
+Es la resta de la utilidad técnica menos los gastos de operación netos.
+
+
+\vspace{1cm}
+
+\textbf{Resultado Integral de Financiamiento}
+\begin{itemize}
+    \item [$\checkmark$] De inversiones: Si tengo un activo financiero, se puede vender, deja un resultado de vender más la ganancia.
+    \item [$\checkmark$] Por venta de inversiones
+    \item [$\checkmark$] Por valuación de inversiones
+    \item [$\checkmark$] Por recargo sobre primas
+    \item [$\checkmark$] Intereses por créditos
+    \item [$\checkmark$] Castigos preventivos por riesgos crediticios
+    \item [$\checkmark$] Otros
+    \item [$\checkmark$] Resultado cambiario
+\end{itemize}
+
+\vspace{1cm}
+
+\textbf{Utilidad (Pérdida) antes de Impuestos a la Utilidad}
+
+Es la suma de la utilidad de la operación más las inversiones.
+
+\vspace{1cm}
+
+\textbf{Provisión para  el Pago de Impuestos a la Utilidad}
+
+El monto que se le tiene que pagar a Hacienda.
+
+
+\vspace{1cm}
+
+\textbf{Utilidad o pérdida del ejercicio}
+
+El resultado final.
+
+\vspace{1cm}
+
+\textbf{Objetivo de la materia}
+
+A grandes rasgos partimos de la prima emitida, analizamos los puntos, vamos a ver cuánto se genera la utilidad del ejercicio y ver cómo se traduce en el Balance General, para ver si la compañía es solvente o no lo es.
+
+
+\textbf{Puntos importantes}
+\begin{enumerate}
+    \item No se trata solo de seguir reglas, ni solo seguir los pasos que indica la normativa, hay que ser críticos para ver cuándo se tiene que seguir una metodología estrictamente, y cuando no. Se trata de establecer un código moral nuestro.
+    \item No hay que depositar el aprendizaje solo en el profesor, sino también investigar por nuestra cuenta.
+\end{enumerate}
+
+\newpage
+
+\section{Lunes 21 de Febrero  }
+
+\large
+\textbf{Compañía de seguros }
+
+\normalsize
+\begin{enumerate}
+    \item Prima de Tarifa o Prima Emitida: Tiene costos de adquisición de la prima, es lo que hay que pagar por haber adquirido la prima. A la par se tiene que ver cuánto se cede.
+    \begin{itemize}
+        \item Comisiones
+        \begin{itemize}
+            \item Agentes
+            \item Reaseguro
+        \end{itemize}
+        \item Exceso de Pérdida o Excess of Loss
+    \end{itemize}
+    \item Prima Cedida: A la par se tiene que ver cuánto se cede.
+    \item Costo de Siniestralidad: Lo que yo pongo en siniestros, más la Reserva de Siniestros Ocurridos No Reportados:
+    \begin{itemize}
+        \item Bruto (parte directa)
+        \item Cedida
+    \end{itemize}
+    \item Gastos de Administración (No hay forma de cederlo)
+    \item Inversiones
+\end{enumerate}
+
+La prima por si sola no sirve para todo lo anterior, hay que saber manejarla.
+
+Lo que buscamos es que las utilidades se reflejen adecuadamente para que los accionistas hagan uso de esas utilidades si se necesita.
+
+El objetivo de la aseguradora es generar dinero y valor para los accionistas.
+
+Al final también como actuarios debemos de ser administradores del dinero.
+
+\newpage
+
+\textbf{Prima}
+
+\begin{enumerate}
+    \item Reserva de Riesgos en Curso:
+    
+    Como vamos a guardar la prima mientras se tiene vigente; ya que la prima no siempre está vigente. Si el seguro ya se venció ya no tenemos que guardar reserva. Cuando comienza vigencia se guarda el dinero, cuando se acaba se libera el dinero.
+    
+    Tiene dos componentes
+    \begin{enumerate}
+        \item  Mejor estimador
+        \begin{itemize}
+            \item Mejor estimador de riesgo
+            \item Mejor estimador de gastos de administración
+        \end{itemize}
+        \item Margen de riesgo
+    \end{enumerate}
+    \item Reserva para Obligaciones Pendientes de Cumplir:
+    
+    Cuando se sabe que ya se cumplió un siniestro, se debe reservar dinero para ese siniestro.  
+    
+    Se divide a su vez en tres reservas:
+    \begin{enumerate}
+        \item Reserva de Siniestros de Monto Conocido
+        \item Reserva de Siniestros Ocurridos y No Reportados (SONOR o IBNR, es decir Incurred But Not Reported). En otros países la traducción es incurridos. 
+        \begin{itemize}
+            \item Mejor estimador de riesgo
+            \item Mejor estimador de gastos de administración
+        \end{itemize}
+        \item Reserva de Dividendos
+    \end{enumerate}
+\end{enumerate}
+
+Orden del  dinero en cómo llega la prima y cómo que se va a ocupar la prima:
+\begin{enumerate}
+    \item Reserva de riesgos en curso mientras está vigente el seguro
+    \item En el momento en que ocurre un siniestro, lo primero que se debe hacer es meterlo a la reserva de monto conocido (cuánto hay que guardar de lo que ya conocemos). Cuando se tienen los documentos, hago la reserva, porque ya está la obligación y se que en algún momento la van a reclamar. Lo normal es entre 1-2 años, pero en vida pueden ser hasta 5 años. Esa reserva no se mueve hasta que se paga o hasta que se cancela el siniestro. Se puede mover si tiene ajustes, por ejemplo en seguros de autos, primero se estima un monto y posteriormente puede ser un ajuste incrementando o bajando el monto.
+    
+    En el momento que entró \textit{Solvencia II} se cambiaron los nombres, algunos le dicen obligaciones pendientes de cumplir, pero son las de monto conocido.
+    
+    \item La reserva de siniestros ocurridos y no reportados no solo contempla esos siniestros, también debe reflejar los ajustes de monto que ya se mencionaron. Si ya ocurrió, ya lo reportaron, pero todavía no lo pagan, todavía puede tener cambios, esos cambios se deben registrar en esta reserva, porque no existe una reserva para ajustes.
+    
+    \item Para la reserva de dividendos, aplican en cualquier ramo colectivo o de flotillas; en una cartera de asegurados es una recompensa por haber tenido una buena siniestralidad.
+    
+    Quiere medir cuánto estima la compañía que debe devolver al asegurado por una buena siniestralidad.
+    
+    Se estima un monto inicial de siniestralidad para una cartera, por ejemplo $\$1,000,000$, pero al final solo da una siniestralidad de $\$500,000$ ese remanente de la diferencia, se devuelve una parte al asegurado. Yo como actuario tengo que estimar cuánto se va a mover; se sabe a partir de cierto periodo de la vigencia, dependiendo si el cliente tiene una buena o una mala siniestralidad.
+\end{enumerate}
+
+\textbf{Best Estimate of Liabilities o Mejor Estimador de las Obligaciones}
+
+Las comisiones no se meten en la reserva.
+
+\begin{enumerate}
+    \item Para la reserva de riesgos en curso y SONOR:
+    \begin{itemize}
+        \item  Riesgo: Cubre toda la siniestralidad, costo de adquisición
+        \item  Gastos: Cubre todos los gastos de administración
+        
+        Lo que queda es utilidad, pero sobre esa utilidad tengo un riesgo, porque esa utilidad no es real, ya que estoy reservando. Como esa utilidad  puede moverse, se genera el \underline{margen de riesgo} para proteger a la aseguradora y también a los accionistas. Está relacionado al capital que ponen los accionistas si se moviera la utildidad.
+    \end{itemize}
+\end{enumerate}
+
+\vspace{1cm}
+
+La prima cedida va a entrar como la parte cedida al reasegurador y eso se va al mejor estimador.
+
+Las inversiones estarán dadas por las reservas, esa reserva se tiene que invertir, pero no es tan fácil de invertir debido a las obligaciones a las que se tienen que hacer frente.
+
+No solo es tener el dinero invertido, sino también generar cierta liquidez.
+
+Invertir cada cierto tiempo hasta que el siniestro se pague o se cancele, esas inversiones deben ser a plazo fijo. 
+
+La CNSF estableció unas normas de cómo se debía invertir, por eso la mayoría de las inversiones deben estar en CETES, o en su defecto en dólares.
+
+\vspace{1cm}
+
+En la parte del mejor estimador en las reservas, también hay una  parte del reaseguro que se llaman importes recuperables del reaseguro, que quieren decir que de lo que se tiene estimado del riesgo, se estima una parte que devuelve el reasegurador.
+
+\vspace{1cm}
+
+Si se ocupa la prima para los costos, habrá que utilizar capital, ese capital lo tienen que poner los accionistas.
+
+\vspace{1cm}
+
+\textbf{requerimiento de capital de solvencia}
+
+Concepto creado en Solvencia II. Los accionistas pondrán un monto de su capital, que debe estar disponible en caso de que haya una pérdida que no haya sido controlada, tengo que tener dinero disponible porque sino no voy a pagar a los asegurados y la empresa se puede ir a la quiebra.
+
+Son modelos complejos.
+
+En el mercado nadie ha podido replicar el modelo de requerimiento de capital de la CNSF. Solo se ejecuta un programa que debe de alimentarse por insumos de la compañía.
+
+La base de Teoría del Riesgo dice que en una función de pérdidas, cada pérdida tiene asociada una probabilidad y nosotros cuando le calculamos un valor esperado y más adelante un percentil (En solvencia un VaR al 99.5\%) la resta sería el requerimiento de capital de solvencia.
+
+Tenemos un modelo de pérdidas en donde estimamos la siniestralidad, gastos, etc. y vemos cuál es la pérdida esperada para la cartera que tenemos en vigor (pólizas en vigor y siniestros vivos) y estresamos los escenarios. Esa diferencia entre la pérdida y el valor esperado es el requerimiento, y como eso no sale de la prima, lo tienen que poner los accionistas.
+
+\newpage
+
+
+
+
+\section{Miércoles 23 de Febrero  }
+
+La clase pasada mencionamos cómo funciona una aseguradora desde la perspectiva de lo que hacemos como actuarios, vimos que todo parte de la prima, la existencia de costos, gastos, comisiones.
+
+Gastos de administración dependen tal cual de administración, la dirección va a decidir de qué manera se asignan los recursos. No es tan sencillo tomar las decisiones en una función, porque puede varias por ejemplo si se cambia el director.
+
+\vspace{1cm}
+
+\textbf{Función de siniestralidad o pérdidas}
+
+El modelo que se presenta a continuación depende de dos cosas:
+
+\begin{figure}[h]
+\includegraphics[width=17cm]{siniestros.jpg}
+\centering
+\end{figure}
+
+En general se espera que la función de pérdidas se vea como la imagen anterior.
+
+La función de frecuencia vs severidad se puede encontar como la función de \underline{Pérdidas Agregadas}, es decir, se cumple que 
+\begin{equation*}
+    PA= (F) (S)
+\end{equation*}
+Donde:
+\begin{itemize}
+    \item PA = Pérdidas Agregadas
+    \item F = Frecuencia
+    \item S = Severidad
+\end{itemize}
+
+Dichas pérdidas agregadas tienen una característica muy útil:
+\begin{equation*}
+    \mathds{E}\left[(F)(S)\right] = \mathds{E}\left[F\right] \mathds{E}\left[S\right]
+\end{equation*}
+
+El problema está en el $99.5\%$ porque es difícil de estimar; en teoría es fácil de estimar con percentiles, pero en la práctica se usan modelos computacionales, y teniendo en cuenta las distribuciones, elaboramos un modelo con ciertos parámetros ajustados, se hacen escenarios y simulaciones para llegar al $99.5\%$, muchas veces no sabemos cómo se distribuyen los datos, por eso es más fácil asumir el comportamiento de las variables, hacer simulaciones y llegar a un valor que se acerque a ese VaR.
+
+\vspace{1cm}
+
+\textbf{Frecuencia}
+
+Se refiere a un contador.
+
+Para medir la frecuencia se ocupa la probabilidad, en este caso se suelen usar variables aleatorias discretas o de conteo como la \textit{Poisson, Binomial, Geométrica, Bernoulli, Binomial Negativa}, sin embargo también se puede usar una variable aleatoria \textit{Beta}, y esta variable aleatoria se usa para ver cómo se comporta la proporción de algo (porque está entre 0 y 1), por ejemplo para contar una proporción de pólizas.
+
+\vspace{1cm}
+
+\textbf{Severidad}
+
+Las variables de severidad deben ser variables aleatorias continuas, que deben cumplir que el monto esté entre $[0,\infty]$. El 0 implica que el siniestro no proceda o se haya cancelado; el infinito es relativo, pero se utiliza para montos muy altos. En este caso las distribuciones más empleadas son \textit{Exponencial, Lognormal, Pareto, Pareto Generalizada, Gamma}.
+
+También se pueden usar proporciones, por ejemplo en un seguro de autos que tenga una suma asegurada topada, lo más que se puede pagar es un monto, ese monto es una proporción del pago total, vamos a tener dos casos: pérdida total con una proporción de 1, pero también hay pérdidas parciales, que pueden ser un valor entre el 0 y la suma asegurada que en general coinciden con una variable: el deducible, que representará un porcentaje de la suma asegurada en donde habrá más frecuencia, tanto que aquí esperamos que se encuentre la media o la moda, depende de la tarificación. Por eso aquí también puede entrar en juego la \textit{Beta}.
+
+La distribución \textit{Uniforme} también se puede usar para proporciones y se ocupa cuando no se tiene conocimiento de la proporción de los siniestros.
+La distribución \textit{Normal} si se puede ocupar, y de hecho es muy útil para generar intervalos de confianza, pero para ajustar su rango y no contemplar valores negativos, hay que truncar la distribución o censurarla, o en su defecto aplicarle un logaritmo para que sea una \textit{Lognormal} y el valor de su rango sea no negativo.
+
+\textbf{Frecuencia vs Severidad}
+
+Las dos variables determinan el monto de las pérdidas. El producto de ambas funciones se espera que el dominio esté en los reales no negativos. 
+
+\vspace{1cm}
+
+\textbf{Simulaciones}
+
+No hay una forma para saber cuántas simulaciones se deben de usar, pero hay que ver en qué punto ya no hay variabilidad en el estimador. Hay que ver cuál modelo es más certero, pero que implique usar menos tiempo.
+
+\vspace{1cm}
+
+\textbf{Proceso en la siniestralidad}
+
+Regresando a la imagen de la función de siniestralidad:
+
+Es la función de siniestralidad, sabemos que dicha siniestralidad es proveniente de las pólizas, y las pólizas las cobramos en primas y las traducimos en gastos y costos para llegar a una utilidad. El problema es ver en qué momento entra el capital para cubrir el valor faltante, porque la prima está hecha para cubrir al menos el valor esperado de la siniestralidad (prima de riesgo) y la suma de primas de riesgo de la compañía  debería ser equivalente a los valores esperados de las reservas (mejor estimador). Y para llegar hasta el $99.5\%$ que necesitamos para estar cubiertos y tener dinero para afrontar obligaciones, se necesita el requerimiento de capital de solvencia, que es un monto que aportan los accionistas al capital para hacer frente a las obligaciones, bajo un escenario del $99.5\%$. Este escenario es algo particular de \textit{Solvencia II}, es decir, este regimen se basa en escenarios al $99.5\%$, pero eso solo es regulatorio.
+
+\vspace{1cm}
+
+\textbf{La importancia de la prima}
+
+Si todo parte de la prima, tenemos que hacer una muy buena estimación de cómo distribuir la prima en todos los gastos, y luego hacer una buena distribución de lo que hay que mandar a reservas. Finalmente hay que establecer una buena distribución de capital de los accionistas. 
+
+\textbf{Documento MAPFRE}
+
+Es un documento elaborado por un actuario y personas de diversas áreas, que generen un documento elaborado internamente que se vuelve de caracter público, que refleje adecuadamente cómo funciona la compañía. 
+
+Incluye:
+\begin{itemize}
+    \item [$\checkmark$] En general del negocio y resultados: En qué consiste el negocio, qué vende en pólizas, qué ramos tienen, qué perfil tiene, utilidad o pérdida.
+    \item [$\checkmark$] Gobierno Corporativo: Qué funciones hay en la compañía. Este es un nombre elegante para referirse al organigrama de la compañía y cómo está organizada. También tiene manuales, normas internas y externas, funcionamiento, líneas de autoridad.
+    \item [$\checkmark$] Perfil de riesgos: Cómo suscribir cierto tipo de pólizas, hay que ver qué sectores convienen más, qué tipo de riesgos van a funcionar mejor en la compañía.
+    \item [$\checkmark$] Evaluación de la solvencia: Tiene que ver con los escenarios de la compañía, ver si se cubren esos escenarios con los activos y el capital.
+    \item [$\checkmark$] Gestión de capital: El capital tiene que ver con lo que aportaron los accionistas, pero también se podría entender en la parte del requerimiento de capital de solvencia.
+    \item [$\checkmark$] Información cuantitativa: Cualquier información.
+\end{itemize}
+
+Nos da un panorama amplio de la compañía.
+
+\vspace{1cm}
+
+\textbf{Calificadoras Internacionales}
+
+\begin{itemize}
+    \item Fitch
+    \item Moody's
+    \item Standard $\&$ Poor's
+\end{itemize}
+
+Dan una calificación crediticia que tiene que ver con el cumplimiento de sus obligaciones de estas compañías. ¿Qué tan probable es que no se vayan a la ruina? Se buscan las calificaciones más altas.
+
+Es relevante para tomar decisiones el tener las calificaciones que se le da a la compañía.
+
+Hay otras calificadoras más pequeñas también.
+
+\newpage
+
+\section{Viernes 25 de Febrero  }
+
+\large
+\textbf{Quiz segunda semana:} 
+
+\normalsize
+\begin{enumerate}
+    \item \textbf{RCS es la abreviación de:}
+    
+    \textbf{\textcolor{red}{Requerimiento de Capital de Solvencia.}}
+    
+    \item \textbf{El concepto de prima de tarifa aparece en el Estado de Resultados con el nombre de prima:}
+    
+    \textbf{\textcolor{red}{Falso, porque aparece con el nombre de prima emitida.}}
+    
+    \item \textbf{Bajo Solvencia II, el percentir o VaR utilizado para calcular el RCS es:}
+    
+    \textbf{\textcolor{red}{El $99.5\%$}}
+    
+    \item \textbf{De acuerdo con la regulación mexicana, la reserva de SONR o IBNR forma parte de otra reserva llamada:}
+    
+    \textbf{\textcolor{red}{Reserva de Obligaciones Pendientes de Cumplir.}}
+    
+    \item \textbf{La variable BEL en las reservas se refiere al concepto de:}
+    
+    \textbf{\textcolor{red}{Best Estimate Liabilities o Mejor Estimador.}}
+    
+    \item \textbf{Las comisiones pagadas agentes, no son consideradas como gastos, más bien son:}
+    
+    \textbf{\textcolor{red}{Costos de adquisición.}}
+   
+\end{enumerate}
+
+\vspace{1cm}
+
+\textbf{CUSF Interactiva,  Anexo 22.1.2}
+
+Este apartado es para ver con más detalle la descripción de los conceptos que se incluyen en el Balance General y los que van en el Estado de Resultados.
+
+Las mayúsculas acompañadas de números son términos contables para referirse a las normativas contables.
+
+Si no está el concepto que buscamos aquí, podemos buscarlo directamente en la CUSF.
+
+\newpage
+
+\textbf{Origen de Solvencia II}
+
+El origen de \textit{Solvencia II} está en los \textit{Acuerdos de Basilea} los cuales miden adecuadamente los requerimientos de capital y las reservas de los bancos; es un poco distinto porque los bancos si tiene crédito, entonces para calcular dicha reserva se toma en cuenta una función que contemple la probabilidad de incumplimiento, el monto y el tipo de cliente.
+
+\vspace{1cm}
+
+\textbf{Retomando el documento de MAPFRE}
+
+\begin{itemize}
+    \item CEO o Director General: Su objetivo general es administrar y controlar, siempre se va a procurar de administrar bien la compañía de acuerdo a los objetivos de los accionistas
+    \item Área Comercial: Comúnmente es el área de marketing o ventas y son quienes hacen las estrategias, campañas para venter, etc. Esta área no tiene necesariamente actuarios. Su objetivo es vender.
+    \item Área Técnica: Son los que calculan las reservas, requerimiento de capital, valor de la prima, etc. En general aquí si hay actuarios. Tiene una estrecha relación con el área comercial. El objetivo es dar un costo adecuado de cada concepto.
+    \item Operaciones: Es un concepto general, muchas veces va desde quién emite las pólizas, pero también puede entrar las operaciones de siniestros, médicos y peritos evaluando. Responde a ver quién es el que hará el trabajo directo con el asegurado.
+    \item Tecnologías de la Información: Todo lo que tenga que ver con sistemas, procesos.
+    \item Control: Área que busca los procesos para que la compañía funcione adecuadamente, es digamos la primera regulación de la compañía que indica si el proceso va bien o no. Generalmente le reportan directo al Director General.
+    \item Comité de Dirección: Comité de Control Interno
+    \item Jurídicos
+\end{itemize}
+
+Es importante porque así se ve cómo se genera el Estado de Resultados en una compañía.
+
+Los nombres mencionados son los que les da la compañía, pero realmente son las áreas establecidas dentro de los lineamientos de la CUSF.
+
+\underline{En el Capítulo 3 de la CUSF 22.1.2 se encuentra el Gobierno Corporativo.}
+
+\newpage
+
+\section{Lunes 28 de Febrero  }
+
+\large
+\textbf{Solvencia II}
+
+\vspace{0.5cm}
+
+\normalsize
+\textbf{¿Qué es?}
+
+Es un marco normativo, o una orientación que se les da a los países para poder regular a las compañías aseguradoras. En sí quien adopta \textit{Solvencia II} son los países, no las aseguradoras: México adoptó \textit{Solvencia II}. Hoy en día  Colombia está en proceso de sí adoptar o no el esquema o marco normativo.
+
+\vspace{0.5cm}
+
+\textbf{Orígenes}
+
+En 2008 tuvo mayor auge \textit{Solvencia II} debido a la crisis económica de ese año. Este marco busca que existan buenas reservas en las compañías y sean solventes.
+
+\vspace{0.5cm}
+
+\textbf{Diferencias}
+
+Antes sí existía la solvencia de las compañías.
+
+Antes era un número o fórmula: El \textit{Capital Mínimo de Garantía} y este concepto te permitía ser solvente. Era un monto muy alto, comparado con el \textit{Requerimiento de Capital de Solvencia} se habla del mismo volumen de infomación.
+
+México ya estaba bien, pero después de los análisis resultó que se podía mejorar.
+
+Antes las reservas eran muy conservadoras, porque tenían el pensamiento de guardar el dinero e irlo liberando conforme avanza el tiempo. Antes la reserva literal guardaba todo, incluyendo la parte de riesgo, las comisiones, gastos de administración y la utilidad, es decir: reservaba sobre prima de tarifa. Al final del periodo se veía el efecto de esa liberación.
+
+Ahora con \textit{Solvencia II} no es así porque nos quedamos con la utilidad desde el inicio de la vigencia (porque el objetivo del marco es que se reconozca cómo están los flujos futuros. \textbf{Esta es una de las principales diferencias.}
+
+\textbf{La tercera diferencia} es que la parte cualitativa (Normativa de las compañías, Autorregulación, Mercado) también se modificó con \textit{Solvencia II}.
+
+A partir del 2016 se empezaron a realizar los cálculos con la nueva normativa, pero la Ley viene desde antes, se publicó desde 2013. En la Circular Única de Seguros y Fianzas se publicó desde 2015.
+\vspace{0.5cm}
+
+\textbf{La situación estadounidense}
+
+En Estados Unidos tienen sus propias normativas o estándares, los cuáles son conocidos como \textbf{US GAAP}. El término US GAAP hace referencia a las \textit{Generally Accepted Accounting Principles} que traducido sería: \textbf{Principios de Contabilidad Generalmente Aceptados} en los Estados Unidos.
+
+
+Estos principios y normas son únicamente adoptados y utilizados en el país vecino. El resto de paises si se rigen por una norma internacional, se basan en las \textit{NIIF (Normas Internacionales de Información Financiera)}, denominadas también IFRS (International Financial Reporting Standards).
+
+Esta normativa les permitía seguir lo que ellos quisieran hacer, no solo para seguros sino también para bancos, es por ello que la crisis tuvo gran impacto allá.
+
+También hay que considerar que ahí las normativas son estatalesa diferencia que aquí son federales y aplican a todo el país (en su mayoría).
+
+\vspace{1cm}
+
+\Large
+\textbf{Documento Deloitte}
+
+\vspace{0.5cm}
+
+\normalsize
+
+\textbf{¿Qué es Solvencia II?}
+
+\begin{itemize}
+    \item Marco de regulación y supervisión de compañías de seguro y reaseguro establecidas en el Espacio Económico Europeo (EEA).
+    \item Sistema normativo creado por EIOPA (la Autoridad Europea de Seguros y Pensiones de Jubilación, por las siglas European Insurance and Occupational Pensions Authority y que es una institución de la Unión Europea) a través de la consulta al sector y su juicio, basado en la gestión integral del riesgo, la gestión del consumo de capital (requerimiento), el gobierno corporativo y el reporting (tercera diferencia o información que se comparte al mercado). Este conjunto de regulaciones busca incentivar la gestión y supervisión de las entidades aseguradoras prospectivas y más sensibles al riesgo, de forma que se mejore la protección del asegurado aumentando el control y medición de los riesgos (suscripción, mercado, operacional y de crédito...) a los que están expuestas las aseguradoras.
+    \item Establece requerimientos cuantitativos (Pilar I), cualitativos (Pilar II) y de reporte y transparencia de mercado (Pilar III).
+    \item Fija el capital regulatorio (Fondos Propios admisibles) que las aseguradoras deben de tener en su balance.
+
+\end{itemize}
+
+\newpage
+
+\textbf{Pilares}
+
+\begin{figure}[h]
+\includegraphics[width=18cm]{pilares.jpg}
+\centering
+\end{figure}
+
+\textbf{Pilar 1:}
+\begin{itemize}
+   \item [$\checkmark$] En México ya no existe el concepto de \textbf{Capital Mínimo Requerido (MCR)} porque ahora es el \textbf{Capital Mínimo Pagado}.
+   \item [$\checkmark$] El \textbf{Capital de Solvencia Requerido} no es otra cosa que el \textbf{Requerimiento de Capital de Solvencia}, pero aquí es traducción directa.
+   \item [$\checkmark$] Las \textbf{Provisiones Técnicas} es a lo que nosotros llamamos \textbf{Reservas Técnicas}.
+   \item [$\checkmark$] \textbf{Recursos Propios} es todo lo extra que entra en la parte cuantitativa.
+\end{itemize}
+
+\textbf{Pilar 2:}
+\begin{itemize}
+    \item [$\checkmark$] El \textbf{Sistema de Gobierno y Gestión de Riesgos} es el \textbf{Gobierno Corporativo}, pero tiene nombre europeo. Muchas veces se puede encontrar como \textbf{Administración de Riesgos} o \textbf{Administración Integral de Riesgos}. El nombre es porque es un sistema porque se busca que los riesgos sean integrales y se canalice la compañía de forma total, no solo los riesgos representados individualmente, sino la interacción entre ellos.
+    \item [$\checkmark$] El \textbf{ORSA} está en ingles, es a lo que nosotros conocemos como \textbf{ARSI (Autoevaluación de Riesgos y Solvencia Institucionales)}.
+\end{itemize}
+
+
+\textbf{Pilar 3:}
+\begin{itemize}
+    \item [$\checkmark$] La palabra de \textbf{Requisitos} es más común encontrarla como \textbf{Requerimientos de Información Cualitativa y Cuantitativa} y habla de la transparencia. 
+    
+    Es una gran diferencia respecto a la normativa anterior, porque en el pasado solo se tenía que publicar cierta información y no todo era público. Ahora prácticamente todo es público, lo que no es público la parte operacional de las empresas, cómo hacen sus productos, esquemas de reaseguro, formas de tarificación y cómo hacen sus reservas por ejemplo. Pero si se menciona cómo está la parte de riesgos de la compañía, por tanto se expone ante los ojos del mercado.
+    
+    Cuando contratamos un seguro, nosotros como actuarios hay que fijarnos en la información de la empresa: ver su utilidad, requerimiento de capital, tamaño de sus reservas, es decir aspectos que nos den idea de qué nos va a pasar a nosotros como usuarios en los siguientes años.
+\end{itemize}
+
+\vspace{0.5cm}
+
+\textbf{Riesgos}
+
+El objetivo del actuario es modelar y medir riesgos. Los nombres de los riesgos van cambiando de nombre según en dónde aparezcan.
+
+Por parte normativa se indica qué riesgos se deben medir, es una decisión del regulador, lo heredemos desde Europa, aquí la Comisión Nacional de Seguros y Fianzas retomó los siguientes riesgos porque son los más representativos. Si se quiere medir un riesgo adicional, la normativa lo permite, por ejemplo el \textit{Riesgo cibernético, por ejemplo cuando nos roban datos}. 
+\begin{itemize}
+    \item \textbf{Riesgo de mercado}
+    
+    Se puede encontrar también como \textbf{Riesgo financiero} y tiene que ver con todo lo relacionado en el mercado visto desde el punto de vista financiero. Por ejemplo: efectos de la tasa de interés, calze de activos y pasivos y su efecto, afectación de las calificaciones crediticia según el volumen de créditos que tenga la empresa.
+    
+    \item \textbf{Riesgo de contraparte}
+    
+    No es la contraparte de reaseguro, es una contraparte de deudores: hay gente que le debe a la compañía y la compañía debe a otras entidades. Este riesgo implica qué pasa si tenemos un deudor y por cualquier razón no me paga. ¿Cómo me afecta?
+    
+    \item \textbf{Riesgo operacional}
+    
+    Para fines del curso le decimos \textbf{Riesgo operativo}, por ejemplo no tener una manera de continuar las operaciones de la compañía: si un analista borra las bases de datos. Lo difícil de este riesgo es cómo medirlo, por ejemplo medir la probabilidad de que llegue otra pandemia y nos afecte la forma de operar, o la probabilidad de que alguien renuncie y deje un área vulnerable.
+    
+    Los modelos se basan en cómo están las ventas. Podría ser tan complejo como asignar probabilidades a cada uno de los escenarios que creemos que podrían afectar la compañía.
+    
+    \item \textbf{Riesgo técnico}
+    
+    Puede ser cualquier cosa relacionada con tarifas, reservas, productos, ventas. La compañía tiene que saber qué es lo que les puede afectar en su suscripción. \textbf{Son riesgos de suscripcion.} Si hacemos una suscripción incorrecta va a pegar en todo: por ejemplo si se hace un descuento incorrecto puede resultar en una pérdida final.
+    
+    \item \textbf{Riesgo de Liquidez, estratégico, reputacional,...}
+\end{itemize}
+
+Cada compañía tiene que establecer mínimo los reisgos anteriores, y ya es decisión de cada una si implementa más tipos de riesgos.
+
+\vspace{0.5cm}
+
+\textbf{Factores a considerar en la estructura de Solvencia II}
+
+Con \textit{Solvencia II} la compañía tiene que estar más organizada, tomar más fuerza, ser más independiente. Diferente a cómo era en \textit{Solvencia I}. Ahora hay ciertos estándares para garantizar que las compañías sean solventes bajo escenarios de estrés. No solo es el dinero que se tiene guardado, sino la forma adecuada de operar de la compañía.
+
+Por ejemplo, no se puede dejar el cargo de un área a una sola persona, es un gran riesgo porque si se llega a enfermar o a ir de vacaciones, puede tener graves consecuencias a la compañía.
+
+A continuación se mencionan algunas cosas que se deben organizar en la compañía:
+
+\begin{itemize}
+    \item Centralizar vs descentralizar: Dentro de la compañía, en dónde se pondrán actividades clave y en se mantendrán a otro lado.
+    \item Asignar responsabilidades: Asignar claramente a cada área qué le toca. Si les toca a dos áreas debe haber responsables principales, y personas de apoyo.
+    \item Alineación sincronizada con la estructura corporativa: Trabajar en paralelo dentro de la compañía.
+    \item Equilibrio entre los recursos necesarios en el negocio y los asignados al proyecto: Necesitamos optimizar, hay que justificar el número de integrantes de cada área, que no haya exceso de trabajadores, pero que si exista el número mínimo necesario de trabajadores. Esto se determina según el tamaño de la compañía, así como la asignación de actividades.
+    \item Enfoque de los flujos de trabajo, es decir hacia donde enfocas las actividades, por ejemplo:
+    
+    Orientado a los pilares
+    
+    Orientado a bloques de trabajo
+    
+    Orientado a capacidades / visión
+\end{itemize}
+
+\vspace{0.5cm}
+
+\textbf{Empresas dedicadas al buen funcionamiento de aseguradoras}
+\begin{itemize}
+    \item Deloitte
+    \item FIS
+    \item IFRS
+    \item Deloitte + SAP
+    \item Tagetik
+    \item Aptitude
+\end{itemize}
+
+\vspace{0.5cm}
+
+\textbf{Desventajas de Solvencia II}
+
+\begin{itemize}
+    \item La parte de recursos: Es muy caro de administrar porque se necesita mucha gente y recursos para que el marco funcione.
+    \item Requerimientos innecesarios: ¿Realmente es necesario implementar tantos detalles?
+\end{itemize}
+
+\vspace{0.5cm}
+
+\textbf{Para más información} \url{https://www2.deloitte.com/content/dam/Deloitte/co/Documents/finance/SOLVENCIA\%20II_DINAMIC.pdf}
+
+\textbf{Para más información actuarial}
+\url{https://lisfcusf.cnsf.gob.mx/CUSF/CUSF4_3} en la sección 4.3.1.a.
+
+\newpage
+
+\section{Miércoles 2 de Marzo  }
+
+\Large 
+\textbf{Solvencia II en México}
+
+\vspace{0.5cm}
+
+\normalsize
+
+\textbf{Definiciones}
+
+\begin{figure}[h]
+\includegraphics[width=18cm]{solvencia.jpg}
+\centering
+\end{figure}
+
+\begin{enumerate}
+    \item El \textbf{Esquema de Balance}, hablando del balance general, tiene que aparecer el Requerimiento de Capital, que no es algo que se sume al capital, sino es una forma de describir como se distribuye el capital: Aparece en la parte de abajo del balance para medir la solvencia.
+    \item Se busca medir adecuadamente el riesgo de cada compañía. 
+    \item Buen nivel de Gobierno Corporativo para que el regulador no se involucre en ciertas cosas porque ya lo implementa la propia compañía.
+    \item Ahora ya hay muchos países con \textbf{Solvencia II}, por eso lo de regional se pone un poco en duda.
+\end{enumerate}
+
+\vspace{0.5cm}
+
+\textbf{Modelo tipo Solvencia II}
+
+\begin{figure}[h]
+\includegraphics[width=12cm]{modelo.jpg}
+\centering
+\end{figure}
+
+\vspace{0.5cm}
+
+\textbf{Diferencias entre modelos}
+
+\begin{figure}[h]
+\includegraphics[width=13cm]{difmod.jpg}
+\centering
+\end{figure}
+
+La valuación de mercado tiene que ver con cómo percibe el mercado un producto, una reserva, un requerimiento de capital. 
+
+Se tiene que valuar a un precio de tal manera de cuando lo compren sea el precio justo. \textbf{Fair Market Value}. Y se refiere a cuánto está dispuesto a pagar el mercado por algo que yo voy a dar.
+
+
+\begin{itemize}
+    \item En Solvencia I las valuaciones eran estatutarias, es decir cada uno tenía que seguir lo que el regulador decía. Ahora en Solvencia II hay más libertad, por eso se dice que ya hay consistencia con el mercado.
+    \item Antes  si había modelos de riesgo pero no estaban tan refinados. Con Solvencia II ya hay modelos más especializados. Pero por ejemplo, con modelos estocásticos, por más simulaciones que se hagan, no van a predecir escenarios en donde haya fluctuaciones muy marcadas generadas por situaciones como el conflicto entre Rusia y Ucrania.
+    \item Efectivamente antes no había dependencias de riesgos porque no había forma de comparar, con Solvencia II sí hay y es un modelo que está basado en \textbf{cópulas}.  
+    
+    La Teoría de Cópulas es un tema de máxima actualidad, sobre el que existen numerosas líneas de investigación abiertas, habiéndose sistematizado y desarrollado su estudio en la última década. Las funciones cópulas están relacionadas con el estudio de las distribuciones multivariantes con distribuciones marginales dadas, y por ende, con las relaciones que existen entre estas últimas. Cada función de distribución conjunta contiene implícitamente una descripción del comportamiento marginal y de la estructura de dependencia que mantienen las marginales. Si se conoce la función de distribución conjunta, automáticamente quedarían determinadas de forma única las funciones de distribuciones marginales. Sin embargo, si se conocen las funciones de distribuciones marginales relativas al vector aleatorio, estas no determinarían de forma única la correspondiente función de distribución conjunta, y por ello surge el interés de estudiar la estructura de dependencia entre las marginales. En pocas palabras las \textbf{cópulas} son funciones que relacionan la distribución conjunta de dos variables con sus distribuciones marginales.  En numerosas aplicaciones que involucran implícitamente vectores aleatorios se asume que existe independencia de las variables que lo conforman. Esto resulta un supuesto insostenible en algunos modelos multivariados: en finanzas, por ejemplo, resulta sencillo mostrar evidencia de la influencia del resultado de inversiones de una cartera con respecto a otra para una misma empresa; en seguros, es casi evidente que los resultados de los subramos están relacionados entre sí. En estos contextos es necesario introducir un grado de dependencia entre variables para dar al modelo un toque más realista. El problema de la modelación de dependencia no tiene un método cuya aprobació sea consensual; sin embargo, una de las herramientas más utilizadas para este fin (y que ha cobrado relevancia por las implicaciones que ha tenido en el sector financiero) es el concepto de cópula.
+    \item Respecto a la medición de riesgos, el VaR es lo que le llamamos el percentil (términos de porcentaje), pero es a lo que en probabilidad le conocemos como cuantil. El Tail-VaR es un concepto más extraño de abordar.
+    \item Las pruebas de estrés al inicio tenía mucho auge, pero por ahora el mercado no lo ha exigido tanto. Casi no se han visto aplicadas, salvo en ejercicios para análisis.
+    \item Para las reservas, solo se menciona la de Riesgos en Curso, porque la IBNR ya existía, solo cambió en su estructura.
+    \item  Las inversiones ya tienen que ver con las reservas, por medio de una política de inversión y se deben definir en función de la duración y del volúmen, como se aplicará esa inversión. Es una política, no es un análisis donde se vea la situación externa e interna; más bien es sujetarse a la política.
+\end{itemize}
+
+\textbf{Modelo no paramétrico:} De acuerdo en la historia se repiten valores o tendencias.
+
+\textbf{Modelo paramétrico:} Yo puedo ajustar un modelo y ese modelo incluyen valores que no necesariamente tengo en la historia, tendrá un poco más de certeza sobre la variabilidad si el modelo es bueno en la simulación.
+
+Si es cálculo directo parte determinística, si toca analizar variabilidad usar la parte estocástica, si se requiere hacer un análisis más completo usar un modelo paramétrico aunque no pase la prueba de bondad de ajuste, y solamente hacer comparativo gráfico.
+
+\vspace{0.5cm}
+
+\textbf{Gráfica de cómo se debe constituir el mercado}
+
+\begin{figure}[h]
+\includegraphics[width=10cm]{regula.jpg}
+\centering
+\end{figure}
+
+El esquema es para ver cómo estaban y qué les hacía falta.
+
+\begin{itemize}
+
+\item La \textbf{Administración de Riesgos} antes prácticamente no existía, ahora con la implementación de manuales y metodologías ayudó mucho, fue la gran aportación de Solvencia.
+
+\item El \textbf{Control Interno} es para ver cómo se establecen y se siguen las normas dentro de una compañía. Pero antes no había mucho control porque no había manuales completos, no había documentación.
+
+\item \textbf{Auditoría Interna} se heredó de otras industria dentro del sector financiero principalmente. Nos indica que tan bien o mal estamos haciendo las cosas. Desde los ojos de la compañía y es independiente a las demás áreas.
+
+Hay correlación entre control interno y auditoría interna.
+
+Ya existe más rigor en otras auditorías.
+
+\item  Existe una \textbf{Auditoría Externa} que se divide en dos:
+\begin{itemize}
+    \item Financiera, que tiene que ver con los estados financieros, cuentas.
+    \item Auditoría actuarial, o el actuario independiente, que es un actuario que revisa bajo sus propias metodologías y perspectivas y lo compara con lo que les da a los actuarios internos.
+\end{itemize}
+\item  La \textbf{Comisión} puede revisar prácticamente todo incluyendo al actuario independiente para ver qué es lo que hizo.
+\item La \textbf{Contratación de Servicios con Terceros} se quedó prácticamente igual. No tiene nada que ver con solvencia, buscamos un tercero con calidad que cubran con sus responsabilidades.
+\end{itemize}
+
+México fue el primer país que implementó \textbf{Solvencia II}.
+
+
+\textbf{Más información en:} \url{http://www.actuaries.org/FUND/Mexico_2012/Aguilera.pdf}
+
+
+\newpage
+
+\section{Viernes 4 de Marzo  }
+
+Sabemos que la base es la prima, pero vamos a sus orígenes.
+
+¿Cuánto representa la prima respecto a la suma asegurada?
+
+En el caso de vida, tenemos las probabilidades de vida y muerte, en el caso de daños tenemos frecuencia y severidad.
+
+\textbf{Estrategias para los productos de seguros}
+
+¿Cuál es la estrategia de la compañía? La decisión depende de la etapa en donde esté la compañía.
+
+\begin{itemize}
+    \item Si la compañía está en \textbf{etapa joven}, generalmente se elige el mercado. 
+    \item Si se tiene una \textbf{compañía en desarrollo}, se puede ir con un análisis básico, como el de la prima entre la suma asegurada dando como resultado la cuota. 
+    \item Cuando la \textbf{compañía está avanzada o madura} y ya cuenta con experiencia, ya tiene información para generar su propia prima de riesgo.
+    \item Conforme se va generando más experiencia, se pueden ir añadiendo más variables para tarificar las pólizas.
+\end{itemize}
+
+Las compañías grandes no cobran más para ganar más, hay que recordar que toman riesgos de todos, van a tomar buenas y malas carteras. Las malas carteras al final van a alterar la siniestralidad y como se altera esa siniestralidad, va a costar más.
+
+Si yo como compañía con presencia empiezo a cobrar más barato, voy a generar desestabilización del mercado, puede afectar a otras compañías o a mi propia compañía.
+
+
+\vspace{0.5cm}
+
+\textbf{Puntos a considerar en el análisis de productos}
+
+\begin{itemize}
+\item ¿Cuánto me deja?
+\begin{itemize}
+    \item  Marginalmente
+    \item En total
+\end{itemize}
+\item ¿Qué pasa con el mercado?
+\item ¿Cuál es el riesgo?
+\end{itemize}
+
+\textbf{Revisar Excel: Análisis de Productos}
+
+\newpage
+
+\section{Lunes 7 de Marzo  }
+
+\Large
+\textbf{Quiz cuarta semana - CUSF 4.1} 
+
+\normalsize
+\begin{enumerate}
+    \item \textbf{Cuando la información utilizada para los cálculos de las reservas y de primas es recibida o se puede descargar en tiempo, se le conoce como:}
+    
+    \textbf{\textcolor{red}{Información oportuna.}}
+    
+    \item \textbf{¿Cuál de las siguientes características de los productos NO se es necesario incluir en la nota técnica en la sección de características del producto?}
+    
+    \textbf{\textcolor{red}{Sub-ramo del producto. La modalidad de contratación sí es importante porque dice a quién va dirigido el producto. Esto afecta a la tarificación, por ejemplo cuando se contrata el mismo producto, pero con distintos parámetros, contratado por internet y otro con agentes.}}
+    
+     \item \textbf{Se le conoce así al tipo de cobertura que describe el riesgo en cuestión, cuyo beneficio caracteriza al seguro y que es necesario para la contratación del producto:}
+    
+    \textbf{\textcolor{red}{Cobertura básica.}}
+    
+    \item \textbf{¿Cuál de los siguientes supuestos no se utiliza para los productos de la operación de vida?}
+    
+    \textbf{\textcolor{red}{Tasa de natalidad. La tabla de incapacidad es necesaria, porque es una cobertura adicional muy recurrente.}}
+    
+     \item \textbf{¿El siguiente enunciado es verdadero o falso? Cuando la prima se base en información prevista por el reasegurador no será necesario que se indiquen las hipótesis técnicas con las que se calculó la prima de riesgo.}
+    
+    \textbf{\textcolor{red}{Verdadero.}}
+\end{enumerate}
+
+\newpage
+
+\Large 
+
+\textbf{Continuación análisis de productos CUSF 4.1}
+
+
+
+\normalsize
+
+Para elegir el mejor producto de seguros es necesario seleccionar que preferimos: mercado, indicador o medidas de riesgo especializadas.
+
+\vspace{0.5cm}
+
+\textbf{Algunos puntos de la CUSF}
+
+\begin{itemize}
+
+\item La normativa no da la opción para tarificar si no se tiene información. Este es un hueco de la ley.
+
+Existen tarifas de reasegurador y de mercado, estas tarifas de mercado son publicadas por la AMIS y tienes que ser miembro para tener acceso a este contenido. Con esa información se puede calcular la prima de los productos.
+
+Se pueden proponer \textbf{esquemas de tarificación experimental}. Una \textbf{tarifa experimental} es una forma de cubrirse, de ser conservador con lo que estoy haciendo en los productos. El producto es conservador no solo en la prima, sino también en las reservas. 
+
+\item No será necesario incluir la información estadística cuando la prima del producto se sustente en  estudios y manuales elaborados por asociaciones, organizaciones o entidades del sector que hayan sido previamente validados por la Comisión. Por eso si la AMIS nos da la cuota (que no es lo mismo que la información), podemos tomar el valor ya dado (no es lo mismo que nos den información de mercado).
+
+\item Para la prima de riesgo se deberá indicar de forma precisa la fórmula o procedimiento con que se calculará la prima de riesgo. Aquí hay un asunto delicado, porque entran los casos antes revisados: cuando hay una compañía que empiece, una compañía en desarrollo o una consolidada. 
+\end{itemize}
+
+\vspace{0.5cm}
+
+\textbf{Proceso natural deseado}
+
+El proceso natural es : Yo creo mi compañía de seguros, yo tengo mi producto, luego hago los cálculos según el mercado, según la AMIS, según las bases de datos de la CNSF. Cuando se acaba la información o ya no es suficiente para mí porque ya tengo suficiente información de primas y siniestralidad en ese momento cambio mi nota técnica y en lugar de información de mercado, tomo un cálculo de división de primas entre suma asegurada, dividida por grupos de riesgo para llegar a cuotas de riesgo que se van a aplicar. Posteriormente, cuando pasa más tiempo, digamos diez años, hay más experiencia para saber cómo se comportan los riesgos, en ese momento sustituyo mi nota técnica diciendo cómo se hará el cálculo.
+
+No solo es ver cómo nos afecta el riesgo, también buscamos vender el producto, por eso el precio debe ser un punto muy importante a tratar.
+
+\textbf{La mejor elección}
+
+Si tengo la misma información, pero le aplico distintas metodologías, puedo llegar a diferentes primas. Se pueden usar diversos ajustes, modelos, variables aleatorias, factores. 
+
+Para elegir un modelo depende de los objetivos buscados: \textbf{Cada empresa tiene sus criterios para seleccionar un modelo. }
+
+Nosotros como actuarios también podemos manipular la información y bajo nuestro criterio considerar qué elección es mejor. Ahí entra la ética del actuario. Nuevamente, hay que cuestionarse el modelo a utilizar.
+
+\vspace{0.5cm}
+
+\textbf{Retomando algunos puntos de la CUSF}
+
+\begin{itemize}
+    \item En caso de que se proponga un modelo, se debe de indicar los fundamentos teóricos en que se sustenta. Es un punto muy abierto porque solo se pide la fuente. Incluso no hay restricción de fuentes.
+    
+    \item Se debe de indicar el valor y la forma de cálculo de los parámetros, hay que justificar cada variable que se emplee. Por ejemplo si se ocupa una Variable Aleatoria Binomial, hay que especificar quién es n y quién es p.
+    
+    \item El coaseguro puede ser dos cosas:
+    \begin{itemize}
+        \item Está presente en un seguro de gastos médicos o accidentes personales, donde el beneficiario tiene que pagar una parte del riesgo, se dice así porque participa el asegurado y la aseguradora. Se llega a utilizar cuando se excede el deducible.
+        \item Dos aseguradoras o más participan en un mismo riesgo, aunque sean distintos montos, todos son responsables del riesgo.
+    \end{itemize}
+    
+    Para fines de este curso: \textbf{el coaseguro es la participación que tiene el asegurado o beneficiario en el riesgo.}
+    
+    \item El copago es una forma equivalente al coaseguro, es muy poco probable encontrárselo
+    
+    \item Los descuentos y recargos del riesgo: No es lo mismo que asegure una gasolinera que un edificio porque no es el mismo riesgo. Asimismo no es lo mismo asegurar un edificio de 10 pisos y uno de 5 pisos. Ese tipo de riesgo se tiene que definir: Hay que tener un riesgo estándar, en caso de que se modifique se puede recargar o descontar el riesgo. Se deberá justificar el valor de los descuentos o recargos.
+\end{itemize}
+
+\section{Viernes 11 de Marzo  }
+
+\large
+\textbf{Retomando CUSF 4.1}
+
+\vspace{0.5cm}
+
+\normalsize
+
+\textbf{Nota técnica del producto}
+
+ Aplica en Daños, Personas, Accidentes y Enfermedades, pero no aplica para Fianzas.
+ 
+ \vspace{0.5cm}
+ 
+ \textbf{Hipótesis financieras para el cálculo de primas y reserva de riesgos en curso}
+ 
+ La metodología para la Reserva de Riesgos en Curso no siempre se pone en la Nota Técnica de productos. Se pone en casos cuando el producto es de largo plazo, pero en general cuando son productos de corto plazo no se le pone nada, porque tenemos una nota técnica de reservas que cubre a todos los de corto plazo. El problema de los de largo plazo (generalmente de vida) es que cada uno tiene sus características entonces para cada producto se necesita tener una nota técnica de reservas, lo cual sería un problema para la CNSF por la autorización y cambios; por eso se mete directamente en el producto. En los de corto plazo si se menciona que habrá el cálculo de la reserva de riesgos en curso, pero eso se pone literalmente haciendo una mención.
+ 
+ \vspace{0.5cm}
+ 
+ \textbf{Enfoques}
+ 
+ Se puede dividir por tres caminos, según la madurez de la compañía. Sin importar en cuál caso se esté se necesita cumplir con eso en la Nota Técnica, tiene que haber una metodología establecida y registrarla, no se le puede estar haciendo modificaciones. Si se puede dejar parametrizados, para que  los parámetros se actualicen con el tiempo. Lo que NO se puede hacer es estar modificando, porque cada que hay un cambio en el producto se tiene que volver a registrar.
+ 
+ El tema es algo complicado, bajo el enfoque regulatorio que tenemos así es cómo se maneja, esto es para que las compañías estén controladas y se tenga en claro lo que se puede y tiene que hacer, pero se pierde libertad.
+ 
+ \vspace{0.5cm}
+ 
+ \textbf{Repasar CUSF 4.1 }
+ 
+ \newpage
+ 
+ \section{Lunes 14 de Marzo  }
+ 
+ Para hacer un análisis sencillo elegimos producto de daños, los de vida son más complicados de analizar.
+ 
+ Información suficiente, homogénea  y confiable. Hay otras características de la información pero ahora solo nos interesan estas para el producto. Si no cumple con esto no se puede realizar el producto.
+ 
+ ¿Qué significan estos tipos de información?
+ \begin{itemize}
+     \item \textbf{Información suficiente:} 
+     
+     No solo se refiere al tiempo, también al volumen. Por ejemplo que tenga suficientes años, pero que también se emita una buena cantidad de pólizas.
+     
+     También tener exceso de información no es bueno, porque nos puede estorbar la información, es decir puede ya no aportar. 
+     
+     Si mi objetivo es ver la variabilidad de la información, entonces si podemos tomar más información. De otro modo, es mejor reducir los datos a considerar.
+     
+     \item \textbf{Información homogénea:} 
+     
+     Que hablemos del mismo tipo de información, excluir valores atípicos.
+     
+     \item \textbf{Información confiable:} 
+     
+     Que no sufre alteraciones o que sus modificaciones hayan sido debido a razones válidas, no cambiar números por números que se me ocurran.
+ \end{itemize}
+ 
+ \textbf{Cuota de Riesgo:}
+ 
+ Es la proporción de la Suma Asegurada que tengo que cobrar.
+
+\newpage
+
+\section{Miércoles 16 de Marzo  }
+
+\vspace{0.5cm}
+
+\large
+
+\textbf{Sistema Estadístico del Sector Asegurador - SESA}
+
+\normalsize
+
+Detallada: Implica bases de datos.
+
+Consolidada: Información resumida.
+
+Son estadísticas que se reportan en formartos determinados por la Comisión; realmente solo le sirve a la Comisión, pues no es una referencia que sea útil para el mercado.
+
+Hay que rellenar el formato que solo es útil para la Comisión, hay que transformar las bases para que cuadre con la contabilidad, por eso es un proceso tardado.
+
+\textbf{FES:} Formas Estadisticas de Seguros
+
+\vspace{0.5cm}
+
+\large
+\textbf{Cuotas}
+
+\normalsize
+Segregar y tener más clases para tener una mayor precisión en la cuota de riesgos de los seguros.
+
+
+\vspace{0.5cm}
+
+\large
+\textbf{Modelos de Bondad de Ajuste}
+
+\normalsize
+Al hacer los cálculos, se puede notar que estos modelos pueden pasar teniendo toda la información, pero solo es una posibilidad.
+
+Por más técnicas que tengamos para ajustar un modelo, se refleja que hay variabilidad entre la prima de tarifa estimada y la que originalmente se calcula.
+
+El cálculo depende de muchas cosas, criterios del suscriptor, del producto.
+
+El modelo requiere más que tener el valor de la prima de tarifa, requeriría de ver preferencias, criterios, gastos, recargos.
+
+\vspace{0.5cm}
+
+\large
+\textbf{¿Qué hacer con los modelos?}
+
+\normalsize
+Generar escenarios y ver qué conviene. Hay que entender el qué y el por qué de las acciones de las personas, eso para tener una mejor aproximación de modelo y entender en qué casos si aplica dicho modelo. Por ejemplo, cuando se quiere invertir en algo, se ve primero el comportamiento del mercado, o de los demás inversores.
+
+\newpage
+
+\section{Viernes 18 de Marzo }
+
+\large
+
+\textbf{Soft Skills}
+
+\normalsize
+
+Son habilidades blandas, es un tema que abordamos porque se incluye en la parte humana. Importa mucho el saber hacer las cosas, pero también cómo se explica y se transmite la información.
+
+\vspace{0.5cm}
+\large
+
+\textbf{Gráfica de tipos de  personalidad según Deloitte}
+
+\begin{figure}[h]
+\includegraphics[width=18cm]{person.jpg}
+\centering
+\end{figure}
+
+\newpage
+
+\section{Miércoles 23 de Marzo }
+
+\Large 
+
+\textbf{Reservas}
+
+\normalsize 
+
+Los modelos de pérdidas tenían que dominar desde el 0 al infinito, igual podría haber modelos negativos, pero lo estándar es que no sea así.
+
+El BEL está relacionado con las reservas que es el valor esperado de las obligaciones, y ese valor se puede partir en dos reservas:
+\begin{itemize}
+    \item RRC
+    \item SONOR o IBNR
+    Aunque esa SONOR, solo es un subtema de las Reservas de Obligaciones Pendientes de Cumplir, en la cual se incluyen SONOR, Siniestro de Monto Conocido y Dividendos
+\end{itemize}
+
+\begin{figure}[h]
+\includegraphics[width=13cm]{ibnr.jpg}
+\centering
+\end{figure}
+
+
+Enfocados en IBNR, buscamos cuánto se tiene que cambiar. En esencia esta reserva es para dos cosas:
+\begin{itemize}
+    \item Una vez que conocemos el siniestro cómo se va a comportar el monto hasta el momento en el que lo pagamos (último movimiento). Porque hay casos en donde el siniestro se vuelve a \textit{encender} por ejemplo en demandas.
+    \item Cómo estimo los siniestros ocurridos y no reportados.
+\end{itemize}
+
+En las estimaciones sería más preciso hacerlo mensual, sin embargo también se podrían registrar datos en días intermedios.
+
+\textbf{No es lo mismo reportar un siniestro que registrar un siniestro}
+
+Reportar el asegurado da la notificación a la aseguradora, eso no se ve en el triángulo. Yo solo veo la contabilización de movimientos, es un \textbf{movimiento de registro, NO movimiento de reporte.}
+
+Triangulo incremental: Viene cada movimiento
+
+Triangulo acumulado: Equivalente a la gráfica (hay movimientos hacia arriba o hacia abajo depende de la compañía)
+
+¿Cuánto estimo que terminará un siniestro si tengo la estimación inicial?
+
+Siniestralidad Última - Siniestralidad Conocida
+
+\newpage
+
+\section{Viernes 25 de Marzo }
+
+En la tabla de acumulados se busca que los factores tengan menos variabilidad y que los factores  se acerquen más a uno a lo largo del tiempo.
+
+El mejor estimador es la información que tengo al día de hoy menos la que quiero llegar.
+
+Esperemos que exista un patrón dentro del BEL, y si no hay un patrón es porque no es el mejor modelo o la operación es muy volátil, como con COVID.
+
+¿Cuánta información es necesaria para un buen modelo?
+
+Ocupar un promedio en general, realmente no es muy útil porque valores extremos muy grandes o pequeños estarían modificando el promedio de una serie de datos.
+
+La Cadena de Markov asume que la distribución condicionada a la anterior es la misma. Por ello sería bueno pensar que la distribución de los datos sea igual hacia atrás, el problema es cuando la distribución sí cambia.
+
+La sugerencia para obtener los factores es usar el promedio ponderado, para quitar los valores atípicos.
+
+
+\section{28 - 30 de Marzo }
+
+Cuando tengo un conjunto de variables aleatorias y las estamos multiplicando y cada una de ellas tiene su propia distribución, tendrán una nueva distribución en conjunto 
+
+En la realidad habrá factores externos que van a modificar el acumulado. 
+
+\newpage
+\section{Viernes 1 de Abril }
+
+\Large
+\textbf{CUSF sección 5 para la parte de Reservas}
+
+\normalsize
+
+Dividendos y Monto Conocido no son reservas que tienen un margen de riesgo y tampoco siguen la metodología establecida en la CUSF.
+
+\textbf{Anexo 5.3 nos interesa.}
+
+La diferencia entre la media y el percentil al 99.5 se le llama desviación y tiene que ver cuánto se aleja el valor en riesgo del valor esperado.
+
+Este valor asume que se repiten los valores que conocemos, pero un percentil al 99.5 debería reconocer cosas que todavía no tenemos, esto porque no se trata de replicar el pasado (pues el pasado puede ser muy estable) y lo que buscamos es el valor en riesgo.
+
+\vspace{0.5cm}
+
+El \textbf{Costo de Capital } tiene que ver con arriesgar capital, que a su vez implica una ganancia. Yo esperaría que la ganancia fuera mayor a la Tasa Libre de Riesgo. Toda inversión que sea menor a esta Tasa ya es una pérdida.
+
+En seguros los accionistas nos piden un valor particular y ese valor es el $10\%$, que está compuesto por inflación  más un extra. Los accionistas al arriesgar su capital en una compañía de seguros esperarían tener una ganancia neta entre el $5.5\%-6\%$.
+
+En otras palabras el \textbf{Costo de Capital} es el costo que me va a generar invertir mi capital y lo que al menos espero obtener, que en ese caso se espera que sea el $10\%$. La CNSF le puso el nombre de $r$ y si lo buscamos en la CUSF aparece como  Tasa de Costo Neto de Capital. Neto porque debe reflejar el margen de todo (aunque todavía no refleja la inflación).
+
+Si los accionistas no están ganando el $10\%$ de capital quizá exista un problema. Claro que no todos los años se espera ganar ese 10, sino que en promedio la tasa se establezca en ese 10.
+
+El $10\%$ tiene el riesgo de la Desviación porque al final si tengo una pérdida esperada que se puede ir al $99.5\%$ esa desviación afectará directamente a la ganancia de capital porque tengo que poner de mi capital para cubrir dicha desviación (porque no puedo sacar el dinero de las primas, que están para cubrir el BEL y un poquito más).
+
+
+\vspace{0.5cm}
+Hay un concepto del Estado de Resultados que nos ayudaba a generar ganancia a las compañías de seguros y son las \textbf{inversiones}.
+
+Ayuda aunque tengamos pérdidas por siniestralidad, gastos y costos en caso de hacer un buen manejo de reservas y de inversiones. Así las compañías de seguros sobreviven gracias a sus inversiones.
+
+
+El $10\%$ que tenemos del costo no lo vamos a tener ahí sino que lo vamos a invertir. Lo que nos lleva al concepto de \textbf{Margen de Riesgo}.
+
+El \textbf{Margen de Riesgo}:
+\begin{align*}
+    MR = r \cdot  BC \cdot D
+\end{align*}
+Donde \begin{itemize}
+    \item $r = 10 \% =$  Tasa que se va a invertir
+    \item $BC= RCS \cdot \displaystyle \frac{\text{Desv}_{\text{Reserva},\text{Ramo  i}}}{\displaystyle \sum_{\text{Reserva l},\text{Ramo k }}\text{Desv}_{\text{Reserva l}, \text{Ramo k}}} = $ Base de Capital 
+    \item $D = $ Duración
+\end{itemize}
+
+La desviación es una forma de equivalencia del RCS, pero la desviación solo está dada para la reserva, mientras que el Requerimento de Capital de Solvencia es integral (de toda la compañía)
+
+La desviación que aporta la reserva de la que estoy hablando, del ramo que estoy hablando respecto a todas las demás.
+
+La gráfica aplica para la reserva o para toda la compañía, a nivel reserva solamente es el BEL y el VaR, a nivel compañía es la pérdida esperada de toda la compañía y la pérdida al $99.5\%$
+
+Resumen:
+\begin{itemize}
+    \item Diferencia entre VaR al $99.5\%$ y el BEL a nivel compañía se llama Requerimiento de Capital de Solvencia y ese requerimiento se distribuye entre todos los riesgos, de forma lineal, en función de la desviación de cada reserva y de cada ramo o de cada forma de valuar. Eso es lo que llamamos la \textbf{Base de Capital}.
+\end{itemize}
+
+Por tanto la \textbf{Base de Capital} es la distribución del Requerimiento de Capital de Solvencia que le toca a cada reserva y cada ramo, ya que lo tengo así me interesa proteger el 10$\%$ por el Costo de Capital. De ese Capital que tengo invertido me va a generar una ganancia a partir de esas inversiones, lo voy a invertir una duración.
+
+El \textbf{Margen de Riesgo} es un Monto, como dice la CNSF que está aunado al mejor estimador y que servirá para garantizar el monto de las reservas es el suficiente. Para protegerme de posibles desviaciones. Este monto sale de una porción del Requerimiento de Capital de Solvencia que se va a invertir a una tasa por cierto tiempo y que nos sirve para proteger la solvencia de la compañía. Particularmente se enfoca en la solvencia de las reservas (porque podría haber insolvencia en otras cuestiones).
+
+\newpage
+
+\section{Lunes 4 de Abril }
+
+En el mundo de reservas y de estimaciones no llamamos una estimación correcta o aproximado porque es relativo, empleamos la palabra razonable, dado que si lo pensamos en distintos enfoques del mercado, dicha estimación sea buena. Si bajo un grupo de enfoques es correcto el escenario, decimos que es razonable. No solo aplica para seguros.
+
+\vspace{1cm}
+
+
+\section{Miércoles 6 de Abril }
+
+En el ejercicio de R se refleja que la variabilidad que se tiene con un modelo que se basa en su misma información no es la misma que la de un modelo que toma información de otro lado.
+
+\vspace{0.5cm}
+
+La normativa permite estimar qué tanto se puede mover el riesgo. 
+
+
+La fórmula de Margen de Riesgo se encuentra dividida en varias partes. Esta información se encuentra en el \textbf{Capítulo 5.4 de la CUSF}.
+
+El capítulo es el caso general de la normativa, el anexo es un caso particular de cómo se resuelve en ese momento. Significa que el anexo no siempre va a ser el mismo. Si yo no quiero poner todo el procedimiento en la CUSF se pone un anexo y se especifica eso.
+
+El prorateo es una forma común en las empresas de decir distribución proporcional a algo.
+
+El Margen de Riesgo se constituye por:
+\begin{itemize}
+    \item La Tasa de Costo Neto de Capital es lo que los accionistas esperan ganar
+    \item La Base de Capital es la parte del RCS que le toca a esa reserva y a ese ramo o a ese riesgo
+    \item La Duración es la suma de los flujos para cada momento traídos a valor presente 
+\end{itemize}
+
+\vspace{0.5cm}
+
+Sobre el vídeo de la Duración de Macaulay, se explica como se van a comportar ciertos flujos en un bono. Realmente aplica para cualquier instrumento financiero o contrato y con eso vemos cuánto esperamos que nos duren la composición de esos flujos.
+
+Se dice que la Duración de Macaulay es una métrica que nos indica el tiempo en el que esperamos recibir los flujos. Esta duración está basada en años.
+
+
+Asimismo, el \textbf{Método Estatutario } está basado en años. 
+
+La duración en este caso es el tiempo en el que esperamos que se terminen las obligaciones. Esto debido al comportamiento de los flujos, ya que en los primeros años hay cantidades significativas y en los demás esos flujos van bajando.
+
+En promedio los primeros años (aunque con sesgo) se indica que se van a acabar las obligaciones.
+
+La duración en este caso nos indica el tiempo en el que se extinguen nuestras obligaciones en promedio. O cuánto espero tener guardada mi Reserva IBNR en promedio.
+
+\newpage
+
+\section{Viernes 22 de Abril}
+
+\textbf{Quiz:}
+
+\begin{enumerate}
+    \item \textbf{El regulador de instituciones de seguros y fianzas en México es:}
+    
+    \textbf{\textcolor{red}{La Comisión Nacional de Seguros y Fianzas.}}
+    
+    \item \textbf{Esta reserva sirve para hacer frente a las obligaciones de los contratos en vigor}
+    
+    \textbf{\textcolor{red}{La Reserva de Riesgos en Curso.}}
+    
+    \item \textbf{El número de años utilizados para una metodología de reservas siempre debe ser mayor a 10}
+
+    \textbf{\textcolor{red}{Falso.}}
+
+    \item \textbf{¿Cuál de las siguientes metodologías NO se ocupa para el cálculo de reservas?}
+    
+    \textbf{\textcolor{red}{Máxima Verosimilitud.}}
+
+    \item \textbf{El margen de riesgo considera el Requerimiento de Capital de Solvencia}
+    
+    \textbf{\textcolor{red}{Verdadero.}}
+    
+    \item \textbf{El seguro de gastos médicos mayores resarce la salud del beneficiario}
+    
+    \textbf{\textcolor{red}{Falso.}}
+
+    \item \textbf{Si la duración utilizada para el margen de riesgo se obtiene en terminos de años (1 año, 1.5 años, etc.), ¿el Requerimiento de Capital de Solvencia está calculado como riesgo dentro de un año?}
+    
+    \textbf{\textcolor{red}{Verdadero.}}
+   
+    \item \textbf{¿El estado de resultados incluye el incremento de las reservas?}
+    
+    \textbf{\textcolor{red}{Verdadero.}}
+
+    \item \textbf{¿El balance general incluye las primas dentro de los activos?}
+    
+    \textbf{\textcolor{red}{Falso.}}
+    
+    \item \textbf{¿Cuál de las siguientes afirmaciones es verdadera?}
+    
+    \textbf{\textcolor{red}{Bajo el método estatutario, los triángulos siempre son acomodados por inicio de vigencia.}}
+    
+    \item \textbf{¿El monto de prima de riesgo siempre es mayor o igual a la siniestralidad esperada?}
+    
+    \textbf{\textcolor{red}{Verdadero.}}
+    
+    \item \textbf{¿El beneficiario de un seguro de vida puede cobrar su seguro aunque no haya fallecido en algunos casos?}
+    
+    \textbf{\textcolor{red}{Verdadero.}}
+    
+    \item \textbf{¿La reserva SONR puede ser negativa en algunos casos?}
+    
+    \textbf{\textcolor{red}{Verdadero.}}
+    
+    \item \textbf{¿Los Importes Recuperables de Reaseguro incluyen los gastos de administración?}
+    
+    \textbf{\textcolor{red}{Falso.}}
+    
+    \item \textbf{¿La reserva de siniestros ocurridos y no reportados sólo sirve para siniestros que no han sido reportados?}
+    
+    \textbf{\textcolor{red}{Falso.}}
+
+    
+
+
+\end{enumerate}
+
+ 
+\end{document}
