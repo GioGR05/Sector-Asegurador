@@ -1,4 +1,1080 @@
-z
+z% Plantilla para Sesións
+% Creado por Giovanni GR
+% Email:giovanni.grod@gmail.com
+%=======================================================
+%=======================================================
+
+\documentclass[12pt,a4paper,oneside,openany]{article} 
+%=======================================================
+%=======================================================
+\usepackage[top=2cm,left=1cm,right=1.5cm,bottom=2cm]{geometry}
+\usepackage[T1]{fontenc} % Codificar caracteres
+\usepackage{ae} % Para pdf
+\usepackage[utf8]{inputenc}
+\usepackage{lipsum}
+\usepackage[spanish]{babel} % Traducir a español
+\usepackage{indentfirst} % Identar párrafos
+\usepackage{graphicx} % Permite incluir figuras
+\usepackage{subfig} % Crear sub figuras
+\usepackage{float}
+\usepackage{tabularx}
+\usepackage{ragged2e}
+\usepackage{multirow}
+\usepackage{upgreek}
+\usepackage[dvipsnames]{xcolor} % Uso de colores 
+\usepackage{amsmath,amssymb,amsthm} % Incluye expresiones matemáticas
+\usepackage{lastpage} 
+\usepackage{epigraph}
+\usepackage{enumerate}
+\usepackage{enumitem}
+\usepackage{titlesec}
+\usepackage{mathtools}  % for paired delimiters 
+\usepackage{mathrsfs}   % for script capitals
+\DeclarePairedDelimiter{\parens}()
+\usepackage{ dsfont }
+\usepackage{fancybox}
+%\usetikzlibrary{decorations}
+\usepackage{slashbox}
+\spanishdecimal{.}
+
+
+\setlength\parindent{0pt}
+
+\newlist{questions}{enumerate}{3}
+\setlist[questions]{label=\arabic*.}
+\newcommand{\question}{\item}
+\setlist[enumerate,1]{% (
+leftmargin=*, itemsep=12pt, label={\textbf{\arabic*.)}}}
+%---
+\newlist{partes}{enumerate}{3}
+\setlist[partes]{label=(\alph*)}
+\newcommand{\parte}{\item}
+%---
+\newlist{subpartes}{enumerate}{3}
+\setlist[subpartes]{label=\roman*)}
+\newcommand{\subparte}{\item}
+%---
+\usepackage{array}
+\usepackage{tikz}
+\newcommand*\circled[1]{\tikz[baseline=(char.base)]{\node[shape=circle,draw,inner sep=2pt] (char) {#1};}}
+\usepackage[sort&compress,round,comma,authoryear]{natbib}
+\usepackage{makeidx}
+\usepackage[colorlinks=true,urlcolor=magenta,citecolor=red,linkcolor=violet,bookmarks=true]{hyperref}
+\usepackage{lscape}
+\usepackage{pdflscape}
+\usepackage{epstopdf}
+\usepackage{booktabs}
+\usepackage{pdfpages}
+\usepackage{textcomp}
+\usepackage[many]{tcolorbox}
+\usepackage{empheq}
+\usepackage{tasks}
+\usepackage{fancyhdr}
+\pagestyle{plain}
+%=======================================================
+
+\newcommand{\alumno}{Angel Giovanni Gómez Rodríguez}
+\newcommand{\facultad}{Facultad de Ciencias}
+\newcommand{\curso}{Teoría del Riesgo}
+\newcommand{\profesora}{Mtra. Lanzguerrero Obeid}
+\newcommand{\payudante}{Act.  Eduardo Calva Caggiano}
+\newcommand{\sayudante}{Act. Fernando Martínez del Campo Rodríguez}
+\newcommand{\titulo}{1ª Lista de Exercícios: A. Combinatória}
+\newcommand{\data}{\today}
+\newcommand{\email}{{\bf mile}nascimentolima@gmail.com}
+\newcommand{\turma}{kkkkkkkkkkkkkkkkkkkkkkkkkk}
+%===========================================================
+\newcommand{\X}{\mathbf{X}}
+\newcommand{\x}{\mathbf{x}}
+\newcommand{\Z}{\mathbf{Z}}
+\newcommand{\z}{\mathbf{z}}
+\newcommand{\y}{\boldsymbol{y}}
+\newcommand{\balpha}{\mbox{${ \bm \alpha}$}}
+\newcommand{\bmu}{\mbox{${\bm \mu}$}}
+\newcommand{\bbeta}{\mbox{${\bm \beta}$}}
+\newcommand{\bteta}{\mbox{${\bm \theta}$}}
+\newcommand{\bgama}{\mbox{${\bm \gamma}$}}
+\newcommand{\bxi}{\mbox{${\bm \xl}$}}
+\newcommand{\bvarphi}{\mbox{${ \bm \varphi}$}}
+\newcommand{\SZ}{\mbox{ $Z$}}
+\newcommand{\muz}{\mu_{z,l}}
+\newcommand{\muo}{\mu_{0,l}}
+\newcommand{\etao}{\eta_{0,l}}
+\newcommand{\etaz}{\eta_{z,l}}
+\newcommand{\xbeta}{x_{l}\bgama}
+\newcommand{\mui}{\mu_{l}}
+\newcommand{\zetaind}{\zeta \mathtt{I}_{\{s_{l} \in Z \}}} 
+\newcommand{\spz}{ s_{l} \in z}
+\newcommand{\snpz}{ s_{l} \notin z}
+\newcommand{\sps}{ s_{l} \in S}
+\newcommand{\gphi}{ \Gamma(\phi)}
+\newcommand{\scan}{ \Lambda_{z}}
+\newcommand{\gmuop}{ \Gamma(\muo\phi)}
+\newcommand{\gmuzp}{ \Gamma(\muz \phi)}
+\newcommand{\gumuop}{ \Gamma((1-\muo)\phi)}
+\newcommand{\gumuzp}{ \Gamma((1-\muz)\phi)}
+\newcommand{\dlobeta}{ \frac{\parteial l_{0}(\bgama, \phi, 0) }{\parteial \bgama}}
+\newcommand{\e}{\\[1ex]}
+\newcommand{\lz}{  l_{z}(\bgama, \phi, \tau)}
+\newcommand{\lo}{  l_{0}(\beta, \phi, 0)}
+\newcommand{\E}{\mathbb{E}}
+\newcommand{\dis}{\displaystyle}
+\linespread{1.5}%espaço entre linhas
+
+\newcommand{\changefont}{%
+    \fontsize{13}{11}\selectfont}
+
+
+\titleformat{\section}{\normalfont\Large\bfseries}{}{0pt}{\titlerule\\Sesión \thesection. }[{ \titlerule[0.8pt]}]
+
+\pagestyle{fancy}
+\fancyhf{}
+\rhead{\changefont Teoría del Riesgo en Seguros}
+\lhead{\changefont Angel Giovanni Gómez Rodríguez}
+\cfoot{\thepage}
+ 
+
+\begin{document}
+
+\section{Viernes 18 de Febrero }
+
+\textbf{El riesgo:} 
+
+Posibilidad de que ocurra un evento y que éste provoque alguna pérdida o daño que pueda cuantificarse (en términos económicos). 
+
+Si no se puede cuantificar, también se considera también un riesgo, pero en materia de lo que vamos a estudiar, la idea es que todo se pueda cuantificar. En los riesgos operativos como por ejemplo tener errores en un procedimiento, actualmente hay metodologías para medir el riesgo, por ello es que si se puede cuantificar, aunque si es más complicado.
+
+\vspace{0.5cm}
+
+\textbf{¿Por qué es posibilidad y no probabilidad?}
+
+La posibilidad implica el hecho de que algo ocurra o no ocurra. Entonces buscamos medir la probabilidad de esa posibilidad.
+
+\vspace{0.5cm}
+
+\textbf{Componentes del riesgo:}
+\begin{itemize}
+    \item Probabilidad de que ocurra dicho evento (en las materias actuariales se sabe que esa probabilidad se mide a través de una frecuencia, o de los decrementos).
+    \item Probabilidad de que se genere un daño o pérdida y la severidad que tenga la misma.
+\end{itemize}
+
+En el sector asegurador, existen mecanismos para mitigar riesgos para las compañías, por eso las probabilidades de que las compañías se hagan cargo de los riesgos a los que se enfrentan, disminuyen ya que transfieren el riesgo a las aseguradoras. 
+
+\vspace{0.5cm}
+
+\textbf{Clasificación general del riesgo:}
+\begin{itemize}
+    \item Por su naturaleza
+    \begin{enumerate}
+        \item [$a)$] Riesgos puros: Que pueden generar una pérdida en caso de que ocurran. Es propio de la naturaleza de la actividad que se esté realizando. 
+        \item [$b)$]Riesgos especulativos: Pueden producir o generar una ganancia o pérdida.
+        
+        \textit{Ejemplos: Apuestas, inversiones, negocios.}
+    \end{enumerate}
+    \newpage
+    \item Generados por el ser humano
+    \begin{enumerate}
+        \item[$a)$] Riesgos inherentes: Son propios de la actividad que se realice. No se separan de la misma.
+        
+        \textit{Ejemplos: En una fábrica de explosivos, un riesgo inherente es que se pueda generar una explosión o incendio, sin necesidad de que haya sido provocado, simplemente por el tipo de materiales que se ocupan, hay un riesgo natural de que se pueda producir un incendio o explosión.}
+        
+        \item[$b)$]  Riesgos incorporados: No forman parte de la actividad. Son provocados por una tercera persona. Depende de alguien que lo esté haciendo, puede que la persona lo haga a propósito con mala fé y dolo, o también puede ser que la persona de verdad no se haya dado cuenta y se equivoque.
+        
+        \textit{Ejemplos: En el caso de que un paracaidista muera después de lanzarse de un avión debido a que no se abre su paracaídas. Esto pudo haber sucedido por la mala instalación que alguien hizo (por desconocimiento o por mala fé). También está el caso en donde en un producto de seguros alguien redacta mal un paquete con coberturas adicionales que originalmente no tenía.}
+    \end{enumerate}
+    
+    \item Según su alcance
+    \begin{enumerate}
+        \item[$a)$] Riesgo individual/personal: Afecta a un núcleo limitado de individuos. Pérdidas no TAN severas, pero que tienen una probabilidad considerable de existir.
+        
+        \textit{Ejemplos: En una familia, una empresa.}
+        
+        \item[$b)$] Riesgo catastrófico: Un solo evento tiene muchos afectados. Eventos con bajas probabilidades. Tiene pérdidas muy grandes,
+        
+        \textit{Ejemplos: Un terremoto, o un tsunami.}
+    \end{enumerate}
+\end{itemize}
+
+\vspace{0.5cm}
+
+\textbf{Tipos de riesgo}
+
+Son los principales de los que habla la regulación de \textit{Solvencia II} ya que son los riesgos a los que están expuestas todas las compañías de seguros (y bancos, pues van de la mano): 
+
+\begin{enumerate}
+    \item [1)] Riesgos de mercado: Son aquellos que reflejarán la pérdida potencial por cambios en los factores de riesgo que influyan en el valor de los activos y pasivos. Entre ellos destacan  el cambio de tasas de interés, cambios en el mercado de divisas, inflación, caída de precios, riesgo de liquidez (o de prepago).
+    
+    \textit{Ejemplo: La reserva de riesgos catastróficos no estaba destinada para eventos como COVID, sino para otro tipo de siniestros de gran alcance.
+    A muchas instituciones si les afectó el riesgo de liquidez ya que no estaban preparados ante un evento de esa magnitud. No necesariamente tiene que haber incumplimiento en el pago, sino en estos casos se pagaba de manera tardía (a destiempo).}
+    
+    \textit{Posible solución: Las empresas deben ajustar sus modelos y también incluso modificar carteras de asegurados. También se pueden cambiar estrategias de inversión de las reservas, para contar con más liquidez ante la pandemia.}
+    
+    \item [2)] Riesgos operativos: Riesgo que se materializa debido a la negligencia, abuso, o error en la apliación de un proceso dentro de una compañía. Se puede reflejar a través de fraudes, malas prácticas (lavado de dinero), fallas tecnológicas (fallas técnicas, cibernéticos), daños a los activos (si hay daños en las instalaciones o los sistemas), fallas o errores humanos (si se borra la base de datos por error). 
+    
+    Este tipo de riesgo, puede provocar otro tipo de riesgos, como el reputacional (al tener malas calificaciones ante errores de la empresa), el estratégico (si se hacen malas estimaciones que en un futuro puedan implicar pérdidas a la empresa) o el legal (si no se especifican ciertas condiciones en un contrato de seguro y se presenta una demanda).
+    
+    \textit{Ejemplo: En el caso de seguros también está presente el lavado de dinero. También pueden tener ataques cibernéticos que puedan afectar la cartera de asegurados y que su información pueda ser vulnerable ante personas peligrosas.}
+    
+    \textit{Posible solución: Hacer análisis a detalle para detectar tendencias y a partir de ahí ver si algunas operaciones pueden ser fraudulentas o no. En el caso tecnológico, se puede invertir más dinero con tal de que haya más control dentro del proceso.}
+    
+    \item [3)] Riesgos técnicos: Errores en metodologias (reservas, primas, capital, siniestralidad, cálculo de tendencia), todo lo que tenga que ver con errores metodológicos. No es tanto que se haga mal el método, sino que se implemente mal en la parte técnica. Los errores en la metodología pueden provocar sobre estimaciones o sub estimaciones que la compañía tenga que compensar. También puede existir una desviación de siniestralidad (como con el COVID, ya se tenía una reserva, pero se presentó un evento que implicó una desviación de gran magnitud y así la reserva ya no cumplió al cubrir esos siniestros, por lo tanto se requiere capital adicional que contemple esas desviaciones de siniestralidad).
+    
+    \textit{Ejemplo: En la parte de las primas, en la tarificación, pues la CNSF no controla tarifas, depende del tipo de metodologías que usen las compañías, pues mientras más complejas sean, pueden existir más errores al momento de la implementación.}
+    
+    
+    \textit{Posible solución: Establecer una metodología distinta que sea más sencilla de implementar y también que tenga buenos resultados.}
+    
+    \item [4)] Riesgos de contraparte (o riesgo de crédito): Si terceras personas tienen compromisos contigo y no te pagan, existe este riesgo de impago. Se puede decir que en este riesgo una de las partes que entablan una relación operativa, de negocios, contractual, etc. no cumple con su parte del acuerdo.
+    
+    \textit{Ejemplo: Los bancos se dedican a otorgar créditos y subsisten del dinero que otras personas invierten para que hagan su operación diaria, pero hay gente que no paga los créditos que van otorgando. Es importante mencionar que las aseguradoras no hacen préstamos, pero si tienen operaciones relacionadas con el reaseguro, en donde el reaseguro funge como una tercera parte que puede tener problemas para pagar si tienen problemas de solvencia.}
+    
+    \textit{Posible solución: En el caso de las aseguradoras, para contrarrestar el riesgo de impago se pueden crear reservas especiales. Aquí entra el uso de técnicas actuariales. La idea con la regulación de Basilea II (actualmente ye III en bancos) es evitar este tipo de problemáticas midiento este tipo de riesgos para generar reservas y también administrar capital para este tipo de eventualidades.}
+\end{enumerate}
+   
+\newpage
+
+\section{Sábado 19 de Febrero }
+
+
+\textbf{¿A qué me quiero dedicar?}
+
+\begin{table}[h]
+    \begin{tabular}{|c|c|}
+         \hline
+         Seguros &  11 \\
+         \hline 
+         Finanzas & 13 \\
+         \hline 
+         Docencia & 16 \\
+         \hline
+         Data Science & 8 \\
+         \hline
+    \end{tabular}
+\end{table}
+
+
+
+\textbf{Recapitulación de riesgo}
+
+El riesgo es la \textit{posibilidad} de que ocurra un evento y que provoque algún daño o pérdida que se pueda cuantificar.
+
+Por la vida van a escuchar que muchas personas dicen en la definición de riesgo que se trata de probabilidad y no posibilidad, pero ¿Por qué decimos que se trata de una posibilidad?
+
+Antes de continuar, hay que aclarar un concepto importante: 
+
+\begin{itemize}
+    \item La \textbf{probabilidad} es una función (medida) entre el 0 y el 1 que denota qué tan verosímil es observar algún resultado aleatorio en la realización de un experimento.
+\end{itemize}
+
+$\longrightarrow$ Situación: Andar en bicicleta
+
+\begin{table}[h]
+    \begin{tabular}{|c|c|}
+         \hline
+         Posibilidad & Probabilidad \\
+         \hline
+         \hline
+         Te atropellan mientras vas en bici &  $10\%$\\
+         \hline 
+         Te caes & $80\%$ \\
+         \hline 
+         Se poncha una llanta & $95\%$ \\
+         \hline
+         Chocar con un árbol o coche & $25\%$ \\
+         \hline
+         Perder las piernas por disparo de escopeta & $0.000000001\%$ \\
+         \hline
+    \end{tabular}
+\end{table}
+
+$\longrightarrow$ Problemática: Señor actuario, ¿Cuáles son los riesgos a los que me enfrento si me voy en bici al trabajo?
+
+La respuesta \textit{lógica} es que digamos las posibilidades, ya que si decimos las probabilidades, sería una respuesta \textit{sin sentido}.
+
+\newpage
+
+\textbf{Riesgo asegurable}
+
+Para que un riesgo sea asegurable deberá cumplir con lo siguiente:
+
+\begin{itemize}
+    \item [$\checkmark$] Debe ser un riesgo puro, es decir debe ser propio de la naturaleza de la actividad que se desempeñe. Además deberá cumplir con una serie de características:
+    
+    \begin{enumerate}
+        \item [1.] Debe ser fortuito (es decir, ajeno a la voluntad de la persona): Hay que pensar en todos los riesgos que alguien podría materializar a propósito para cobrar un seguro.
+        
+        \textit{Ejemplo: En la operación de daños podrían dañar voluntariamente el bien del asegurado para cobrar la suma asegurada.}
+        
+        \item [2.] Debe ser posible (debe considerarse factible): Ya que ninguna persona va a ofrecer un seguro contra algo que no considera que puede pasar.
+        
+        \textit{Ejemplo: Ninguna aseguradora querrá asegurarte en caso de una abducción alienígena.}
+        
+        \item [3.] Debe ser lícito (no puede ser ilegal): Dado que la sociedad opera dentro del alcance de la ley. Ningún seguro puede tratar o reconocer algo fuera de la ley.
+        
+        \textit{Ejemplo: No se puede asegurar a los narcotraficantes (de todos modos ellos se cuidan solos).}
+        
+        \item [4.] Debe ser cuantificable (de contenido económico): Se busca estimar matemáticamente. Que sea cuantificable, quiere decir que podemos asociarle una cantidad de dinero al daño.
+        
+        \textit{Ejemplo: No existe un seguro que cubra ante la infidelidad de la pareja, esto es porque no se puede cuantificar de forma adecuada el impacto que puede tener la materialización de este riesgo sobre la persona que lo sufre, hablando en términos económicos.}
+        
+         \item [5.] Debe ser concreto (tiene que estar bien definido): Todas las cuestiones físicas son más sencillas de definir de manera concreta.
+         
+         \textit{Ejemplo: No hay un seguro que te proteja contra daño psicológico, pues es difícil acotar este daño, pues incluso es subjetivo.}
+        
+        \item [Bonus.] Debe haber un número significativo de unidades expuestas. Como tal no se requiere esta característica para que sea asegurable, desde el punto de vista de riesgo, pero sí desde el punto de vista de rentabilidad de la aseguradora.
+        
+        \textit{Ejemplo: No sería rentable vender seguros para eventos muy específicos con una muy baja probabilidad de ocurrencia.}
+    \end{enumerate}
+\end{itemize}
+
+\textbf{Bases para la administración de riesgos}
+
+Todos estamos expuestos a diferentes riesgos, pues \textit{vivir es un riesgo}. Es por eso que dependiendo del contexto y la persona (física o moral) pueden determinarse diferentes medidas para administrar o enfrentar  los riesgos.
+
+A continuación se mencionan las principales medidas:
+
+\begin{enumerate}
+    \item [1)] Asumir el riesgo:  La persona está consciente del riesgo y decide que no vale la pena tomar acciones particulares para manejarlo. 
+    
+    \textit{Ejemplo: No querer contratar un seguro para aparatos electrónicos}
+    
+    \item [2)] Diversificar el riesgo: Hay un dicho que menciona \textit{Nunca pongas tus huevos en una sola canasta.} Esta medida consiste en evitar cúmulos de exposición a un solo riesgo en un solo evento. 
+    
+    \textit{Ejemplos:}
+    
+    \begin{enumerate}
+        \item [$a)$] \textit{En inversiones, crear un portafolio diversificado (con diferentes industrias, diferentes mercados y tamaños).}
+        \item [$b)$] \textit{En seguros, Ofreciendo el seguro de vida a personas de diferentes edades, regiones, géneros, etc.}
+        \item [$c)$] \textit{En ciencia de datos, teniendo las bases de datos en diferentes servidores, teniendo respaldos y teniendo los campos más importantes en diversas bases de datos.}
+    \end{enumerate}
+    
+    \item [3)] Prevenir el riesgo: Tomar medidas necesarias para evitar que suceda.
+    
+    \textit{Ejemplo: La vacunación.}
+    
+    \item [4)] Transferir el riesgo: Cuando transfieres la consecuencias del riesgo a otra persona. Aquí viven los seguros y las aseguradoras.
+    
+    \textit{Ejemplo: Contratar un seguro de gastos médicos mayores, transfieres las consecuencias económicas del
+    evento a una aseguradora.}
+    
+    \item [5)] Evitar o eliminar el riesgo: Se toman acciones para que la materialización del riesgo no sea posible.
+    
+    \textit{Ejemplos:}
+    
+    \begin{enumerate}
+        \item [$a)$] \textit{En seguros: Si no quieres pagar un siniestro, no tengas una aseguradora.}
+        \item [$b)$] \textit{. En inversiones: Si no quieres perder dinero, invierte en CETES (teóricamente).}
+        \item [$c)$] \textit{En ciencia de datos: Si no quieres tener algún error de análisis, dedícate a otra cosa.}
+    \end{enumerate}
+    
+    \item [6)] Reducir el riesgo: Cuando no puedes eliminar los riesgos por completo, tomas estas medidas para reducir el daño una vez que se materialice. (Cuando tomas acciones para reducir la probabilidad de que se materialice un riesgo, estas previniendo, no reduciendo). 
+    
+    \textit{Ejemplo: Tener un extintor en casa, es una medida de reducción ante el riesgo de incendio.}
+\end{enumerate}
+
+\textbf{Posturas ante el riesgo}
+
+Existen tres posturas ante el riesgo:
+
+\begin{itemize}
+    \item [a)] Averso al riesgo: Busca en medida de lo posible eliminar o evitar el riesgo. Cuando no puede busca siempre prevenirlos o reducirlos.
+    \item [b)] Neutro al riesgo: Usa la cabeza sin ser miedoso, asume varios riesgos pero si elimina o reduce los más severos.
+    \item [c)] Amante del riesgo: Disfruta estar expuesto a riesgos, asume la mayoría e incluso maximiza su exposición a ellos.
+\end{itemize}
+
+\textbf{Nota adicional}
+
+Toda la teoría económica moderna, asume que los inversionistas son aversos al riesgo.
+
+
+\newpage
+
+\section{Martes 22 de Febrero }
+
+Toda la parte de riesgos a nivel compañías de seguros están regulados en \textit{Solvencia II} porque están relacionados con el gobierno corporativo.
+
+\vspace{0.5cm}
+
+\textbf{Gobierno corporativo}
+
+El gobierno corporativo es la estructura interna que debe tener cualquier compañía hoy en día para poder operar de manera más eficiente.
+
+Antes de la regulación (antes de 2015) no existía ese esquema de regulación para aspectos cualitativos, no solo cuantitativos, entonces había compañías que no contaban con funcionarios adecuados debido a que tenían perfiles en otras posiciones a las suyas. Se necesitaba que hubiese posiciones bien definidas, entonces el gobierno corporativo vino a cambiar esto, con la creación de comités (reaseguro, inversiones, comunicación y control) con tal de que a partir de esos comités se tomen mejores decisiones. Así como hay comités también hay distintas áreas que debe tener cada compañía.
+
+Tiene una enorme importancia en una compañía (en este caso de seguros, pero que también se puede extrapolar a cualquier compañía). Si no se cuenta con un gobierno corporativo sólido, la empresa puede quebrar por un mal manejo interno en sus propias operaciones, mala comunicación o fraudes, etc.
+
+
+\begin{figure}[h]
+\includegraphics[width=15cm]{reg.png}
+\centering
+\end{figure}
+
+
+\textbf{Contratación de servicios con terceros}
+
+Suelen ser administrativos que se relacionan con el marco legal.
+
+Así como las compañías tienen auditorías internas anuales, también deben tener auditorías externas que sean hechas por personas ajenas a la compañía que emitan dictámenes sobre los estados financieros de la compañía, o que emitan opiniones sobre las metodologías de reservas técnicas.
+
+Hay distintos tipos de auditorías externas que se hacen, y hay un área específica que se encarga de la contratación de esos servicios. A veces hay diversidad en la elección, según costos o incluso relaciones.
+
+Cada trimestre se emite dictámenes y reportes para darle seguimiento a la situación de la compañía y evitar que cuando se haga la entrega anual a la CNSF se detecten inconsistencias y se presenten multas. Esto no quiere decir que no haya inconsistencias, pues hay consultoras que están a cargo de muchas auditorías y pueden usar textos de manera genérida para los reportes. (por ejemplo en vida y daños).
+
+\vspace{0.5cm}
+
+\textbf{Administración de riesgos}
+
+En esta área se buscan profesionales que cuenten con perfiles técnicos, como actuarios o matemáticos.
+
+Aquí se encargan de medir todos los riesgos que no están relacionados con siniestros (de mercado, operativos, técnicos, de contraparte). Deben hacer cálculos, mediciones, proponer metodologías para administrar de mejor manera los riesgos a los que está expuesta la compañía. Los riesgos van a variar según cada compañía.
+
+\begin{figure}[h]
+\includegraphics[width=15cm]{diagrama.png}
+\centering
+\end{figure}
+
+De entrada, el personal del área requiere contar con un manual de políticas y procedimientos aprobado por el consejo de administración. Si no existiera ese manual, habría demasiado desorden. Por ejemplo, si hubiese rotación de personal y alguien ya estaba habituado para metologías o procesos y ese alguien se va, y además llega una nueva persona que no sabe sobre procedimientos, eso implica que la metodología se pierde. En el manual se reporta todo: los riesgos a los que está expuesta la compañía incluyendo factores de riesgo, variables involucradas, entre otras cosas. Para la elaboración del manual se requieren metodologías y procedimientos; a raíz de eso se trabaja en conjunto con personal especializado en cada tipo de riesgo (según los riesgos a los que se enfrente cada compañía).
+
+Aunado a esto, el área debe de estar en constante comunicación con otras áreas (si se detectan riesgos, es importante contemplarlos en los modelos) y también tiene que dar reportes a comités, como el de suscripción (para que lo tengan en cuenta con fin de que el riesgo no sea muy elevado), así se hace una cadena de productividad. 
+
+\vspace{0.5cm}
+
+\textbf{¿Cómo se pueden clasificar riesgos?}
+
+Aparte de los que ya se abordaron que son los más importantes, se tiene la siguiente clasificación, tomando en cuenta riesgos estratégicos.
+
+\begin{figure}[h]
+\includegraphics[width=15cm]{clasifica.png}
+\centering
+\end{figure}
+
+En los riesgos estratégicos se toma en cuenta falta de reservas o el déficit de capital humano, pues con \textit{Solvencia II} se busca gente capacitada que sepa sobre medición y cuantificación de riesgos. 
+
+También toman en cuenta los riesgos de entorno, como el apoyo de gobierno a instituciones privadas, pues pueden afectar al desarrollo de la compañía.
+
+\vspace{0.5cm}
+
+\textbf{Matriz por relevancia de riesgos}
+
+\begin{figure}[h]
+\includegraphics[width=18cm]{matriz.png}
+\centering
+\end{figure}
+
+\textbf{Autoevaluación de solvencia anual}
+
+Las compañías con este sistema de gobierno corporativo están obligadas a hacer una autoevaluación de solvencia que se debe hacer cada año. Tienen que ver su situación de solvencia actual, cómo está siendo afectada y que medidas correctivas se pueden tomar para corregir esas situaciones y que no se vea afectada su solvencia ni su capacidad operativa.
+
+\vspace{0.5cm}
+
+\textbf{Autoevaluación de Riesgos Institucionales (ARSI)}
+
+Se pone un ejemplo de Dashboard, a partir del cual se puedan tomar decisiones. Después de identificar riesgos y perfiles, la idea es tomar decisiones, hay que ver que estrategia se debe seguir.
+
+\textit{Decisiones posibles: Aplicar reaseguro, hacer una mejor política de suscripción para eliminar riesgos desde un principio, entre otras.}
+
+\newpage
+
+\begin{figure}[h]
+\includegraphics[width=15cm]{alcances.png}
+\centering
+\end{figure}
+
+\vspace{0.5cm}
+
+\textbf{Contraloría interna}
+
+En la presente área se puede tener a personal con distintos perfiles, tales como Contadores, administradores, o actuarios. 
+
+\begin{figure}[!]
+\includegraphics[height=9cm]{contra.png}
+\centering
+\end{figure}
+
+La idea es establecer controles para propiciar una operación odenada y eficiente en la compañía.
+
+\newpage
+
+En esta área se pueden construir indicadores que ayudan a poder mejorar la operación en el día a día de la compañía, volver más eficientes ciertos procesos, automatizar procedimientos que anteriormente eran rústicos, lo que permite mejorar el control de todo: reservas, primas, reaseguro, planeación, reaseguro, estrategias financieras. 
+
+También es un área que debe estár en constante comunicación con otras áreas.
+
+\vspace{0.5cm}
+
+\textbf{Función Actuarial (FA)}
+
+Necesariamente deben ser actuarios ya que las labores del área deberán ser desempeñada por personas con conocimiento y experiencia suficientes en materia de matemática actuarial y financiera, y de estadística. La función actuarial se encarga entre otras cosas de diseño de productos de seguros, elaboración de notas técnicas, cálculo, evaluación y  verificación de modelos y metodologías en  reservas técnicas.
+
+
+
+\vspace{0.5cm}
+
+\textbf{Auditoria interna}
+
+En esta área se encuentran personas más enfocadas en la parte jurídica y legal.
+
+Tiene varias funciones: la principal es que se cumplan las políticas y normas que vaya aprobando la compañía, que se cumpla la normatividad, de ahí la importancia de que haya alguien que de seguimiento a todos los aspectos relacionados con sanciones, observaciones, todo lo que la CNSF le hace a la compañía, además de verificar que Contraloría Interna esté funcionando de manera correcta.
+
+\begin{figure}[h]
+\includegraphics[width=15cm]{auditor.png}
+\centering
+\end{figure}
+
+\vspace{0.5cm}
+
+\textbf{Mapa de la comunicación interna}
+
+Hay un comité relacionado con comunicación. Su función principal es prevenir el lavado de dinero en las compañías, pues últimamente es un tema que está muy presente en las empresas. Estas áreas se encargan de analizar metodologías que midan el riesgo al que están expuestas las compañías respecto a fraudes.
+
+\begin{figure}[h]
+\includegraphics[width=15cm]{mapa.png}
+\centering
+\end{figure}
+
+\vspace{0.5cm}
+
+\textbf{Conclusión de gobierno corporativo}
+
+El gobierno corporativo, tiene una gran importancia pues así se establece un orden, funciones claras, manuales de procedimientos, lo que hace que las situaciones no se salgan de control tan fácilmente. Todas las áreas mencionadas son clave, pero la de administración de riesgos es un pilar fundamental.
+
+\newpage
+
+
+\section{Jueves 24 de Febrero }
+
+\textbf{Proceso para administrar riesgos}
+
+\begin{enumerate}
+    \item [1.] Determinar el objetivo a seguir,  según el nivel donde nos encontremos.
+    
+    Como puede haber muchos tipos de riesgos, no solo puros, sino también especulativos, el punto es ese: establecer qué objetivo tengo yo para después identificar los riesgos con respecto a ese objetivo. Se necesita un contexto, conocer qué hay afuera, analizar debilidades para construir una estrategia. Aquí se tiene un primer acercamiento a la postura frente al riesgo.
+    
+    \textit{Si mi objetivo es tener ganancias porque invierto en la bolsa, después identifico a qué riesgos voy a estar expuesto.}
+    
+    \item [2.] Identificar el riesgo (o riesgos):
+    
+    Una vez que se determina el objetivo, se identifica el riesgo o los riesgos a los que puedo estar expuesto. Aquí y en el siguiente punto entra la clasificación del riesgo, para ver si es un riesgo asegurable o no.
+    
+    \item [3.] Evaluar el riesgo (o riesgos):
+    
+    ¿Cómo lo voy a evaluar? Se deben de realizar análisis para determinar cuál es su magnitud, impacto, y ver si realmente es un riesgo considerable. Aquí también se necesita la postura ante el riesgo, para analizar distintos escenarios y ver qué tan adversos somos al riesgo. una vez que lo evalúa. Aquí entran los límites máximos de retención, los cuáles las compañías aseguradoras deben manejar, porque no pueden aceptar todos los riesgos sin tener una política de transferencia, diversificación, etc. ¿Qué tanto te conviene seguir una estrategia según si eres conservador, o amante del riesgo?
+    
+    \textit{Se pueden hacer análisis estadísticos, hay que enfocarse en los grandes riesgos sin dejar de lado los riesgos pequeños. Se puede segmentar una cartera.}
+    
+    
+    \item [4.] Considerar alternativas y elegir el mejor método para tratar el riesgo:
+    
+    Se tiene que escoger de todas las alternativas cuál conviene más.  Una vez que se decida la alternativa, se tiene que elegir el mejor método para abordar el riesgo. Puede ser:
+    
+    \begin{itemize}
+        \item Método cuantitativo: Es decir matemático. 
+        
+        La parte matemática de teoría del riesgo justo se basa en estos métodos. Las metodologías nos ayudan a evaluar dichos aspectos, va a depender de los riesgos que se aborden. El curso está enfocado en la parte técnica, es decir de siniestralidad, no tanto de riesgo de mercado y riesgo operativo.
+        
+        \textit{Evaluar siniestralidad de cartera por un plan de ahorro, hacer estimación de tarifas: Se usan modelos para que exista mayor precisión en dichas estimaciones. }
+        
+        \item Método cualitativo.
+        
+         \textit{Se puede diversificar, transferir, asumir, va a depender de la evaluación previa. En un riesgo operativo se necesita un método cualitativo y luego poder cuantificarlo.}
+    
+    \end{itemize}
+    
+   \item [5.] Aplicar la decisión:
+    
+    Aplicar los métodos, alternativas.
+    
+    \textit{Decidir qué inversiones convienen más, con qué parte de los riesgos nos vamos a quedar, con qué reaseguradora voy a transferir riesgos, etc.}
+    
+    \item [6.] Evaluar resultados y darle seguimiento:
+    
+    Muchas veces es olvidada esta parte. Se debe de hacer porque con el paso del tiempo la decisión o el modelo seleccionado ya no se pueda aplicar de la misma manera. Hace más fácil que ante situaciones extraordinarias se identifiquen factores clave que ayuden a controlar dicha situación.
+    
+\end{enumerate}
+
+\newpage
+
+\section{Sábado 26 de Febrero }
+
+\Large
+\textbf{Repaso de probabilidad}
+
+
+\normalsize
+\textbf{¿Qué es la probabilidad?}
+
+\begin{itemize}
+    \item \textbf{Opinión grupal:}
+    
+    \begin{itemize}
+        \item Es una medida para ver si ocurre algo.
+        \item Es el nivel de certeza sobre la ocurrencia de algún evento.
+        \item La posibilidad de que ocurra algo, expresado cuantitativamente.
+    \end{itemize}
+    
+    \item \textbf{Definición:}
+    
+    Recordemos que la probabilidad es una función matemática que está entre 0 y 1 y nos ayuda a asignar un número a la verosimilitud de que algún evento aleatorio suceda. (Esa verosimilitud es ¿Qué tan factible es que algo suceda?)
+    
+    \end{itemize}
+    
+    \textbf{Tiene las siguientes propiedades:}
+    
+     Sea $X$ un evento aleatorio en una sigma-álgebra y en un espacio de probabilidad bien definido $(\Omega, \mathcal{F},P)$. Se tiene:
+     
+    \begin{enumerate}
+        \item [1.] La probabilidad $P\left[X\right]$ siempre está entre el 0 y el 1, por definición.
+        
+        \item [2.] La probabilidad de todos los posibles resultados $P\left[\Omega\right] = 1$.
+        
+        \item [3.] La probabilidad del conjunto vacío $P\left[\empty\right] = 0$.
+        
+        \item [4.] La probabilidad $P\left[X^{C}\right] = 1 - P\left[X\right]$.
+    \end{enumerate}
+    
+    \textbf{Otras propiedades relevantes:}
+    
+    \begin{itemize}
+        \item Las distribuciones continuas cumplen que los límites de la función de distribución "evaluados" en $-\infty$ dan 0 y "evaluados" en $\infty$ dan 1.
+         
+        \item Si se tiene un evento $X$ que es independiente de un evento $Y$:
+        
+        \begin{itemize}
+            \item $P[X \cap Y] = P[X] \cdot P[Y]$
+            \item $P[X \cup Y] = P[X] + P[Y] - P[XY]$
+        \end{itemize}
+    
+    \end{itemize}
+    
+    \newpage
+    
+    Recordemos dos funciones importantes en contexto probabilístico:
+    
+    \begin{itemize}
+        \item Esperanza: 
+        
+        \begin{itemize}
+            \item   Te da un valor estimado que podría tomar la variable aleatoria repitiendo el experimento en un futuro muchas veces.
+            
+            \textit{Se dice que podría tomar el valor porque si pensamos en un dado, la esperanza es 3.5 pero no puede tomar nunca ese valor.}
+            
+            \item Es el centro de la masa de la distribución.
+            
+            \item Es el punto alrededor del cual se encontrarán la mayor cantidad de observaciones.
+            
+            \textit{Pensando en un histograma de frecuencias, el punto de en medio es donde la campana se hace más grande.}
+        \end{itemize}
+        
+        \item Varianza:
+        
+        \begin{itemize}
+            \item Te da un estimado numérico para describir qué tan alejados están en promedio los demás resultados de la esperanza.
+            
+            \item Es una medida de disperción central.
+        \end{itemize}
+    \end{itemize}
+
+\vspace{0.5cm}
+
+\textbf{\textcolor{blue}{Problema:}}
+
+Nuestra compañía de seguros cuenta con una cartera con 14 clientes, debido a un problema de nuestro sistema informático$^{(*)}$, la información para 3 de nuestros clientes fue corrompida y lo único que podemos extraer del servidor dañado son el tipo de pólizas que tenían nuestros clientes con nosotros. La información con la que disponemos  es que de nuestros 3 clientes: \textit{Actinver, Bimbo, Cemex}, cada uno contaba con 2 pólizas de acuerdo a la siguiente tabla:
+
+\begin{table}[h]
+    \begin{tabular}{|c|c|}
+         \hline
+         Empresa & Pólizas \\
+         \hline
+         \hline
+         Actinver &  Terremoto   \\
+                  &  Auto (flotilla) \\
+         \hline 
+         Bimbo & Auto (flotilla para camiones) \\
+               & Auto (flotilla para empleados) \\
+         \hline 
+         Cemex & Terremoto (para ciertas plantas cementeras) \\
+               & Terremoto (para el resto de inmuebles)\\
+         \hline
+    \end{tabular}
+\end{table}
+
+Debido al daño en el sistema, se extrae con la misma probabilidad la información para cada uno de nuestros tres clientes, sin embargo, solo se puede realizar la extracción de la información de un solo cliente antes de que el sistema pierda toda la información.
+
+En la primera extracción posible, se obtuvo una póliza de terremoto.
+
+\begin{itemize}
+\item \textcolor{blue}{Cuantifica el riesgo de perder la información de Actinver.}
+
+\item \textcolor{blue}{Cuantifica el riesgo $^{(*)}$ al que está expuesta la información de Actinver.}
+
+\item \textcolor{blue}{Simulen que tienen que explicar al director de la compañía lo que está pasando y lo que calcularon.}
+
+\textcolor{blue}{Reflexiones de la simulación:}
+
+\begin{itemize}
+    \item \textcolor{blue}{Empezar con la respuesta y si es necesario o se solicita, dar el detalle.}
+    
+    \item \textcolor{blue}{Ser lo más puntuales posibles.}
+    
+    \item \textcolor{blue}{Cuando se exponga algo, hay que jugar al siguiente juego: Decir las cosas de tal manera que la persona que los está escuchando no pueda preguntar nada. Pensar en qué preguntas haría la otra persona y tratar de responderlas en la explicación.}
+\end{itemize}
+
+\end{itemize}
+
+\vspace{0.5cm}
+
+\fbox{\textbf{\textcolor{red}{Solución.}}}
+
+\textcolor{blue}{¿Qué tipo de riesgo es $^{(*)}$?}
+
+Es un riesgo puro (porque es propio de la actividad que realiza la aseguradora en sus BD). 
+
+Es un riesgo operativo (pues es una falla en los procesos o sistemas).
+
+\textcolor{blue}{Queremos calcular el riesgo de perder la información de Actinver en términos matemáticos. ¿Qué nos está pidiendo calcular?}
+
+Hay que cuantificar el riesgo:
+
+Queremos la probabilidad de perder la información de \textit{Actinver}
+
+Hay que considerar que no se puede recuperar la información de \textit{Bimbo}, porque ya se extrajo terremoto
+
+Queremos la probabilidad de recuperar \textit{Cemex}, dado que  ya se recuperó la información de terremoto:
+
+Sean:
+
+$C = $ Recuperar la información de Cemex
+
+$T = $ Ya se recuperó la información de terremoto
+
+Queremos obtener:
+
+\begin{align*}
+    \mathds{P}\left[C|T \right] &= \displaystyle \frac{\mathds{P}\left[C\cap T\right]}{\mathds{P}\left[T\right]} \hspace{1cm} (*) \hspace{1cm}\text{Por definición de probabilidad condicional} \\
+\end{align*}
+
+De donde:
+\begin{itemize}
+    \item Calculando el numerador
+    \begin{align*}
+    \mathds{P}\left[C\cap T\right] &= \mathds{P}\left[C\right]  \hspace{1cm} \text{Pues el evento C es básicamente que haya terremoto} \\
+    &= \displaystyle \frac{1}{3} \hspace{1cm} \text{Pues la información de cada cliente se extrae con la misma probabilidad}
+    \end{align*}
+    
+    \item Calculando el denominador
+    \begin{align*}
+        \mathds{P}\left[T\right] &= \mathds{P}\left[T|A\right]\cdot\mathds{P}\left[A\right]+ \mathds{P}\left[T|C\right]\cdot\mathds{P}\left[C\right] \hspace{1cm} \text{Por la definición de probabilidad total}
+    \end{align*}
+    
+    Calculando los componentes tenemos
+    
+    $\mathds{P}\left[C\right] = \displaystyle \frac{1}{3}$ \hspace{1cm} Pues la información de cada cliente se extrae con la misma probabilidad
+    
+    $\mathds{P}\left[A\right] = \displaystyle \frac{1}{3}$ \hspace{1cm} Pues la información de cada cliente se extrae con la misma probabilidad
+    
+    $\mathds{P}\left[T|A\right] =  \displaystyle \frac{\mathds{P}\left[T\cap A\right]}{\mathds{P}\left[A\right]} = \displaystyle \frac{\left(\frac{1}{3}\right)\left(\frac{1}{2}\right)}{\frac{1}{3}} = \frac{1}{2}$ \hspace{1cm}Asumiendo que $T$ se da primero, entonces la probabilidad de que ocurrra $A$ es de $\frac{1}{3}$, de la misma manera, asumiendo que estás en $A$, la probabilidad de terremoto es de $\frac{1}{2}$
+    
+    $\mathds{P}\left[T|C\right] = \displaystyle \frac{\mathds{P}\left[T\cap C\right]}{\mathds{P}\left[C\right]}  = \displaystyle \frac{\left(\frac{1}{3}\right)\left(1\right)}{\frac{1}{3}} = 1$ \hspace{1cm}Asumiendo que $T$ se da primero, entonces la probabilidad de que ocurrra $C$ es de $\frac{1}{3}$, de la misma manera, asumiendo que estás en $C$, la probabilidad de terremoto es de $1$
+    
+    Por tanto, sustituyendo cada valor numérico, se tiene que para el denominador:
+    
+    $\mathds{P}\left[T\right] = \displaystyle  \frac{1}{2} \cdot \frac{1}{3} + 1 \cdot \frac{1}{3}  =  \frac{3}{6} = \frac{1}{2}$
+\end{itemize}
+
+Regresando al cálculo de la expresión (*), tenemos que $\mathds{P}\left[C|T\right] = \displaystyle \frac{\frac{1}{3}}{\frac{1}{2}} = \frac{2}{3}$
+
+\vspace{0.5cm}
+
+Otra manera de hacer el cálculo es a partir del Teorema de Bayes, en donde: 
+
+$\mathds{P}\left[C|T\right] = \displaystyle \frac{\mathds{P}\left[T|C\right] \cdot \mathds{P}\left[C\right]}{\mathds{P}\left[T\right]} = \frac{1 \left(\frac{1}{3}\right)}{\frac{1}{2}} = \frac{2}{3}$
+
+    \begin{center}
+         \shadowbox{$\therefore \mathds{P}\left[C|T\right] = \displaystyle \frac{2}{3}$}
+    \end{center}
+
+\textcolor{blue}{Interpretación del resultado}
+
+Sabemos que el riesgo de perder la información de Actinver es de $\displaystyle \frac{2}{3}$ o $66\%$. 
+
+Llegamos con el director y le expresamos que la probabilidad de perder la información de la compañía Actinver es del $66\%$, todavía no terminamos la extracción de información, pero es basatante probable de que esa información se pierda. 
+
+Ya que se le dió la información al jefe, le comentamos que la cosa pinta algo mal, ahí nos callamos para ver qué responde.
+
+En caso de que nos de un comentario que abra paso al procedimiento que hicimos, podemos comentar que usamos la fórmula de Bayes y calculamos las probabilidades condicionales con la extracción que se pudo hacer de la póliza de terremoto. Con esa información dispoible se pudo hacer el cálculo de forma más exacta. 
+
+
+\vspace{1cm}
+
+\textbf{Bonus: Metodología para la resolución de problemas - Visto desde la perspectiva del ejemplo anterior}
+
+\begin{enumerate}
+    \item [1.] Entender lo que nos está pidiendo el problema. ¿Qué necesitan saber?
+    
+    \textit{Poder pasar de la solicitud de cuantificar el riesgo a términos matemáticos para el cálculo de probabilidades. }
+    
+    \item [2.] Analizar la información disponible y determinar si podemos responder directamente a la pregunta o si es necesario el realizar cálculos adicionales. Para esto también evaluamos si nos hace falta algún dato.
+    
+    \textit{Estudiamos la tabla con las compañías y sus respectivas pólizas. Planteamos las fórmulas que conocíamos y posteriormente no dimos cuenta de lo que nos hacía falta calcular.}
+    
+    \item [3.] Plantear las fórmulas abstractas que creemos que nos pueden servir para resolver el problema.
+    
+    \textit{Escribir las fórmulas de probabilidad condicional, probabilidad total y en la respuesta alternativa, la Regla de Bayes.}
+    
+    \item [4.] Sustituir en las fórmulas abstractas los datos que tenemos para poder calcular lo que necesitamos y llegar al resultado.
+    
+    \textit{Sustituir en las fórmulas los valores que ya teníamos para cada evento.}
+    
+    \item [5.] \textbf{Interpretar el resultado y comunicarlo de la mejor manera basado en el contexto.}
+    
+    \textbf{\textit{El comunicar de forma clara y concisa el riesgo del $66\%$, posteriormente, dependiendo de la conversación, podemos explicar los cálculos que realizamos.}}
+\end{enumerate}
+
+
+\newpage
+
+\section{Sábado 05 de Marzo }
+
+\Large
+\textbf{Repaso de procesos estocásticos}
+
+\normalsize
+\textbf{Proceso de conteo}
+
+Un proceso estocástico (una función de probabilidad y del tiempo)  $\{N(t), t\geq 0\}$ es un proceso de conteo si cumple:
+
+\begin{enumerate}
+    \item [1.] $N(t) \geq 0 \longrightarrow$ Es decir, que cuando valuamos al proceso de conteo en cualquier tiempo, siempre sea no negativo. 
+    \item [2.] $N(t)$ está valuado en los enteros $\longrightarrow$ En general, nosotros podemos contar cosas de manera continua incluso con decimales, pero para fines de un proceso de conteo en términos canónicos, se pide que el proceso eté valuado en los enteros.
+    \item [3.] Si $s<t$ entonces $N(s)\leq N(t) \longrightarrow$ Es decir, si tenemos dos tiempos y evaluamos en ellos dos el proceso de conteo (El proceso de conteo nos devuelve el número de observaciones que han ocurrido hasta el tiempo $s$ o $t$ respectivamente y como se valúa solamente en enteros) forzosamente el tiempo más a futuro tendrá un valor de conteo mayor o igual al del proceso del tiempo menor.
+    \item [4.] Para $s<t$ se cumple que $N(t) - N(s) $ será igual al número de eventos que han ocurrido en el intervalo $(s,t] \longrightarrow$. Es decir, si en el tiempo $s = 5$ tengo 10 eventos y en el tiempo $t = 20$ tengo 15 eventos, entonces se tiene que $N(s)-N(t) = 15-10 = 5$.
+\end{enumerate}
+
+\textbf{Otras propiedades que puede tener un proceso de conteo:}
+
+Son adicionales, que no necesariamente todos los procesos de conteo tendrán, pero los que nos interesan si, estas son:
+
+\begin{itemize}
+    \item Se dice que un proceso tiene incrementos independientes si el número de eventos que ocurren en intervalos de tiempo ajenos, son independientes. Es decir $N(t)$ es independiente de $N(t+s)- N(t)$. Esto quiere decir que el futuro no depende del pasado.
+    
+    \textit{La información del pasado no nos da ninguna observación para predecir el futuro. }
+    
+    \item Un proceso tiene incrementos estacionarios si la distribución del número de eventos que ocurren en un intervalo de tiempo, solo depende de la longitud del intervalo.
+    
+    \textit{Las propiedades intrínsecas del proceso que estudiamos, no son función del tiempo; las propiedades estadísticas que rigen al proceso son las mismas en cualquier punto del tiempo, de ahí que sea un proceso estacionario. Al ser estacionario, el número de observaciones que vamos a ver para cualquier intervalo de tiempo, solo va a ser función de qué tan amplio es el intervalo.}
+\end{itemize}
+
+\textbf{Proceso Poisson:}
+
+Un proceso de conteo $\{N(t), t \geq 0 \}$, es un Proceso Poisson con una tasa $\lambda$ para $\lambda \geq 0$ si cumple las siguientes propiedades: 
+
+\begin{enumerate}
+    \item [1.] $N(0) =  0 \longrightarrow$ El proceso está definido para que empiece en 0.
+    \item [2.] El proceso tiene incrementos independientes $\longrightarrow$ Si tomamos intervalos de tiempo ajenos, el número de observaciones va a ser independiente en cada intervalo.
+    \item [3.] El número de eventos en un intervalo de longitud $t$ se distribuye $Poisson$ con media $(\lambda t)$ si, para toda $s,t \geq 0$ se cumple que
+    $$\mathds{P}\left[N(t+s)-N(s) = n\right] = \displaystyle e^{-\lambda t} \frac{(\lambda t)^{n}}{n!} \hspace{1cm} \text{Para } n=0,1,2,... $$
+    
+    El lado derecho nos dice que una función de probabilidad se distribuye de cierta forma, recordando probabilidad esa función es una $Poisson(\lambda t)$.
+    
+    El lado izquierdo está describiendo un evento de probabilidad. El evento es que $N(t+s)-N(s) = n$ lo que quierde decir que el número de eventos que ocurre entre el intervalo de tiempo $(s, t+s]$ es igual a $n$ observaciones. Eso se distribuye según la $n$ y sustituido en la función de la derecha, además $\lambda$ es el parámetro de intensidad de la $Poisson$ y $t$ es el punto en el tiempo donde nos ubicamos.
+\end{enumerate}
+
+ Es un proceso estocástico porque depende de una probabilidad y de un tiempo. La parte de la probabilidad se contempla cuando se habla de una distribución $Poisson$ y la parte del tiempo se contempla con el parámetro de la media. Y por cómo se define la $n$ es definida para los naturales.
+\newpage
+
+\section{Domingo 06 de Marzo }
+
+\Large
+\textbf{Ejercicio y solución}
+
+\normalsize 
+
+\textbf{\textcolor{blue}{Problema:}}
+
+Para una sucursal bancaria se requiere una valoración de áreas de oportunidad respecto al trato de los clientes por parte de los ejecutivos, para ello se busca como objetivo cumplir con que ningún cliente espere más de 30 minutos antes de ser atendido por un ejecutivo. Dado que la sucursal es relativamente nueva, no se cuenta con mucha información histórica, sin embargo, derivado del conocimiento la red, se estima que el tiempo de atención para cada cliente por parte del ejecutivo es de media hora. Por otra parte se cuenta con los siguientes datos de los últimos 3 meses:
+
+\begin{table}[h]
+    \begin{tabular}{|c|c|c|c|}
+         \hline
+         \backslashbox{Clientes}{Mes} & 1 & 2 & 3 \\
+         \hline
+         \hline
+         Walk-In: Clientes que van a la sucursal a hacer trámites con el ejecutivo & 342 & 659 & 799 \\
+         No necesariamente adquiere un producto & & & \\
+         \hline
+         TDC: Tarjeta de Crédito & 114 & 254 & 311 \\
+         \hline
+         PP: Préstamo Personal & 21 & 45 & 39 \\
+         \hline
+    \end{tabular}
+\end{table}
+
+\textcolor{blue}{Utilizar la metodología para resolver problemas para contestar las siguientes preguntas:}
+\begin{itemize}
+    \item \textcolor{blue}{¿Cuántos ejecutivos se requieren en la sucursal para cumplir el objetivo?}
+    \item \textcolor{blue}{¿Qué pasa si tenemos 2 ejecutivos?}
+    \item \textcolor{blue}{Considerando los dos incisos anteriores, ¿Cuántos ejecutivos necesitamos?}
+    
+\end{itemize}
+
+\textcolor{blue}{Explicarlo como si se lo dijeramos al gerente.}
+
+\fbox{\textbf{\textcolor{red}{Solución.}}}
+
+El objetivo es ver cuántas personas tengo que tener en sucursal para que las personas no esperen más de media hora.
+
+Tenemos el promedio de atención de cada cliente, que es de media hora.
+
+Considerando que nuestros periodos son el mismo, lo podemos empezar a plantear en esa escala con un Proceso Poisson.
+
+La tabla donde ellos nos dan tres valores para cada mes nos sirve para arrancar con el problema.
+
+Una vez que entendemos que ellos buscan determinar el número de ejecutivos tener, podemos calcular con una herramienta o modelo cuántos clientes habrá cada media hora o cada hora, para plantear eventos de probabilidad como:
+\begin{itemize}
+    \item ¿Qué pasa si llegan dos clientes al mismo tiempo y solo tengo un ejecutivo? Uno pasa y otro espera media hora y luego el otro pasa.
+    \item ¿Qué pasa si llegan tres clientes? El tercer cliente tendría que esperar una hora  y no se cumpliría el objetivo.
+\end{itemize}
+
+Haciendo un análisis respecto a esos casos, podemos calcular ciertas probabilidades. Hay que hallar un punto de costo beneficio para ello.
+
+La parte matemática:
+
+No importa para que viene el cliente, me importa que reciba la atención. El número de personas que van por TDC y por PP no son estimadores adecuados de las personas que van a la sucursal, ni tampoco la suma, porque se puede sobre estimar. Por tanto, solo vamos a agarrar solo el renglon de Walk-In.
+
+De ahí vamos a calcular el promedio de clientes mensual.
+
+Además, asumimos que el mes tiene 30 días (aunque si se considera que los bancos solamente operan 20 días, es un mejor estimador).
+
+De esta manera, el promedio mensual de clientes es de 600, y con la consideración de que hay meses de 30 días, tenemos que en promedio hay 20 clientes por día, suponiendo una distribución uniforme (ya que el ejercicio no indica que distribución es, yo tengo que proponer algo para estimar y para facilitar el tema voy a proponer la distribución uniforme).
+
+Esto es algo que en la vida real cuesta mucho trabajo, no tenemos información completa, tenemos un requerimiento y para hacer estimaciones tenemos que proponer, asumir algo o tomar alguna hipótesis que no se conoce a partir de nuestra propia inspiración para resolver el problema.
+
+Como la sucursal está abierta 8 horas al día, nuevamente si suponemos distribución uniforme en todas las horas del día (lo cual no es correcto, porque si revisamos en Google, hay un histograma que muestra que la distribución no es plana). De los 20 clientes al día, dividido entre 8 horas tenemos un promedio de 2.5 clientes que entran por hora a la sucursal. 
+
+Aquí notamos que es un Proceso de Conteo, para estimar esto de la mejor manera voy a tomar el Proceso Poisson.
+
+Es decir se trata de un Proceso Poisson con $\lambda=2.5$, aquí asumimos que $t=1 $ que representa una hora.
+
+Con los supuestos anteriores ya podemos resolver las preguntas:
+
+\vspace{0.5cm}
+
+\begin{itemize}
+    \item \textcolor{blue}{Probabilidad de que lleguen 2 clientes en una hora:}
+    \begin{align*}
+        \mathds{P}\left[N(1) = 2\right] &= \displaystyle \frac{e^{-2.5(1)}[2.5(1)]^{2}}{2!} \\
+        &= 0.2565 \\
+        & \approx 26\%
+    \end{align*}
+    Si a esto se le suma $\mathds{P}[N(1) = 0 ]$ y  $\mathds{P}[N(1) = 1 ]$  tendría la probabilidad de que un ejecutivo nunca tenga broncas y siempre llegue al objetivo, pero si se calcula la complementa no es despreciable.
+    
+    Nos vamos al siguiente escenario.
+    
+    \item \textcolor{blue}{Probabilidad de que lleguen 5 o más clientes en una hora}
+    
+    Asumiendo que tenemos dos ejecutivos, y que con 2 no se cumple el objetivo.
+    \begin{align*}
+        \mathds{P}[N(1) \geq 5] &= 1-\mathds{P}[N(1)\leq 4] \\
+        &= 1- \displaystyle \sum_{i=0}^{4} \mathds{P}[N(1) =i] \\
+        &= 1 - \displaystyle \sum_{i=0}^{4}  \frac{e^{-2.5}(2.5(1))^{i}}{i!} \\ 
+        &= 1- 0.8911 \\
+        &= 0.1088 \\
+        & \approx 11\%
+    \end{align*}
+    Es decir, cada hora tengo una probabilidad del 11\% de fallar mi objetivo. 
+    
+    En las simulaciones si se realizan por muchos días, tenemos una gran probabilidad de que se falle el objetivo. Por tanto si tenemos dos ejecutivos tenemos una gran probabilidad de que no logremos el objetivo.
+    
+    \item \textcolor{blue}{¿Cuántos necesitamos}
+    
+    No hay respuesta correcta, si hay distintos supuestos, vamos a llegar a distintos números, el número no importa realmente, se busca utilizar herramientas completas y modelos válidos para justificar la respuesta.
+    
+    Podemos tomar en cuenta el presupuesto. 
+    
+    Hay que hacer un análisis de que beneficios y qué costo hay para garantizar el objetivo. O también se puede ver desde la perspectiva de cuál es el máximo porcentaje de fallo que están dispuestos a aceptar para alcanzar el objetivo.
+\end{itemize}
+
+\newpage
+
+
+
+
+\section{Sábado 12 de Marzo }
+
+\Large
+
+\textbf{Lectura :}
+
+\vspace{0.5cm}
+
+\normalsize
+
+\textbf{Importancia de la Teoría del Riesgo en la sociedad}
+
+Teoría del Riesgo suena al estudio formal del riesgo, desarrollar teorías para cuantificar, medir cuantificar el riesgo a fin de poder prevenir.
+
+Sabemos que las aseguradoras, bancos, negocios, seguridad social trabajan con el riesgo.
+
+Es importante para la sociedad porque los riesgos nos afectan a todos, no estamos exentos a evitar los riesgos. A través de la Teoría del Riesgo identificamos, clasificamos, evaluamos y luego tomamos una decisión para mitigar el riesgo. Asimismo, modelar el riesgo nos sirve para tratar de representar una posible situación del mundo exterior y poder hallar una solución.
+
+En el seguro social necesitamos mucho análisis de riesgo para operarlos bien y tienen un impacto muy visible.
+
+\vspace{0.5cm}
+
+\textbf{Utilidad de la Teoría del Riesgo tras la pandemia}
+
+Los principales sectores que fueron afectados tras la pandemia son el \textbf{sector financiero} con la detención y posterior caída del mercado internacional, el \textbf{sector asegurador} por todas las reclamaciones ocurridas tras la muerte de muchas personas y el \textbf{sector salud} que fue el que tronó porque no había camas en hospitales, nos enfreentamos a una crisis sanitaria en donde estimar el riesgo a priori hubiera cambiado mucho la situación.
+
+Aunque no suena factible que el riesgo se hubiera estimado hace un par de años, porque no se esperaba una pandemia. Si tenemos presupuesto limitado para gastar, nosotros como gobierno no hubieramos dado prioridad a la construcción de hospitales debido a que se tenían otros tipos de necesidades.
+
+\vspace{1cm}
+
+\Large 
+
+\textbf{Modelo individual del riesgo}
+
+\normalsize
+
+\vspace{0.5cm}
+
+\textbf{Antecedentes}
+
+En un contexto histórico este modelo surge en el estudio de compañías aseguradoras principalmente en el \textbf{ramo vida}, tenían un interés por modelar el comportamiento de esas carteras de seguros y contestar a la siguiente pregunta fundamental: 
+
+\textbf{¿Cuánto tendría que pagar en promedio siendo dueño de esa cartera?}
+
+Necesito entender con un número el riesgo promedio al que estoy expuesto.
+
+El primer y más básico modelo que surge  para responder a esa pregunta es el \textbf{Modelo Individual del Riesgo}, que considera el siguiente planteamiento.
+
+\vspace{0.5cm}
+
+\textbf{Planteamiento}
+
+Sea $S$ una variable aleatoria que representa el costo total de la cartera en un plazo determinado de tiempo.  $S$ me va a dar el monto que representa el costo total de la cartera en ese horizonte de tiempo.
+
+Por lo tanto $S$ es definido no negativo (puede ser 0) y permitirá estimar la responsabilidad total que puede llegar a tener la aseguradora con sus asegurados:
+\begin{equation*}
+    S = \displaystyle \sum_{i=1}^{n} X_{i}
+\end{equation*}
+Donde:
+\begin{itemize}
+    \item $X_{i}$ representa el costo total de todas las posibles reclamaciones que tenga la póliza $i$ en un plazo determinado de tiempo. Las $X_{i}'s$ no deben llevar nada de primas porque estos son ingresos y queremos medir obligaciones.
+    \item $n$ es el número de pólizas que conforma la cartera.
+\end{itemize}
+
+\vspace{0.5cm}
+
+\textbf{Hipótesis y consideraciones para la aplicación del modelo:}
+\begin{itemize}
+    \item [$\checkmark$] El modelo se aplica a una cartera cerrada, es decir $n$ es fijo y constante a través del plazo de tiempo determinado en el que se está aplicando el modelo. Ese hortizonte no necesariamente es finito. Dicho de otra manera, una cartera cerrada es aquella en la que no pueden entrar nuevos miembros.
+    \item [$\checkmark$] Las variables aleatorias $X_{i}$ son independientes entre sí.
+    \item [$\checkmark$] El plazo de tiempo en el que se aplica el modelo puede no acotarse específicamente para el análisis de un problema en particular.
+\end{itemize}
+
+Supongamos que $X_{i}$ denota la pérdida del asegurado $i$ y se distribuye de la siguiente forma:
+\begin{equation*}
+    f_{X_{i}}(x) = \left\lbrace\begin{array}{c} 1-q_{i} \hspace{1cm} \text{ si } x=0 \longrightarrow \text{ No pasa nada} \\ q_{i} \hspace{1cm} \text{ si } x=b_{i}  \longrightarrow \text{ Siniestro}\end{array}\right.
+\end{equation*}
 En donde $b_{i} = \displaystyle \sum_{j=1}^{k} c_{j}$ en donde $c_{j}$ es la suma de otros reclamos. La $b_{i}$ es el monto total que pagamos en caso de siniestro.
 
 \textbf{Pero ¿Por qué se habla de $X_{i}$ y de $q_{i}$ y no solamente tomar al $i-esimo$? }
